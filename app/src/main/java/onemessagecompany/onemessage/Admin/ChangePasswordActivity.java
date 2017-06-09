@@ -99,7 +99,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 int statusCode = response.code();
                 if (statusCode == 200) {
-                    Toast.makeText(getApplicationContext(), "Saved Success", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Password Changed Successfully", Toast.LENGTH_LONG).show();
                     finish() ;
                 }
             }
