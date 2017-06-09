@@ -17,6 +17,7 @@ import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.model.Notification;
 import onemessagecompany.onemessage.model.NotificationResponse;
 import onemessagecompany.onemessage.model.User;
+import onemessagecompany.onemessage.model.UsersResponse;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.ForgetPasswordApi;
 import onemessagecompany.onemessage.rest.UsersApi;
@@ -84,23 +85,23 @@ public class ForgetPasswordListActivity extends AppCompatActivity  implements Fo
     UsersApi apiService =
       ApiClient.getAuthorizedClient().create(UsersApi.class);
 
-    Call<User> call = apiService.GetUserById(Id,"user");
-    call.enqueue(new Callback<User>() {
+    Call<UsersResponse> call = apiService.GetUserById(Id,"user");
+    call.enqueue(new Callback<UsersResponse>() {
       @Override
-      public void onResponse(Call<User> call, Response<User> response) {
+      public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response) {
         int statusCode = response.code();
         if (statusCode == 200) {
-          User user = response.body();
+          UsersResponse user = response.body();
           Context context = ForgetPasswordListActivity.this;
 
           Intent userDetails = new Intent(context, UserDetailsActivity.class);
-          userDetails.putExtra("userDetails", user);
-          startActivity(userDetails);
+          userDetails.putExtra("userDetails", user.getUser());
+         startActivity(userDetails);
         }
       }
 
       @Override
-      public void onFailure(Call<User> call, Throwable t) {
+      public void onFailure(Call<UsersResponse> call, Throwable t) {
 
       }
     });
