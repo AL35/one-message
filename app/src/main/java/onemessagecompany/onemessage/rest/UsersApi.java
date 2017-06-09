@@ -35,6 +35,6 @@ public interface UsersApi {
 
 
   @GET("/api/User/UserById")
-  Call<User> GetUserById(@Query("id") String id,@Query("type") String type);
+  Call<UsersResponse> GetUserById(@Query("id") String id,@Query("type") String type);
 
 }

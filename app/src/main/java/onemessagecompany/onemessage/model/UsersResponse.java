@@ -20,5 +20,14 @@ public class UsersResponse {
   @SerializedName("Users")
   private List<User> users;
 
+  public User getUser() {
+    return user;
+  }
 
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  @SerializedName("User")
+  private User user;
 }
