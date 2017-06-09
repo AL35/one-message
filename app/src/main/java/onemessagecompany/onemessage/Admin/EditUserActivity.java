@@ -36,7 +36,9 @@ public class EditUserActivity extends AppCompatActivity {
     private EditText mLastName;
     private CheckBox mRegisterActivateCheckbox;
     private Context context = EditUserActivity.this;
-
+    private String userName;
+    private String firstName;
+    private String lastName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,10 @@ public class EditUserActivity extends AppCompatActivity {
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EditPost();
+                if (validate())
+                    EditPost();
+                else
+                    Toast.makeText(getApplicationContext(), "Edit Failed", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -73,9 +78,9 @@ public class EditUserActivity extends AppCompatActivity {
 
     private void EditPost() {
 
-        String userName = mEditUserName.getText().toString();
-        String firstName = mFirstName.getText().toString();
-        String lastName = mLastName.getText().toString();
+        userName = mEditUserName.getText().toString();
+        firstName = mFirstName.getText().toString();
+        lastName = mLastName.getText().toString();
         boolean registerEnabled = mRegisterActivateCheckbox.isChecked();
 
 
@@ -126,5 +131,26 @@ public class EditUserActivity extends AppCompatActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
+
+
+    public boolean validate() {
+        initialize();
+        boolean valid = true;
+        if (firstName.isEmpty()) {
+            mFirstName.setError("Required");
+            valid = false;
+        }
+        if (lastName.isEmpty()) {
+            mLastName.setError("Required");
+            valid = false;
+        }
+        return valid;
+    }
+
+    public void initialize() {
+        firstName = mFirstName.getText().toString();
+        lastName = mLastName.getText().toString();
+    }
+
 
 }
