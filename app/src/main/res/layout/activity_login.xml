@@ -14,20 +14,26 @@
   <ScrollView
     android:id="@+id/login_form"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+      android:focusableInTouchMode="true"
+      android:focusable="true"
+      >
 
     <LinearLayout
       android:id="@+id/email_login_form"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:orientation="vertical">
+      android:orientation="vertical"
+        android:focusableInTouchMode="true"
+        android:focusable="true">
 
       <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="match_parent"
-        android:layout_height="135dp"
-        android:layout_marginBottom="@dimen/pad_20dp"
-        android:src="@drawable/logo_login" />
+          android:id="@+id/imageView1"
+          android:layout_width="match_parent"
+          android:layout_height="135dp"
+          android:layout_marginTop="50dp"
+          android:layout_marginBottom="@dimen/pad_30dp"
+          android:src="@drawable/logo_login" />
 
       <EditText
         android:id="@+id/txt_user_name_login"
@@ -69,7 +75,7 @@
         android:id="@+id/email_sign_in_button"
         style="@style/btn_white_large"
         android:layout_width="wrap_content"
-        android:layout_height="49dp"
+        android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:text="@string/action_sign_in"
         android:textStyle="bold" />

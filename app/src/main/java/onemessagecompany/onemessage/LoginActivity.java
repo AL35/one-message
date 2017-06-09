@@ -17,9 +17,11 @@ import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -40,6 +42,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
+import static onemessagecompany.onemessage.R.id.email_login_form;
+import static onemessagecompany.onemessage.R.id.txt_password_login;
+import static onemessagecompany.onemessage.R.id.txt_user_name_login;
 
 /**
  * A login screen that offers login via email/password.
@@ -80,12 +85,24 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     setContentView(R.layout.activity_login);
 
 
+    // hide keyboard when touch outside
+    findViewById(email_login_form).setOnTouchListener(new View.OnTouchListener() {
+      @Override
+      public boolean onTouch(View v, MotionEvent event) {
+
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
+
+      }
+    });
+
     Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
     mEmailSignInButton.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View view) {
-        EditText mNameLogin = (EditText) findViewById(R.id.txt_user_name_login);
-        EditText mPasswordLogin = (EditText) findViewById(R.id.txt_password_login);
+        EditText mNameLogin = (EditText) findViewById(txt_user_name_login);
+        EditText mPasswordLogin = (EditText) findViewById(txt_password_login);
         String username = mNameLogin.getText().toString();
         String password = mPasswordLogin.getText().toString();
 
