@@ -7,18 +7,43 @@
 
   tools:context="onemessagecompany.onemessage.AdminMainActivity"
   android:id="@+id/admin_main_activity_drawer_layout">
+<LinearLayout
+    android:id="@+id/ac_admin_main"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/pad_10dp"
+    android:layout_marginLeft="@dimen/pad_5dp"
+    android:layout_marginEnd="@dimen/pad_5dp"
+    android:layout_marginRight="@dimen/pad_5dp"
+    android:focusableInTouchMode="true">
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:hint="Search contacts..."
+      android:textSize="@dimen/pad_20dp"
+      android:layout_marginLeft="@dimen/pad_10dp"
+      android:layout_marginRight="@dimen/pad_10dp"
+      android:singleLine="true"/>
 
   <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-    <android.support.v7.widget.RecyclerView
-      android:id="@+id/users_recycler_view"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:scrollbars="vertical" />
+      android:layout_marginEnd="@dimen/pad_5dp"
+      android:layout_marginRight="@dimen/pad_5dp"
+      android:layout_marginLeft="@dimen/pad_10dp">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/users_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
 
   </RelativeLayout>
+
+</LinearLayout>
+
   <android.support.design.widget.NavigationView
     android:id="@+id/nav_view"
     android:layout_width="wrap_content"
