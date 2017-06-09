@@ -2,32 +2,27 @@
 package onemessagecompany.onemessage.Adapters;
 
   import android.content.Context;
-  import android.content.Intent;
-  import android.support.v7.widget.RecyclerView;
-  import android.view.LayoutInflater;
-  import android.view.View;
-  import android.view.ViewGroup;
-  import android.widget.ImageView;
-  import android.widget.TextView;
-  import android.widget.Toast;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
 
-  import java.text.DateFormat;
-  import java.text.ParseException;
-  import java.text.SimpleDateFormat;
-  import java.util.Date;
-  import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 
-  import onemessagecompany.onemessage.Public.MessageDetailsActivity;
-  import onemessagecompany.onemessage.Public.PublicMainActivity;
-  import onemessagecompany.onemessage.R;
-  import onemessagecompany.onemessage.data.MyApplication;
-  import onemessagecompany.onemessage.model.Message;
-  import onemessagecompany.onemessage.model.User;
-  import onemessagecompany.onemessage.rest.ApiClient;
-  import onemessagecompany.onemessage.rest.SendMessageApi;
-  import retrofit2.Call;
-  import retrofit2.Callback;
-  import retrofit2.Response;
+import onemessagecompany.onemessage.R;
+import onemessagecompany.onemessage.data.MyApplication;
+import onemessagecompany.onemessage.model.Message;
+import onemessagecompany.onemessage.rest.ApiClient;
+import onemessagecompany.onemessage.rest.SendMessageApi;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * Created by 52Solution on 7/06/2017.
@@ -103,7 +98,7 @@ public class UserMessageAdapter extends RecyclerView.Adapter<UserMessageAdapter.
   public void onBindViewHolder(UserMessageAdapterViewHolder holder, final int position) {
 
     Message message = messages.get(position);
-    holder.messageBody.setText(message.getBody().substring(0,2)+"....");
+    holder.messageBody.setText("Tab here to read this message...");
 
 
 

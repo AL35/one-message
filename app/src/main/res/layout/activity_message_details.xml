@@ -10,99 +10,125 @@
   tools:context="onemessagecompany.onemessage.Public.SendMessageActivity">
 
   <ScrollView
-    android:id="@+id/message_details_form"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+      android:id="@+id/message_details_form"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent">
 
 
     <LinearLayout
-      android:id="@+id/email_login_form"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:weightSum="1">
+        android:id="@+id/email_login_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
 
+      <LinearLayout
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginBottom="@dimen/pad_20dp"
+          android:orientation="horizontal">
+
+
+        <ImageView
+            android:layout_width="39dp"
+            android:layout_height="match_parent"
+            android:maxHeight="@dimen/pad_5dp"
+            android:maxWidth="@dimen/pad_15dp"
+            android:minWidth="@dimen/pad_10dp"
+            android:src="@drawable/ic_email" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Message :"
+            android:textSize="@dimen/pad_20dp" />
+      </LinearLayout>
 
 
       <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:text="@string/title_activity_message_details"
-        android:textSize="@dimen/pad_20dp" />
+          android:id="@+id/txt_current_Message"
+          style="@style/textView_graybg"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:gravity="top"
+          android:hint="@string/Message" />
 
 
-      <TextView
-        android:id="@+id/txt_current_Message"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        style="@style/textView_graybg"
-        android:hint="@string/Message"
-        android:gravity="top"
-        android:singleLine="true" />
+      <LinearLayout
+          android:id="@+id/message_actions_login_form"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/pad_15dp"
+          android:orientation="vertical"
+          android:weightSum="1">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/pad_5dp">
+
+          <ImageView
+              android:layout_width="39dp"
+              android:layout_height="25dp"
+              android:maxHeight="@dimen/pad_5dp"
+              android:maxWidth="@dimen/pad_15dp"
+              android:minWidth="@dimen/pad_10dp"
+              android:src="@drawable/ic_compose" />
+
+          <TextView
+              android:id="@+id/txt_user_reply"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="left"
+              android:text="Reply :"
+              android:textSize="@dimen/pad_20dp" />
+        </LinearLayout>
 
 
+        <EditText
+            android:id="@+id/txt_sendMessage"
+            style="@style/editextMultiLines_graybg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:gravity="top"
+            android:hint="Reply"
+            android:inputType="textMultiLine"
+            android:singleLine="true" />
 
-    <LinearLayout
-      android:id="@+id/message_actions_login_form"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_marginTop="@dimen/pad_15dp"
-      android:orientation="vertical"
-      android:weightSum="1">
+        <Button
+            android:id="@+id/btnSendReply"
+            style="@style/btn_white_large"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/pad_15dp"
+            android:layout_weight="1"
+            android:text="Reply and delete" />
 
+        <Button
+            android:id="@+id/btnDismiss"
+            style="@style/btn_white_large"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/pad_15dp"
+            android:layout_weight="1"
+            android:text="Dismiss" />
 
-      <TextView
-        android:id="@+id/txt_user_reply"
-        android:layout_width="wrap_content"
-        android:layout_height="44dp"
-        android:text="Reply"
-        android:layout_gravity="center"
-        android:textSize="@dimen/pad_20dp" />
-      <EditText
-        android:id="@+id/txt_sendMessage"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        style="@style/editextMultiLines_graybg"
-        android:hint="Reply"
-        android:ems="10"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:singleLine="true" />
-
-      <Button
-        android:id="@+id/btnSendReply"
-        style="@style/btn_white_large"
-        android:layout_width="170dp"
-        android:layout_gravity="center"
-        android:layout_height="42dp"
-        android:layout_weight="1"
-        android:layout_marginTop="@dimen/pad_15dp"
-        android:text="Send"/>
-
-      <Button
-        android:id="@+id/btnDismiss"
-        style="@style/btn_white_large"
-        android:layout_width="170dp"
-        android:layout_gravity="center"
-        android:layout_height="42dp"
-        android:layout_marginTop="@dimen/pad_15dp"
-        android:layout_weight="1"
-        android:text="Dismiss" />
-
-      <Button
-        android:id="@+id/btnDeleteMsg"
-        style="@style/btn_red_large"
-        android:layout_width="170dp"
-        android:layout_gravity="center"
-        android:layout_height="42dp"
-        android:layout_weight="1"
-        android:layout_marginTop="@dimen/pad_15dp"
-        android:text="Delete Message" />
+        <Button
+            android:id="@+id/btnDeleteMsg"
+            style="@style/btn_red_large"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/pad_15dp"
+            android:layout_weight="1"
+            android:text="Delete message" />
 
 
-
-    </LinearLayout>
+      </LinearLayout>
     </LinearLayout>
   </ScrollView>
 

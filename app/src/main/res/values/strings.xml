@@ -57,7 +57,7 @@
     </string>
   <string name="title_activity_login">Sign in</string>
   <string name="title_activity_add_user">Add User</string>
-  <string name="title_home">Home</string>
+  <string name="title_home">Contacts</string>
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
 
@@ -79,7 +79,7 @@
   <!-- Strings related to Generate Key-->
 
   <string name="title_activity_generate_key">Generate Key</string>
-  <string name="btn_activation_key">Generate A.K</string>
+  <string name="btn_activation_key">Generate Activation Key</string>
   <string name="txt_activation_key">Activation Key</string>
 
 
@@ -101,7 +101,7 @@
 
   <string name="btn_activation">Activate</string>
   <string name="title_activition_key">Activation</string>
-  <string name="title_activity_admin_main">Home</string>
+  <string name="title_activity_admin_main">Contacts</string>
 
   <string name="action_example">Example action</string>
 
