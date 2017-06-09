@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="onemessagecompany.onemessage.Admin.RepliesActivity">
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/v1_admin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/pad_10dp"
+        android:layout_marginTop="@dimen/pad_15dp"
+        android:background="@drawable/chat_bubble_gray"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/pad_5dp"
+        android:paddingLeft="@dimen/pad_chat_item"
+        android:paddingTop="@dimen/pad_5dp" >
+
+      <TextView
+          android:id="@+id/admin_msg"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="TextView"
+          android:textColor="@color/main_color_gray_dk"
+          android:textSize="@dimen/txt_16sp"
+          android:layout_marginLeft="@dimen/pad_15dp"
+          android:layout_marginRight="@dimen/pad_5dp"
+          android:paddingRight="@dimen/pad_15dp"
+          android:paddingLeft="@dimen/pad_5dp"/>
+
+
+      <TextView
+          android:id="@+id/v1_username"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Administrator"
+          android:layout_gravity="start|bottom"
+          android:layout_marginBottom="0dp"
+          android:layout_marginTop="@dimen/pad_10dp"
+          android:paddingBottom="@dimen/pad_5dp"
+          android:textColor="@color/black"
+          app:paddingStart="@dimen/pad_10dp"
+          android:textSize="@dimen/txt_14sp"
+          android:layout_alignRight="@+id/v1"
+          android:layout_below="@+id/v1"
+          android:layout_marginRight="@dimen/pad_20dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/pad_10dp">
+
+      <android.support.v7.widget.RecyclerView
+          android:id="@+id/replies_recycler_view"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:scrollbars="vertical" />
+
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
+</android.support.design.widget.CoordinatorLayout>

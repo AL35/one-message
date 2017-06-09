@@ -1,0 +1,43 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+  <item
+    android:id="@+id/chat_history"
+    android:icon="@mipmap/ic_chat_history"
+    android:title="@string/title_activity_chat_history" />
+
+
+  <item
+    android:id="@+id/message"
+    android:icon="@mipmap/ic_message"
+    android:title="@string/title_activity_send_message" />
+
+  <item
+    android:id="@+id/notifications"
+    android:icon="@mipmap/ic_notifications"
+    android:title="@string/title_activity_notification" />
+
+  <item
+    android:id="@+id/add_users"
+    android:icon="@mipmap/ic_add_user"
+    android:title="@string/title_activity_add_user" />
+
+  <item
+    android:id="@+id/generate_key"
+    android:icon="@mipmap/ic_key_large"
+    android:title="@string/title_activity_generate_key" />
+
+
+  <item
+    android:id="@+id/config"
+    android:icon="@mipmap/ic_settings"
+    android:title="@string/config" />
+
+
+
+  <item
+    android:id="@+id/logout"
+    android:icon="@mipmap/ic_logout"
+    android:title="logout" />
+</menu>

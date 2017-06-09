@@ -1,0 +1,90 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:gravity="center_horizontal"
+  android:orientation="vertical"
+  tools:context="onemessagecompany.onemessage.Admin.UserDetailsActivity">
+
+
+  <android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.AppBarOverlay">
+
+    <android.support.v7.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="?attr/colorPrimary"
+      app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+    </android.support.v7.widget.Toolbar>
+  </android.support.design.widget.AppBarLayout>
+
+  <ScrollView
+    android:id="@+id/login_form"
+
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+      android:id="@+id/email_login_form"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:weightSum="1">
+
+      <!-- Login progress -->
+      <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="@string/Details"
+        android:textSize="@dimen/pad_20dp"
+        />
+
+
+        <Button
+          android:id="@+id/btnEditUser"
+          style="@style/btn_white_large"
+          android:layout_width="170dp"
+          android:layout_gravity="center"
+          android:layout_height="42dp"
+          android:layout_weight="1"
+          android:text="@string/EditUser"/>
+
+      <Button
+        android:id="@+id/btnEditPassword"
+        style="@style/btn_white_large"
+        android:layout_width="170dp"
+        android:layout_gravity="center"
+        android:layout_height="42dp"
+        android:layout_marginTop="@dimen/pad_15dp"
+        android:layout_weight="1"
+        android:text="@string/change_password" />
+
+      <Button
+        android:id="@+id/btnDeleteUser"
+        style="@style/btn_red_large"
+        android:layout_width="170dp"
+        android:layout_gravity="center"
+        android:layout_height="42dp"
+        android:layout_weight="1"
+        android:layout_marginTop="@dimen/pad_15dp"
+        android:text="@string/DeleteUser" />
+
+
+
+
+    </LinearLayout>
+  </ScrollView>
+
+</LinearLayout>
+
+

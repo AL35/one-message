@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="onemessagecompany.onemessage.Public.ChatHistoryActivity">
+
+  <android.support.design.widget.AppBarLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:theme="@style/AppTheme.AppBarOverlay">
+
+    <android.support.v7.widget.Toolbar
+      android:id="@+id/toolbar"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:background="?attr/colorPrimary"
+      app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+    </android.support.v7.widget.Toolbar>
+  </android.support.design.widget.AppBarLayout>
+
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="horizontal">
+
+    <EditText
+      android:id="@+id/txtMsg"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginLeft="@dimen/pad_15dp"
+      android:layout_weight="1"
+      android:hint="Write a message"
+      android:textColor="@color/black"
+      android:textColorHint="#CFD8DC" />
+
+    <ImageView
+      android:id="@+id/btnSend"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_weight="5"
+      android:padding="4dp"
+      android:tint="@color/main_color_green"
+      android:src="@android:drawable/ic_menu_send" />
+  </LinearLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

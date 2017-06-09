@@ -1,0 +1,54 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:gravity="center_horizontal"
+  android:orientation="vertical"
+  android:paddingBottom="@dimen/activity_vertical_margin"
+  android:paddingLeft="@dimen/activity_horizontal_margin"
+  android:paddingRight="@dimen/activity_horizontal_margin"
+  android:paddingTop="@dimen/activity_vertical_margin"
+  tools:context="onemessagecompany.onemessage.AddUser">
+
+
+
+    <TextView
+      android:id="@+id/textView"
+      android:layout_width="match_parent"
+      android:layout_height="44dp"
+      android:text="@string/title_activity_generate_key"
+      android:textSize="@dimen/pad_20dp"
+      />
+
+    <LinearLayout
+      android:id="@+id/email_login_form"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical"
+      android:paddingTop="100dp"
+      android:weightSum="1">
+
+
+
+      <EditText
+        android:id="@+id/generated_activation_key"
+        style="@style/editext_graybg"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:hint="@string/txt_activation_key"
+        android:inputType="textEmailAddress"
+        android:maxLines="1"
+        android:layout_marginBottom="@dimen/pad_20dp"
+        android:singleLine="true" />
+
+      <Button
+        android:id="@+id/generate_activation_button"
+        style="@style/btn_white_large"
+        android:layout_width="wrap_content"
+        android:layout_height="49dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/btn_activation_key"
+        android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>
