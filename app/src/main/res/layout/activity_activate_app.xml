@@ -11,77 +11,76 @@
     tools:context="onemessagecompany.onemessage.Public.ActivateApp">
 
 
-    <ScrollView
-        android:id="@+id/login_form"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
+  <ScrollView
+      android:id="@+id/login_form"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="true"
+        android:focusable="true"
+        >
+
+      <LinearLayout
+          android:id="@+id/email_login_form"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/pad_5dp"
+          android:layout_marginRight="@dimen/pad_5dp"
+          android:orientation="vertical"
+          android:focusableInTouchMode="true"
+          android:focusable="true"
+          android:weightSum="1">
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:layout_marginTop="65dp"
+            android:layout_marginBottom="@dimen/pad_30dp"
+            android:src="@drawable/logo_login" />
+
+        <!-- Login progress -->
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="Activation Key:"
+            android:textSize="@dimen/pad_18dp"
             android:focusable="true"
-            android:focusableInTouchMode="true">
-
-            <LinearLayout
-                android:id="@+id/email_login_form"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/pad_5dp"
-                android:layout_marginRight="@dimen/pad_5dp"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:orientation="vertical"
-                android:weightSum="1">
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:text="Wessam"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:id="@+id/imageView1"
-                    android:layout_width="match_parent"
-                    android:layout_height="135dp"
-                    android:layout_marginBottom="@dimen/pad_30dp"
-                    android:layout_marginTop="65dp"
-                    android:src="@drawable/logo_login" />
-
-                <!-- Login progress -->
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:focusable="true"
-                    android:text="Activation Key:"
-                    android:textSize="@dimen/pad_18dp" />
+            />
 
 
-                <EditText
-                    android:id="@+id/txt_activatiobn_key"
-                    style="@style/editext_graybg"
-                    android:layout_width="match_parent"
-                    android:layout_height="44dp"
-                    android:layout_marginBottom="@dimen/pad_20dp"
-                    android:focusableInTouchMode="true"
-                    android:hint="Key"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
+        <EditText
+            android:id="@+id/txt_activatiobn_key"
+            style="@style/editext_graybg"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:hint="Key"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"
+            android:layout_marginBottom="@dimen/pad_20dp"
+            android:singleLine="true"
 
-                    android:singleLine="true" />
+            android:focusableInTouchMode="true"/>
 
-                <Button
-                    android:id="@+id/activate_app"
-                    style="@style/btn_white_large"
-                    android:layout_width="wrap_content"
-                    android:layout_height="50dp"
-                    android:layout_marginBottom="100dp"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/btn_activation"
-                    android:textStyle="bold" />
+        <Button
+            android:id="@+id/activate_app"
+            style="@style/btn_white_large"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="100dp"
+            android:text="@string/btn_activation"
+            android:textStyle="bold"
+            />
 
-            </LinearLayout>
-        </RelativeLayout>
+      </LinearLayout>
+    </RelativeLayout>
 
-    </ScrollView>
+  </ScrollView>
 
 </LinearLayout>
