@@ -52,7 +52,11 @@
             android:textSize="@dimen/pad_18dp"
             android:focusable="true"
             />
-
+      <TextView
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textAlignment="center"
+          android:text="Hello"/>
 
         <EditText
             android:id="@+id/txt_activatiobn_key"
