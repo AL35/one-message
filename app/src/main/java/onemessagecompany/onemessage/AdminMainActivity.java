@@ -2,19 +2,17 @@ package onemessagecompany.onemessage;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
 import android.view.WindowManager;
-import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -25,10 +23,11 @@ import onemessagecompany.onemessage.Admin.ConfigActivity;
 import onemessagecompany.onemessage.Admin.ForgetPasswordListActivity;
 import onemessagecompany.onemessage.Admin.GenerateKey;
 import onemessagecompany.onemessage.Admin.UserDetailsActivity;
+import onemessagecompany.onemessage.Public.ChatHistoryActivity;
 import onemessagecompany.onemessage.Public.SendMessageActivity;
 import onemessagecompany.onemessage.data.sharedData;
-import onemessagecompany.onemessage.model.User;
 import onemessagecompany.onemessage.model.UsersResponse;
+import onemessagecompany.onemessage.model.User;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.UsersApi;
 import retrofit2.Call;
@@ -51,15 +50,6 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
       WindowManager.LayoutParams.FLAG_SECURE);
 
     setContentView(R.layout.activity_admin_main);
-
-    findViewById(R.id.ac_admin_main).setOnTouchListener(new View.OnTouchListener() {
-      @Override
-      public boolean onTouch(View v, MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        return true;
-      }
-    });
 
     mDrawerLayout = (DrawerLayout) findViewById(R.id.admin_main_activity_drawer_layout);
     mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);

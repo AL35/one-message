@@ -1,15 +1,23 @@
 package onemessagecompany.onemessage.Admin;
 
+import android.content.Context;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.util.AttributeSet;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import onemessagecompany.onemessage.R;
+import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.ConfigurationRequest;
 import onemessagecompany.onemessage.model.ConfigurationResponse;
 import onemessagecompany.onemessage.rest.ApiClient;

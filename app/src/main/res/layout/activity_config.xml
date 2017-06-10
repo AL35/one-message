@@ -6,43 +6,16 @@
   android:paddingLeft="@dimen/activity_horizontal_margin"
   android:paddingRight="@dimen/activity_horizontal_margin"
   android:paddingTop="@dimen/activity_vertical_margin"
-  tools:context="onemessagecompany.onemessage.Admin.ConfigActivity"
-    android:focusable="true"
-    android:focusableInTouchMode="true"
-    android:id="@+id/ac_config">
+  tools:context="onemessagecompany.onemessage.Admin.ConfigActivity">
 
 
-  <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="horizontal"
-      >
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="left"
-        android:layout_marginTop="@dimen/pad_10dp"
-        android:layout_marginLeft="@dimen/pad_5dp"
-        android:src="@drawable/om_config"/>
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-
-        android:layout_height="44dp"
-        android:layout_marginLeft="@dimen/pad_5dp"
-        android:text="Configuration :"
-        android:textAlignment="center"
-        android:textSize="20dp" />
-
-  </LinearLayout>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/pad_30dp">
-
+<TextView
+    android:id="@+id/textView"
+    android:layout_width="match_parent"
+    android:layout_height="44dp"
+    android:text="Configuration"
+    android:textAlignment="center"
+    android:textSize="@dimen/pad_20dp" />
 
   <onemessagecompany.onemessage.NumberPickerCustom
     android:id="@+id/numberPicker1"
@@ -50,10 +23,7 @@
     android:layout_margin="50dp"
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
-    android:layout_gravity="center"
-    android:layout_centerHorizontal="true"
-
-      />
+    android:layout_centerHorizontal="true"/>
 
   <TextView
     android:id="@+id/textView1"
@@ -62,7 +32,6 @@
     android:layout_below="@+id/numberPicker1"
     android:layout_centerHorizontal="true"
     android:layout_margin="@dimen/pad_10dp"
-    android:layout_gravity="center"
     android:text="Deletion time :"
     android:textAppearance="?android:attr/textAppearanceLarge"
     android:gravity="center"/>
@@ -80,6 +49,4 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true"
     android:layout_marginTop="42dp" />
-</LinearLayout>
-
 </RelativeLayout>

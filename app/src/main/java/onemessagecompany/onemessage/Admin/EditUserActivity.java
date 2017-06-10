@@ -1,9 +1,13 @@
 package onemessagecompany.onemessage.Admin;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
@@ -12,7 +16,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.R;
+import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.EditUserRequest;
 import onemessagecompany.onemessage.model.EditUserResponse;
 import onemessagecompany.onemessage.model.User;

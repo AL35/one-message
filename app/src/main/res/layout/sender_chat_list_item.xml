@@ -11,39 +11,40 @@
   >
 
   <LinearLayout
-      android:id="@+id/v1_reply"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentRight="true"
-      android:layout_marginLeft="@dimen/pad_10dp"
-      android:background="@drawable/chat_bubble_green"
-      android:gravity="center_vertical"
-      android:orientation="vertical"
-      android:paddingLeft="@dimen/pad_15dp"
-      android:paddingRight="@dimen/pad_chat_item">
+    android:id="@+id/v1_reply"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_marginLeft="@dimen/pad_10dp"
+    android:background="@drawable/chat_bubble_green"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/pad_15dp"
+    android:paddingRight="@dimen/pad_chat_item" >
 
     <TextView
-        android:id="@+id/v1_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/pad_10dp"
-        android:text="TextView"
-        android:textColor="@color/white"
-        android:textSize="@dimen/txt_16sp" />
+      android:id="@+id/v1_msg"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="TextView"
+      android:paddingTop="@dimen/pad_10dp"
+      android:textColor="@color/white"
+      android:textSize="@dimen/txt_16sp" />
 
     <TextView
         android:id="@+id/v1_username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/v1"
-        android:layout_below="@+id/v1"
+        android:text="textvdv"
         android:layout_gravity="end|bottom"
-        android:layout_marginRight="@dimen/pad_20dp"
         android:layout_marginTop="0dp"
         android:paddingBottom="@dimen/pad_10dp"
-        android:text="textvdv"
         android:textColor="@color/black"
-        android:textSize="@dimen/txt_14sp" />
+        android:textSize="@dimen/txt_14sp"
+        android:layout_alignRight="@+id/v1"
+        android:layout_below="@+id/v1"
+        android:layout_marginRight="@dimen/pad_20dp"
+        />
   </LinearLayout>
 
 
