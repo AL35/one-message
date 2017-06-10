@@ -42,7 +42,9 @@ public class AdminMessagsAdapter extends RecyclerView.Adapter<AdminMessagsAdapte
   private int rowLayout;
 
   public interface AdminMessagsAdapterOnClickHandler {
-    void onClick(Message message);
+    void onClick(View v, int position);
+    void onRemoveMessageClick(View v, int position);
+
   }
 
   public AdminMessagsAdapter(AdminMessagsAdapterOnClickHandler clickHandler) {
@@ -59,7 +61,7 @@ public class AdminMessagsAdapter extends RecyclerView.Adapter<AdminMessagsAdapte
 
 
 
-  public class AdminMessagsAdapterViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+  public class AdminMessagsAdapterViewHolder extends RecyclerView.ViewHolder {
     TextView messageBody;
     TextView messageDate;
     ImageView removemsg;
@@ -70,15 +72,27 @@ public class AdminMessagsAdapter extends RecyclerView.Adapter<AdminMessagsAdapte
       messageDate = (TextView) view.findViewById(R.id.item_list_message_date);
       removemsg = (ImageView) view.findViewById(R.id.remove_msg);
 
-      view.setOnClickListener(this);
+      view.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          mClickHandler.onClick(v,getAdapterPosition());
+        }
+      });
+
+      removemsg.setOnClickListener(new ImageView.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          mClickHandler.onRemoveMessageClick(v,getAdapterPosition());
+        }
+      });
     }
 
-    @Override
-    public void onClick(View v) {
-      int adapterPosition = getAdapterPosition();
-      Message message = messages.get(adapterPosition);
-      mClickHandler.onClick(message);
-    }
+//    @Override
+//    public void onClick(View v) {
+//      int adapterPosition = getAdapterPosition();
+//      Message message = messages.get(adapterPosition);
+//      mClickHandler.onClick(message);
+//    }
   }
 
 
@@ -104,17 +118,17 @@ public class AdminMessagsAdapter extends RecyclerView.Adapter<AdminMessagsAdapte
 
     Message message = messages.get(position);
     holder.messageBody.setText(message.getBody());
-    holder.removemsg.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        Message removedMessage = messages.get(position);
-
-        // Remove the item on remove/button click
-        messages.remove(position);
-        notifyItemRemoved(position);
-        deleteMessage(removedMessage);
-      }
-    });
+//    holder.removemsg.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        Message removedMessage = messages.get(position);
+//
+//        // Remove the item on remove/button click
+//        messages.remove(position);
+//        notifyItemRemoved(position);
+//        deleteMessage(removedMessage);
+//      }
+//    });
 
 
 
@@ -131,17 +145,18 @@ public class AdminMessagsAdapter extends RecyclerView.Adapter<AdminMessagsAdapte
     }
 
   }
-  public void deleteMessage(Message  message) {
+  public void deleteMessage(final int position) {
     SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
 
 
-    Call<Void> call = apiService.RemoveMessage(message.getID());
+    Call<Void> call = apiService.RemoveMessage(messages.get(position).getID());
     call.enqueue(new Callback<Void>() {
       @Override
       public void onResponse(Call<Void> call, Response<Void> response) {
         int statusCode = response.code();
         if (statusCode == 200) {
-
+          messages.remove(position);
+          notifyDataSetChanged();
         }
         else
         {
@@ -161,4 +176,8 @@ public class AdminMessagsAdapter extends RecyclerView.Adapter<AdminMessagsAdapte
     return messages.size();
   }
 
+
+  public Message getSelectedMessage(int Position) {
+    return messages.get(Position);
+  }
 }
