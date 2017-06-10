@@ -3,12 +3,9 @@ package onemessagecompany.onemessage.Admin;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -17,19 +14,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.IOException;
-
-import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.R;
-import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.RegisterRequest;
-import onemessagecompany.onemessage.model.RegisterResponse;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.RegisterApi;
 import retrofit2.Call;

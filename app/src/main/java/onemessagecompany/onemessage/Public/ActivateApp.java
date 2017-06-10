@@ -11,7 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.MyApplication;

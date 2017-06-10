@@ -10,12 +10,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
-import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.R;
-import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.DeleteAccountRequest;
 import onemessagecompany.onemessage.model.User;
 import onemessagecompany.onemessage.rest.ApiClient;
