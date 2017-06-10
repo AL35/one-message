@@ -68,17 +68,17 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:text="@string/forgot"
-        android:textColor="@color/main_color_green"
+        android:textColor="@color/colorMain"
         android:textSize="14sp" />
 
       <Button
         android:id="@+id/email_sign_in_button"
         style="@style/btn_white_large"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+          android:background="@color/colorMain"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:text="@string/action_sign_in"
-        android:textStyle="bold" />
+        android:text="@string/action_sign_in" />
 
     </LinearLayout>
   </ScrollView>

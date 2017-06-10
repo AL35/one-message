@@ -72,12 +72,13 @@
   <string name="add_new_name">Name</string>
   <string name="add_new_pass">Password</string>
   <string name="add_new_pass_confirm">Confirm Password</string>
-  <string name="add_new_active">Active</string>
+  <string name="add_new_active">Activate user</string>
   <string name="add_user_emai">Email</string>
 
 
   <!-- Strings related to Generate Key-->
 
+  <string name="title_activity_generate_key_body">Generate Key :</string>
   <string name="title_activity_generate_key">Generate Key</string>
   <string name="btn_activation_key">Generate Activation Key</string>
   <string name="txt_activation_key">Activation Key</string>
@@ -85,7 +86,9 @@
 
   <!-- Strings related to Edit User-->
   <string name="title_activity_edit_user">Edit User</string>
-  <string name="edit_user_save">Save</string>
+  <string name="title_activity_edit_user_body">Edit User :</string>
+
+  <string name="edit_user_save">Change password</string>
   <string name="edit_user_delete">Delete</string>
   <string name="title_activity_main">MainActivity</string>
 
@@ -121,7 +124,7 @@
   <string name="title_activity_chat_history">Chat History</string>
 
   <!-- Strings User Details-->
-  <string name="Details">Details</string>
+  <string name="Details">User Manager :</string>
   <string name="DeleteUser">Delete User</string>
   <string name="EditUser">Edit User</string>
   <string name="EditPassword">Edit Password</string>
@@ -131,9 +134,12 @@
 
   <string name="title_activity_change_password">ChangePasswordActivity</string>
   <string name="change_password">Change Password</string>
+  <string name="change_password_body">Change Password :</string>
 
 
-  <string name="title_activity_send_message">Send Message</string>
+
+  <string name="title_activity_send_message">Send message</string>
+  <string name="title_activity_send_message_body">Send message :</string>
   <string name="Message">Message</string>
   <string name="send_message">Send</string>
   <string name="title_activity_notification">Notification</string>
