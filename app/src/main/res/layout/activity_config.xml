@@ -22,7 +22,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:layout_marginTop="@dimen/pad_5dp"
+        android:layout_marginTop="@dimen/pad_10dp"
         android:layout_marginLeft="@dimen/pad_5dp"
         android:src="@drawable/om_config"/>
 
@@ -34,7 +34,7 @@
         android:layout_marginLeft="@dimen/pad_5dp"
         android:text="Configuration :"
         android:textAlignment="center"
-        android:textSize="21dp" />
+        android:textSize="20dp" />
 
   </LinearLayout>
 <LinearLayout
