@@ -18,6 +18,7 @@
             android:id="@+id/custom_alert_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@color/colorMain"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
@@ -51,7 +52,7 @@
             android:id="@+id/customDialogCancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/alret_cancel"
+            android:src="@drawable/om_cancel"
             android:background="@color/transparent"
             android:layout_marginRight="@dimen/pad_15dp"
             android:text="Cancel" />
@@ -60,7 +61,7 @@
             android:id="@+id/customDialogOk"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/alert_confirm"
+            android:src="@drawable/om_ok"
             android:background="@color/transparent"
             android:text="Video" />
 
