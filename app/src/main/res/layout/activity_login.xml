@@ -53,16 +53,11 @@
 
       <EditText
         android:id="@+id/txt_password_login"
-<<<<<<< HEAD
         style="@style/editext_graybg"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-=======
         android:background="@color/gray_light"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:drawablePadding="@dimen/pad_5dp"
->>>>>>> b1323d91d2dde0944f46eb0c4e13c4cc66595ba3
         android:layout_marginBottom="@dimen/pad_20dp"
         android:layout_marginTop="@dimen/pad_5dp"
         android:drawableLeft="@drawable/ic_pwd"
