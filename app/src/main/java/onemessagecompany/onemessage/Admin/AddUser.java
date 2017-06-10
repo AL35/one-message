@@ -140,9 +140,9 @@ public class AddUser extends AppCompatActivity {
         registerRequest.setIsEnabled(registerEnabled);
 
 
-        registerApi.Register(registerRequest).enqueue(new Callback<RegisterResponse>() {
+        registerApi.Register(registerRequest).enqueue(new Callback<Void>() {
             @Override
-            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 int statusCode = response.code();
                 if (statusCode == 200) {
                     Toast.makeText(getApplicationContext(), "Create Success", Toast.LENGTH_LONG).show();
@@ -158,8 +158,8 @@ public class AddUser extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<RegisterResponse> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
+            public void onFailure(Call<Void> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Create Failed", Toast.LENGTH_LONG).show();
             }
         });
 
