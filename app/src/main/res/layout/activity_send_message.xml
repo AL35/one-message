@@ -12,7 +12,8 @@
   <ScrollView
     android:id="@+id/login_form"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+      android:focusableInTouchMode="true">
 
 
     <LinearLayout
@@ -22,37 +23,52 @@
       android:orientation="vertical"
       android:weightSum="1">
 
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/om_send"
+            android:layout_marginLeft="@dimen/pad_5dp"/>
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="44dp"
+            android:textColor="@color/colorMain"
+            android:layout_marginLeft="@dimen/pad_10dp"
+            android:text="@string/title_activity_send_message_body"
+            android:textSize="@dimen/pad_20dp"
+            android:paddingTop="2dp"/>
+
+      </LinearLayout>
 
 
-      <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:text="@string/title_activity_send_message"
-        android:textSize="@dimen/pad_20dp" />
 
       <EditText
         android:id="@+id/txt_sendMessage"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         style="@style/editextMultiLines_graybg"
         android:hint="@string/Message"
         android:ems="10"
         android:gravity="top"
         android:inputType="textMultiLine"
-        android:singleLine="true" />
+        android:maxLines="8"/>
 
 
 
       <Button
         android:id="@+id/btnSendMessage"
         style="@style/btn_white_large"
-        android:layout_width="310dp"
+        android:layout_width="match_parent"
         android:layout_height="49dp"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:text="@string/send_message"
-        android:textStyle="bold" />
+          android:background="@color/colorMain"/>
 
 
     </LinearLayout>

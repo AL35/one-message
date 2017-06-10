@@ -10,15 +10,30 @@
   android:paddingTop="@dimen/activity_vertical_margin"
   tools:context="onemessagecompany.onemessage.AddUser">
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/om_key"
+        android:paddingLeft="@dimen/pad_5dp"
+        android:paddingTop="@dimen/pad_5dp"/>
 
     <TextView
-      android:id="@+id/textView"
-      android:layout_width="match_parent"
-      android:layout_height="44dp"
-      android:text="@string/title_activity_generate_key"
-      android:textSize="@dimen/pad_20dp"
-      />
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:text="@string/title_activity_generate_key_body"
+        android:textColor="@color/colorMain"
+        android:textSize="@dimen/pad_20dp"
+        android:paddingLeft="@dimen/pad_10dp"
+        android:paddingTop="3dp"
+        />
+
+</LinearLayout>
+
 
     <LinearLayout
       android:id="@+id/email_login_form"
@@ -46,11 +61,12 @@
       <Button
         android:id="@+id/generate_activation_button"
         style="@style/btn_white_large"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+          android:background="@color/colorMain"
         android:layout_height="49dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:text="@string/btn_activation_key"
-        android:textStyle="bold" />
+         />
     </LinearLayout>
 </LinearLayout>
