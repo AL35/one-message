@@ -35,57 +35,57 @@ import retrofit2.Response;
 public class AdminMessagsAdapter extends RecyclerView.Adapter<AdminMessagsAdapter.AdminMessagsAdapterViewHolder> {
 
 
-  private final AdminMessagsAdapterOnClickHandler mClickHandler;
+    private final AdminMessagsAdapterOnClickHandler mClickHandler;
 
-  private Context context;
-  private List<Message> messages;
-  private int rowLayout;
+    private Context context;
+    private List<Message> messages;
+    private int rowLayout;
 
-  public interface AdminMessagsAdapterOnClickHandler {
-    void onClick(View v, int position);
-    void onRemoveMessageClick(View v, int position);
+    public interface AdminMessagsAdapterOnClickHandler {
+        void onClick(View v, int position);
 
-  }
+        void onRemoveMessageClick(View v, int position);
 
-  public AdminMessagsAdapter(AdminMessagsAdapterOnClickHandler clickHandler) {
-    mClickHandler = clickHandler;
-  }
-
-
-  public AdminMessagsAdapter(List<Message> messages, int rowLayout, Context context,AdminMessagsAdapterOnClickHandler clickHandler) {
-    this.messages = messages;
-    this.rowLayout = rowLayout;
-    this.context = context;
-    this.mClickHandler=clickHandler;
-  }
-
-
-
-  public class AdminMessagsAdapterViewHolder extends RecyclerView.ViewHolder {
-    TextView messageBody;
-    TextView messageDate;
-    ImageView removemsg;
-
-    public AdminMessagsAdapterViewHolder(View view) {
-      super(view);
-      messageBody = (TextView) view.findViewById(R.id.item_list_message_body);
-      messageDate = (TextView) view.findViewById(R.id.item_list_message_date);
-      removemsg = (ImageView) view.findViewById(R.id.remove_msg);
-
-      view.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          mClickHandler.onClick(v,getAdapterPosition());
-        }
-      });
-
-      removemsg.setOnClickListener(new ImageView.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          mClickHandler.onRemoveMessageClick(v,getAdapterPosition());
-        }
-      });
     }
+
+    public AdminMessagsAdapter(AdminMessagsAdapterOnClickHandler clickHandler) {
+        mClickHandler = clickHandler;
+    }
+
+
+    public AdminMessagsAdapter(List<Message> messages, int rowLayout, Context context, AdminMessagsAdapterOnClickHandler clickHandler) {
+        this.messages = messages;
+        this.rowLayout = rowLayout;
+        this.context = context;
+        this.mClickHandler = clickHandler;
+    }
+
+
+    public class AdminMessagsAdapterViewHolder extends RecyclerView.ViewHolder {
+        TextView messageBody;
+        TextView messageDate;
+        ImageView removemsg;
+
+        public AdminMessagsAdapterViewHolder(View view) {
+            super(view);
+            messageBody = (TextView) view.findViewById(R.id.item_list_message_body);
+            messageDate = (TextView) view.findViewById(R.id.item_list_message_date);
+            removemsg = (ImageView) view.findViewById(R.id.remove_msg);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mClickHandler.onClick(v, getAdapterPosition());
+                }
+            });
+
+            removemsg.setOnClickListener(new ImageView.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mClickHandler.onRemoveMessageClick(v, getAdapterPosition());
+                }
+            });
+        }
 
 //    @Override
 //    public void onClick(View v) {
@@ -93,11 +93,11 @@ public class AdminMessagsAdapter extends RecyclerView.Adapter<AdminMessagsAdapte
 //      Message message = messages.get(adapterPosition);
 //      mClickHandler.onClick(message);
 //    }
-  }
+    }
 
 
-  @Override
-  public AdminMessagsAdapter.AdminMessagsAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    @Override
+    public AdminMessagsAdapter.AdminMessagsAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
 //    Context context = parent.getContext();
 //    int layoutIdForListItem = R.layout.list_item_user;
@@ -108,16 +108,18 @@ public class AdminMessagsAdapter extends RecyclerView.Adapter<AdminMessagsAdapte
 //    return new UserAdapterViewHolder(view);
 
 
+        View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
+        return new AdminMessagsAdapterViewHolder(view);
+    }
 
-    View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
-    return new AdminMessagsAdapterViewHolder(view);
-  }
+    @Override
+    public void onBindViewHolder(AdminMessagsAdapterViewHolder holder, final int position) {
 
-  @Override
-  public void onBindViewHolder(AdminMessagsAdapterViewHolder holder, final int position) {
-
-    Message message = messages.get(position);
-    holder.messageBody.setText(message.getBody());
+        Message message = messages.get(position);
+        if (message.getBody().length() > 20)
+            holder.messageBody.setText(message.getBody().substring(0,20)+"...");
+        else
+            holder.messageBody.setText(message.getBody());
 //    holder.removemsg.setOnClickListener(new View.OnClickListener() {
 //      @Override
 //      public void onClick(View v) {
@@ -131,53 +133,51 @@ public class AdminMessagsAdapter extends RecyclerView.Adapter<AdminMessagsAdapte
 //    });
 
 
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            Date date = dateFormat.parse(message.getRV());
 
-    try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-      Date date = dateFormat.parse(message.getRV());
+            SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd,yyyy  hh:mm a");
+            String dateTime = dateFormatTime.format(date);
 
-      SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd,yyyy  hh:mm a");
-      String dateTime = dateFormatTime.format(date);
+            holder.messageDate.setText(dateTime);
 
-      holder.messageDate.setText(dateTime);
+        } catch (ParseException ex) {
+        }
 
-    } catch (ParseException ex) {
     }
 
-  }
-  public void deleteMessage(final int position) {
-    SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
+    public void deleteMessage(final int position) {
+        SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
 
 
-    Call<Void> call = apiService.RemoveMessage(messages.get(position).getID());
-    call.enqueue(new Callback<Void>() {
-      @Override
-      public void onResponse(Call<Void> call, Response<Void> response) {
-        int statusCode = response.code();
-        if (statusCode == 200) {
-          messages.remove(position);
-          notifyDataSetChanged();
-        }
-        else
-        {
-          Toast.makeText(MyApplication.getContext(), "Error", Toast.LENGTH_LONG).show();
-        }
-      }
+        Call<Void> call = apiService.RemoveMessage(messages.get(position).getID());
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                int statusCode = response.code();
+                if (statusCode == 200) {
+                    messages.remove(position);
+                    notifyDataSetChanged();
+                } else {
+                    Toast.makeText(MyApplication.getContext(), "Error", Toast.LENGTH_LONG).show();
+                }
+            }
 
-      @Override
-      public void onFailure(Call<Void> call, Throwable t) {
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
 
-      }
-    });
-  }
+            }
+        });
+    }
 
-  @Override
-  public int getItemCount() {
-    return messages.size();
-  }
+    @Override
+    public int getItemCount() {
+        return messages.size();
+    }
 
 
-  public Message getSelectedMessage(int Position) {
-    return messages.get(Position);
-  }
+    public Message getSelectedMessage(int Position) {
+        return messages.get(Position);
+    }
 }

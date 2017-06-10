@@ -46,10 +46,11 @@
         android:maxLines="1"
         android:singleLine="true" />
 
+
       <EditText
         android:id="@+id/txt_password_login"
         style="@style/editext_graybg"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="56dp"
         android:layout_marginBottom="@dimen/pad_20dp"
         android:layout_marginTop="@dimen/pad_5dp"
