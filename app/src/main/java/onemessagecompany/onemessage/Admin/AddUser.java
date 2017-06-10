@@ -17,6 +17,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import java.io.IOException;
+
 import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.sharedData;
@@ -132,9 +140,9 @@ public class AddUser extends AppCompatActivity {
         registerRequest.setIsEnabled(registerEnabled);
 
 
-        registerApi.Register(registerRequest).enqueue(new Callback<Void>() {
+        registerApi.Register(registerRequest).enqueue(new Callback<RegisterResponse>() {
             @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
+            public void onResponse(Call<RegisterResponse> call, Response<RegisterResponse> response) {
                 int statusCode = response.code();
                 if (statusCode == 200) {
                     Toast.makeText(getApplicationContext(), "Create Success", Toast.LENGTH_LONG).show();
@@ -142,12 +150,15 @@ public class AddUser extends AppCompatActivity {
                     startActivity(userMain);
                 }
                 else
-                    Toast.makeText(getApplicationContext(), "Create Failed", Toast.LENGTH_LONG).show();
+                {
+                    Toast.makeText(getApplicationContext(), "Create Failed , User Name or Email Already Taken", Toast.LENGTH_LONG).show();
+
+                }
 
             }
 
             @Override
-            public void onFailure(Call<Void> call, Throwable t) {
+            public void onFailure(Call<RegisterResponse> call, Throwable t) {
                 Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
             }
         });

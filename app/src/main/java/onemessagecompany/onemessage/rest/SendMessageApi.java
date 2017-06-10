@@ -26,7 +26,7 @@ public interface SendMessageApi {
   @GET("/api/Message/SendMessage")
   Call<SendMessageResponse> SendMessage(@Query("id") String id, @Query("msg") String msg);
 
-  @GET("/api/Message/SendMessage")
+  @POST("/api/Message/SendMessage")
   Call<SendMessageResponse> SendAdminMessage(@Query("msg") String msg);
 
   @POST("/api/Message/Messages")

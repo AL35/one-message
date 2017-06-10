@@ -61,9 +61,13 @@ public class AdminMessageHistoryActivity extends AppCompatActivity implements Ad
           Intent intentLogin = new Intent(AdminMessageHistoryActivity.this, LoginActivity.class);
           startActivity(intentLogin);
           finish();
-        } else {
+        } else if(statusCode==200) {
           List<Message> messages = response.body().getMessages();
           mRecyclerView.setAdapter(new AdminMessagsAdapter(messages,R.layout.list_item_admin_message, MyApplication.getContext(),AdminMessageHistoryActivity.this));
+        }
+        else
+        {
+
         }
       }
 

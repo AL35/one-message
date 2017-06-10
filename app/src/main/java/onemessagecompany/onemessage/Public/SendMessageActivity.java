@@ -68,6 +68,7 @@ public class SendMessageActivity extends AppCompatActivity {
         String responsemsg = response.body().getResponse();
 
         Toast.makeText(getApplicationContext(), responsemsg, Toast.LENGTH_LONG).show();
+        finish();
       }
 
       @Override
