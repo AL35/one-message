@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Map;
 
 import onemessagecompany.onemessage.model.MessageResponse;
+import onemessagecompany.onemessage.model.SendMessageRequest;
 import onemessagecompany.onemessage.model.SendMessageResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -26,10 +27,10 @@ public interface SendMessageApi {
   @GET("/api/Message/SendMessage")
   Call<SendMessageResponse> SendMessage(@Query("id") String id, @Query("msg") String msg);
 
-  @GET("/api/Message/SendMessage")
-  Call<SendMessageResponse> SendAdminMessage(@Query("msg") String msg);
+  @POST("/api/Message/SendMessage")
+  Call<SendMessageResponse> SendAdminMessage(@Body SendMessageRequest sendMessageRequest);
 
-  @POST("/api/Message/Messages")
+  @GET("/api/Message/Messages")
   Call<MessageResponse> GetMessages();
 
 
