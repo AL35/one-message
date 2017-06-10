@@ -23,13 +23,25 @@ public class CustomAlert extends Dialog implements
     public Activity c;
     public Dialog d;
     public ImageButton yes, no;
-    public TextView description;
-    public TextView header;
+    public String descriptionTxt;
+    public String headerTxt;
 
-    public CustomAlert(Activity a) {
+    public MyDialogListener myDialogListener;
+
+    public interface MyDialogListener {
+        public void userSelectedAValue();
+    }
+
+
+    public CustomAlert(Activity a, String headerTxt, String descriptionTxt, MyDialogListener myDialogListener) {
         super(a);
-        // TODO Auto-generated constructor stub
         this.c = a;
+        this.myDialogListener = myDialogListener;
+
+
+        this.headerTxt = headerTxt;
+        this.descriptionTxt=descriptionTxt;
+
     }
 
     @Override
@@ -38,16 +50,15 @@ public class CustomAlert extends Dialog implements
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.custom_alert_dialog);
 
-//        LinearLayout ll = (LinearLayout) findViewById(R.id.buttons_layout);
-//        ll.setAlpha(0.4);
+        TextView description = (TextView) findViewById(R.id.custom_alert_description);
+        TextView header = (TextView) findViewById(R.id.custom_alert_header);
+
+        description.setText(descriptionTxt);
+        header.setText(headerTxt);
 
         yes = (ImageButton) findViewById(R.id.customDialogOk);
         no = (ImageButton) findViewById(R.id.customDialogCancel);
-        description = (TextView) findViewById(R.id.custom_alert_description);
-        header = (TextView) findViewById(R.id.custom_alert_header);
 
-        description.setText("Are you sure you want to delete ?");
-        header.setText("Delete Message");
 
         yes.setOnClickListener(this);
         no.setOnClickListener(this);
@@ -59,6 +70,7 @@ public class CustomAlert extends Dialog implements
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.customDialogOk:
+                myDialogListener.userSelectedAValue();
                 c.finish();
                 break;
             case R.id.customDialogCancel:
