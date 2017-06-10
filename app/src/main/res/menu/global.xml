@@ -1,22 +1,20 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
 
+  <item
+      android:id="@+id/message"
+      android:icon="@mipmap/ic_message"
+      android:title="@string/title_activity_send_message" />
 
   <item
     android:id="@+id/chat_history"
     android:icon="@mipmap/ic_chat_history"
     android:title="@string/title_activity_chat_history" />
 
-
-  <item
-    android:id="@+id/message"
-    android:icon="@mipmap/ic_message"
-    android:title="@string/title_activity_send_message" />
-
   <item
     android:id="@+id/notifications"
     android:icon="@mipmap/ic_notifications"
-    android:title="@string/title_activity_notification" />
+    android:title="Notifications" />
 
   <item
     android:id="@+id/add_users"
@@ -32,12 +30,12 @@
   <item
     android:id="@+id/config"
     android:icon="@mipmap/ic_settings"
-    android:title="@string/config" />
+    android:title="Configuration" />
 
 
 
   <item
     android:id="@+id/logout"
     android:icon="@mipmap/ic_logout"
-    android:title="logout" />
+    android:title="Logout" />
 </menu>
