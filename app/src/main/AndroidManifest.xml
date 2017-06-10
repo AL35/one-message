@@ -1,177 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="onemessagecompany.onemessage">
+    package="onemessagecompany.onemessage">
 
-  <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-  <application
-    android:name=".data.MyApplication"
-    android:allowBackup="true"
-    android:icon="@drawable/ic_launcher"
-    android:label="@string/app_name"
-    android:roundIcon="@drawable/ic_launcher"
-    android:supportsRtl="true"
-    android:theme="@style/AppTheme">
-    <activity
-      android:name=".Public.ActivateApp"
-      android:windowSoftInputMode="stateHidden"
-      android:label="@string/title_activity_activate_app"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:theme="@style/AppTheme.NoActionBar">
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN" />
+    <application
+        android:name=".data.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Public.ActivateApp"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_activate_app"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:windowSoftInputMode="stateHidden">
 
-        <category android:name="android.intent.category.LAUNCHER" />
-      </intent-filter>
-    </activity>
-    <activity
-      android:name=".LoginActivity"
-      android:windowSoftInputMode="stateHidden"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:label="@string/app_name" />
-    <activity
-      android:name=".AdminMainActivity"
-      android:label="@string/title_activity_admin_main" />
-    <activity
-      android:name=".Admin.AddUser"
-      android:label="@string/title_activity_add_user"
-      android:parentActivityName=".AdminMainActivity"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".AdminMainActivity" />
-    </activity>
-    <activity
-      android:name=".Admin.GenerateKey"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:label="@string/title_activity_generate_key"
-      android:parentActivityName=".AdminMainActivity">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".AdminMainActivity" />
-    </activity>
-    <activity
-      android:name=".Admin.ConfigActivity"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:label="@string/title_activity_config"
-      android:parentActivityName=".AdminMainActivity">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".AdminMainActivity" />
-    </activity>
-    <activity
-      android:name=".Public.ChatHistoryActivity"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:label="@string/title_activity_chat_history"
-      android:theme="@style/AppTheme.NoActionBar">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".AdminMainActivity" />
-    </activity>
-    <activity
-      android:name=".Admin.UserDetailsActivity"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:label="@string/Details"
-      android:theme="@style/AppTheme.NoActionBar">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".AdminMainActivity" />
-    </activity>
-    <activity
-      android:name=".Admin.EditUserActivity"
-        android:configChanges="orientation"
-        android:windowSoftInputMode="stateHidden"
-        android:screenOrientation="portrait"
-      android:label="@string/title_activity_edit_user"
-      android:parentActivityName=".Admin.UserDetailsActivity">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".Admin.UserDetailsActivity" />
-    </activity>
-    <activity
-      android:name=".Admin.ChangePasswordActivity"
-      android:label="@string/change_password"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:parentActivityName=".Admin.UserDetailsActivity">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".Admin.UserDetailsActivity" />
-    </activity>
-    <activity
-      android:name=".Public.SendMessageActivity"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-        android:windowSoftInputMode="stateHidden"
-      android:label="@string/title_activity_send_message">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".AdminMainActivity" />
-    </activity>
-    <activity
-      android:name=".Admin.NotificationActivity"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:label="@string/title_activity_notification"
-      android:theme="@style/AppTheme.NoActionBar" />
-    <activity
-      android:name=".Public.PublicMainActivity"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:label="@string/title_activity_publick_main" />
-    <activity
-      android:name=".Admin.AdminMessageHistoryActivity"
-      android:label="@string/title_activity_admin_message_history"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".AdminMainActivity" />
-    </activity>
-    <activity
-      android:name=".Admin.RepliesActivity"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:label="@string/title_activity_replies">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".Admin.AdminMessageHistoryActivity" />
-    </activity>
-    <activity
-      android:name=".Public.MessageDetailsActivity"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:label="@string/title_activity_message_details">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".Public.PublicMainActivity" />
-    </activity>
-    <activity
-      android:name=".Admin.ForgetPasswordListActivity"
-        android:configChanges="orientation"
-        android:screenOrientation="portrait"
-      android:label="@string/title_activity_forget_password_list">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".AdminMainActivity" />
-    </activity>
-    <activity
-      android:name=".Public.ForgetPasswordActivity"
-      android:configChanges="orientation"
-      android:screenOrientation="portrait"
-      android:label="@string/title_activity_forget_password">
-      <meta-data
-        android:name="android.support.PARENT_ACTIVITY"
-        android:value=".LoginActivity" />
-    </activity>
-  </application>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:name=".LoginActivity"
+            android:configChanges="orientation"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden" />
+        <activity
+            android:name=".AdminMainActivity"
+            android:label="@string/title_activity_admin_main" />
+        <activity
+            android:name=".Admin.AddUser"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_add_user"
+            android:parentActivityName=".AdminMainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AdminMainActivity" />
+        </activity>
+        <activity
+            android:name=".Admin.GenerateKey"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_generate_key"
+            android:parentActivityName=".AdminMainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AdminMainActivity" />
+        </activity>
+        <activity
+            android:name=".Admin.ConfigActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_config"
+            android:parentActivityName=".AdminMainActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AdminMainActivity" />
+        </activity>
+        <activity
+            android:name=".Public.ChatHistoryActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_chat_history"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AdminMainActivity" />
+        </activity>
+        <activity
+            android:name=".Admin.UserDetailsActivity"
+            android:configChanges="orientation"
+            android:label="@string/Details"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AdminMainActivity" />
+        </activity>
+        <activity
+            android:name=".Admin.EditUserActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_edit_user"
+            android:parentActivityName=".Admin.UserDetailsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Admin.UserDetailsActivity" />
+        </activity>
+        <activity
+            android:name=".Admin.ChangePasswordActivity"
+            android:configChanges="orientation"
+            android:label="@string/change_password"
+            android:parentActivityName=".Admin.UserDetailsActivity"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Admin.UserDetailsActivity" />
+        </activity>
+        <activity
+            android:name=".Public.SendMessageActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_send_message"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AdminMainActivity" />
+        </activity>
+        <activity
+            android:name=".Admin.NotificationActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_notification"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Public.PublicMainActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_publick_main"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Admin.AdminMessageHistoryActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_admin_message_history"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AdminMainActivity" />
+        </activity>
+        <activity
+            android:name=".Admin.RepliesActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_replies"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Admin.AdminMessageHistoryActivity" />
+        </activity>
+        <activity
+            android:name=".Public.MessageDetailsActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_message_details"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Public.PublicMainActivity" />
+        </activity>
+        <activity
+            android:name=".Admin.ForgetPasswordListActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_forget_password_list"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".AdminMainActivity" />
+        </activity>
+        <activity
+            android:name=".Public.ForgetPasswordActivity"
+            android:configChanges="orientation"
+            android:label="@string/title_activity_forget_password"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".LoginActivity" />
+        </activity>
+    </application>
 
 </manifest>

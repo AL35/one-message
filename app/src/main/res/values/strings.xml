@@ -1,154 +1,154 @@
 <resources>
-  <string name="app_name">One Message</string>
+    <string name="app_name">One Message</string>
 
-  <string name="navigation_drawer_open">Open navigation drawer</string>
-  <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
-  <string name="action_settings">Settings</string>
+    <string name="action_settings">Settings</string>
 
-  <!-- TODO: Remove or change this placeholder text -->
-  <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
-  <string name="type_msg">Type message</string>
+    <string name="type_msg">Type message</string>
 
-  <string name="drawer_open">Open</string>
-  <string name="drawer_close">Close</string>
+    <string name="drawer_open">Open</string>
+    <string name="drawer_close">Close</string>
 
-  <string name="or">or</string>
-  <string name="email">Email</string>
-  <string name="displayName">Display Name</string>
-  <string name="password">Password</string>
-  <string name="register">Register</string>
-  <string name="log_in">Log in</string>
-  <string name="forgot_my_pwd">I’ve forgotten my password ?</string>
-  <string name="my_chats">My Chats</string>
-  <string name="all_chats">All Chats</string>
-  <string name="search">Search</string>
-  <string name="to">To:</string>
-  <string name="edit">Edit</string>
-  <string name="new_chat">New Chat</string>
-  <string name="alert_wait">Please wait...</string>
-  <string name="err_fields_empty">Please fill all the fields.</string>
-  <string name="err_singup">Error occurred while signup:</string>
-  <string name="err_login">Error occurred while login:</string>
-  <string name="err_users">Error occurred while finding users:</string>
-  <string name="alert_loading">Loading...</string>
-  <string name="msg_no_user_found">No users found for chat!</string>
-  <string name="delivered_text">Delivered</string>
-  <string name="sending_text">Sending...</string>
-  <string name="failed_text">Failed</string>
+    <string name="or">or</string>
+    <string name="email">Email</string>
+    <string name="displayName">Display Name</string>
+    <string name="password">Password</string>
+    <string name="register">Register</string>
+    <string name="log_in">Log in</string>
+    <string name="forgot_my_pwd">I’ve forgotten my password ?</string>
+    <string name="my_chats">My Chats</string>
+    <string name="all_chats">All Chats</string>
+    <string name="search">Search</string>
+    <string name="to">To:</string>
+    <string name="edit">Edit</string>
+    <string name="new_chat">New Chat</string>
+    <string name="alert_wait">Please wait...</string>
+    <string name="err_fields_empty">Please fill all the fields.</string>
+    <string name="err_singup">Error occurred while signup:</string>
+    <string name="err_login">Error occurred while login:</string>
+    <string name="err_users">Error occurred while finding users:</string>
+    <string name="alert_loading">Loading...</string>
+    <string name="msg_no_user_found">No users found for chat!</string>
+    <string name="delivered_text">Delivered</string>
+    <string name="sending_text">Sending...</string>
+    <string name="failed_text">Failed</string>
 
 
-  <!-- Strings related to login -->
-  <string name="prompt_email">Email</string>
-  <string name="login_user_name">User Name</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="login_user_name">User Name</string>
 
-  <string name="forgot">Forgot password?</string>
+    <string name="forgot">Forgot password?</string>
 
-  <string name="prompt_password">Password</string>
-  <string name="action_sign_in">Login</string>
-  <string name="action_sign_in_short">Sign in</string>
-  <string name="error_invalid_email">This email address is invalid</string>
-  <string name="error_invalid_password">This password is too short</string>
-  <string name="error_incorrect_password">This password is incorrect</string>
-  <string name="error_field_required">This field is required</string>
-  <string name="permission_rationale">"Contacts permissions are needed for providing email
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-  <string name="title_activity_login">Sign in</string>
-  <string name="title_activity_add_user">Create User</string>
-  <string name="title_home">Contacts</string>
-  <string name="title_dashboard">Dashboard</string>
-  <string name="title_notifications">Notifications</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_add_user">Create User</string>
+    <string name="title_home">Contacts</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 
 
-  <!-- Strings related to Add User -->
+    <!-- Strings related to Add User -->
 
-  <string name="add_first_name">First Name</string>
-  <string name="add_last_name">Last Name</string>
-  <string name="create_user">Create</string>
-  <string name="add_user_name">User Name</string>
-  <string name="create_user_title">Create User</string>
-  <string name="add_new_name">Name</string>
-  <string name="add_new_pass">Password</string>
-  <string name="add_new_pass_confirm">Confirm Password</string>
-  <string name="add_new_active">Activate user</string>
-  <string name="add_user_emai">Email</string>
-
-
-  <!-- Strings related to Generate Key-->
-
-  <string name="title_activity_generate_key_body">Generate Key :</string>
-  <string name="title_activity_generate_key">Generate Key</string>
-  <string name="btn_activation_key">Generate Activation Key</string>
-  <string name="txt_activation_key">Activation Key</string>
+    <string name="add_first_name">First Name</string>
+    <string name="add_last_name">Last Name</string>
+    <string name="create_user">Create</string>
+    <string name="add_user_name">User Name</string>
+    <string name="create_user_title">Create User</string>
+    <string name="add_new_name">Name</string>
+    <string name="add_new_pass">Password</string>
+    <string name="add_new_pass_confirm">Confirm Password</string>
+    <string name="add_new_active">Activate user</string>
+    <string name="add_user_emai">Email</string>
 
 
-  <!-- Strings related to Edit User-->
-  <string name="title_activity_edit_user">Edit User</string>
-  <string name="title_activity_edit_user_body">Edit User :</string>
+    <!-- Strings related to Generate Key-->
 
-  <string name="edit_user_save">Change password</string>
-  <string name="edit_user_delete">Delete</string>
-  <string name="title_activity_main">MainActivity</string>
-
-  <string name="title_section1">Users List</string>
-  <string name="title_section2">Add User</string>
-  <string name="title_section3">Generate Key</string>
-  <string name="title_section4">Config</string>
-  <string name="title_activity_main2">Main2Activity</string>
-  <string name="title_activity_activate_app">One Message</string>
-
-  <!-- Strings related to Activate User-->
+    <string name="title_activity_generate_key_body">Generate Key :</string>
+    <string name="title_activity_generate_key">Generate Key</string>
+    <string name="btn_activation_key">Generate Activation Key</string>
+    <string name="txt_activation_key">Activation Key</string>
 
 
-  <string name="btn_activation">Activate</string>
-  <string name="title_activition_key">Activation</string>
-  <string name="title_activity_admin_main">Contacts</string>
+    <!-- Strings related to Edit User-->
+    <string name="title_activity_edit_user">Edit User</string>
+    <string name="title_activity_edit_user_body">Edit User :</string>
 
-  <string name="action_example">Example action</string>
+    <string name="edit_user_save">Save</string>
+    <string name="edit_user_delete">Delete</string>
+    <string name="title_activity_main">MainActivity</string>
 
-  <!-- Strings related to List Item User-->
-  <string name="error_message">
+    <string name="title_section1">Users List</string>
+    <string name="title_section2">Add User</string>
+    <string name="title_section3">Generate Key</string>
+    <string name="title_section4">Config</string>
+    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_activate_app">One Message</string>
+
+    <!-- Strings related to Activate User-->
+
+
+    <string name="btn_activation">Activate</string>
+    <string name="title_activition_key">Activation</string>
+    <string name="title_activity_admin_main">Contacts</string>
+
+    <string name="action_example">Example action</string>
+
+    <!-- Strings related to List Item User-->
+    <string name="error_message">
         An error has occurred. Please try again by clicking REFRESH
     </string>
 
-  <!-- Strings related to Menu-->
-  <string name="Users_List">Users List</string>
-  <string name="config">Configuration</string>
+    <!-- Strings related to Menu-->
+    <string name="Users_List">Users List</string>
+    <string name="config">Configuration</string>
 
 
-  <string name="open">open</string>
-  <string name="close">close</string>
-  <string name="title_activity_config">Configuration</string>
-  <string name="title_activity_chat_history">Chat History</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="title_activity_config">Configuration</string>
+    <string name="title_activity_chat_history">Chat History</string>
 
-  <!-- Strings User Details-->
-  <string name="Details">User Manager :</string>
-  <string name="DeleteUser">Delete User</string>
-  <string name="EditUser">Edit User</string>
-  <string name="EditPassword">Edit Password</string>
-
-
-  <!-- Strings Change User Password-->
-
-  <string name="title_activity_change_password">ChangePasswordActivity</string>
-  <string name="change_password">Change Password</string>
-  <string name="change_password_body">Change Password :</string>
+    <!-- Strings User Details-->
+    <string name="Details">User Manager :</string>
+    <string name="DeleteUser">Delete User</string>
+    <string name="EditUser">Edit User</string>
+    <string name="EditPassword">Edit Password</string>
 
 
+    <!-- Strings Change User Password-->
 
-  <string name="title_activity_send_message">Send message</string>
-  <string name="title_activity_send_message_body">Send message :</string>
-  <string name="Message">Message</string>
-  <string name="send_message">Send</string>
-  <string name="title_activity_notification">Notification</string>
-  <string name="title_activity_publick_main">Home</string>
-  <string name="title_activity_admin_message_history">Message History</string>
-  <string name="title_activity_replies">Replies</string>
-  <string name="title_activity_message_details">Message Details</string>
-  <string name="title_activity_forget_password_list">Notifications</string>
-  <string name="title_activity_forget_password">Forget Password</string>
+    <string name="title_activity_change_password">ChangePasswordActivity</string>
+    <string name="change_password">Change Password</string>
+    <string name="change_password_body">Change Password :</string>
+
+
+    <string name="title_activity_send_message">Send message</string>
+    <string name="title_activity_send_message_body">Send message :</string>
+    <string name="Message">Message</string>
+    <string name="send_message">Send</string>
+    <string name="title_activity_notification">Notification</string>
+    <string name="title_activity_publick_main">Home</string>
+    <string name="title_activity_admin_message_history">Message History</string>
+    <string name="title_activity_replies">Replies</string>
+    <string name="title_activity_message_details">Message Details</string>
+    <string name="title_activity_forget_password_list">Notifications</string>
+    <string name="title_activity_forget_password">Forget Password</string>
+    <string name="change_password_button">Change Password</string>
 
 
 </resources>

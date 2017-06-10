@@ -13,17 +13,17 @@
 
 
   <ScrollView
-    android:id="@+id/login_form"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+      android:id="@+id/login_form"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
       android:focusableInTouchMode="true">
 
     <LinearLayout
-      android:id="@+id/email_login_form"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical"
-      android:weightSum="1">
+        android:id="@+id/email_login_form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:weightSum="1">
 
       <LinearLayout
           android:layout_width="match_parent"
@@ -32,75 +32,74 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/om_edit_user"
-            android:paddingLeft="@dimen/pad_5dp"/>
+            android:paddingLeft="@dimen/pad_5dp"
+            android:src="@drawable/om_edit_user" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="44dp"
-            android:textColor="@color/colorMain"
-            android:text="@string/title_activity_edit_user_body"
-            android:textSize="@dimen/pad_20dp"
             android:paddingLeft="@dimen/pad_10dp"
-            android:paddingTop="@dimen/pad_5dp"/>
+            android:paddingTop="@dimen/pad_5dp"
+            android:text="@string/title_activity_edit_user_body"
+            android:textColor="@color/colorMain"
+            android:textSize="@dimen/pad_20dp" />
 
       </LinearLayout>
 
 
+      <EditText
+          android:id="@+id/edit_UserName"
+          style="@style/editext_graybg"
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:layout_marginBottom="@dimen/pad_10dp"
+          android:hint="@string/add_user_name"
+          android:inputType="text"
+          android:maxLines="1"
+          android:singleLine="true" />
+
 
       <EditText
-        android:id="@+id/edit_UserName"
-        style="@style/editext_graybg"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="@dimen/pad_10dp"
-        android:hint="@string/add_user_name"
-        android:inputType="text"
-        android:maxLines="1"
-        android:singleLine="true" />
-
-
-      <EditText
-        android:id="@+id/edit_FirstName"
-        style="@style/editext_graybg"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="@dimen/pad_10dp"
-        android:layout_marginTop="@dimen/pad_5dp"
-        android:hint="@string/add_first_name"
-        android:inputType="text"
-        android:maxLines="1"
-        android:singleLine="true" />
+          android:id="@+id/edit_FirstName"
+          style="@style/editext_graybg"
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:layout_marginBottom="@dimen/pad_10dp"
+          android:layout_marginTop="@dimen/pad_5dp"
+          android:hint="@string/add_first_name"
+          android:inputType="text"
+          android:maxLines="1"
+          android:singleLine="true" />
 
       <EditText
-        android:id="@+id/edit_LastName"
-        style="@style/editext_graybg"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginBottom="@dimen/pad_10dp"
-        android:layout_marginTop="@dimen/pad_5dp"
-        android:hint="@string/add_last_name"
-        android:inputType="text"
-        android:maxLines="1"
-        android:singleLine="true" />
+          android:id="@+id/edit_LastName"
+          style="@style/editext_graybg"
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:layout_marginBottom="@dimen/pad_10dp"
+          android:layout_marginTop="@dimen/pad_5dp"
+          android:hint="@string/add_last_name"
+          android:inputType="text"
+          android:maxLines="1"
+          android:singleLine="true" />
 
 
       <CheckBox
-        android:id="@+id/edit_checkBox"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_weight="0.50"
-        android:text="@string/add_new_active" />
+          android:id="@+id/edit_checkBox"
+          android:layout_width="match_parent"
+          android:layout_height="40dp"
+          android:layout_weight="0.50"
+          android:text="@string/add_new_active" />
 
       <Button
-        android:id="@+id/edit_button"
-        style="@style/btn_white_large"
-        android:layout_width="match_parent"
-        android:background="@color/colorMain"
-        android:layout_height="49dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/edit_user_save" />
+          android:id="@+id/edit_button"
+          style="@style/btn_white_large"
+          android:layout_width="match_parent"
+          android:layout_height="49dp"
+          android:layout_marginTop="16dp"
+          android:background="@color/colorMain"
+          android:text="@string/edit_user_save" />
 
     </LinearLayout>
   </ScrollView>
