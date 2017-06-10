@@ -3,33 +3,22 @@ package onemessagecompany.onemessage.Admin;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.io.IOException;
-
 import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.R;
-import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.RegisterRequest;
-import onemessagecompany.onemessage.model.RegisterResponse;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.RegisterApi;
 import retrofit2.Call;
@@ -67,6 +56,15 @@ public class AddUser extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_SECURE);
 
         setContentView(R.layout.activity_add_user);
+
+        findViewById(R.id.login_form).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                return true;
+            }
+        });
 
         mFirstName = (EditText) findViewById(R.id.register_FirstName);
         mLastName = (EditText) findViewById(R.id.register_LastName);

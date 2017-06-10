@@ -37,12 +37,14 @@
 
       <EditText
         android:id="@+id/txt_user_name_login"
-        style="@style/editext_graybg"
-        android:layout_width="wrap_content"
+          android:background="@color/gray_light"
+        android:layout_width="match_parent"
         android:layout_gravity="left"
         android:textAlignment="gravity"
-        android:layout_height="56dp"
+        android:layout_height="50dp"
+          android:drawablePadding="@dimen/pad_5dp"
         android:drawableLeft="@drawable/ic_username"
+        android:paddingLeft="@dimen/pad_10dp"
         android:hint="@string/login_user_name"
         android:inputType="textEmailAddress"
         android:maxLines="1"
@@ -50,9 +52,10 @@
 
       <EditText
         android:id="@+id/txt_password_login"
-        style="@style/editext_graybg"
-        android:layout_width="wrap_content"
-        android:layout_height="56dp"
+        android:background="@color/gray_light"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawablePadding="@dimen/pad_5dp"
         android:layout_marginBottom="@dimen/pad_20dp"
         android:layout_marginTop="@dimen/pad_5dp"
         android:drawableLeft="@drawable/ic_pwd"
@@ -61,7 +64,8 @@
         android:textAlignment="gravity"
         android:imeActionId="@+id/login"
         android:imeActionLabel="@string/action_sign_in_short"
-        android:imeOptions="actionUnspecified"
+        android:paddingLeft="@dimen/pad_10dp"
+          android:imeOptions="actionUnspecified"
         android:inputType="textPassword"
         android:maxLines="1"
         android:singleLine="true" />
