@@ -141,7 +141,7 @@
     <string name="title_activity_send_message_body">Send message :</string>
     <string name="Message">Message</string>
     <string name="send_message">Send</string>
-    <string name="title_activity_notification">Notification</string>
+    <string name="title_activity_notification">Notifications</string>
     <string name="title_activity_publick_main">Home</string>
     <string name="title_activity_admin_message_history">Message History</string>
     <string name="title_activity_replies">Replies</string>
