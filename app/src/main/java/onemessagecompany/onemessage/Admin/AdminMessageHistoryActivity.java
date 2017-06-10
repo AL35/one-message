@@ -19,6 +19,7 @@ import java.util.List;
 
 import onemessagecompany.onemessage.Adapters.AdminMessagsAdapter;
 import onemessagecompany.onemessage.AdminMainActivity;
+import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.CustomAlert;
 import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
@@ -31,7 +32,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AdminMessageHistoryActivity extends AppCompatActivity {
+public class AdminMessageHistoryActivity extends BaseActivity {
 
     private RecyclerView mRecyclerView;
     private AdminMessagsAdapter mAdminMessagsAdapter;

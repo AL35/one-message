@@ -11,6 +11,7 @@ import android.widget.NumberPicker;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.model.ConfigurationRequest;
 import onemessagecompany.onemessage.model.ConfigurationResponse;
@@ -20,7 +21,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ConfigActivity extends AppCompatActivity {
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
+public class ConfigActivity extends BaseActivity {
 
 
     private NumberPicker numberpicker;

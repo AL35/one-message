@@ -13,6 +13,7 @@ import android.view.View;
 
 import onemessagecompany.onemessage.Adapters.ForgetPasswordAdapter;
 import onemessagecompany.onemessage.Adapters.UsersAdapter;
+import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.model.Notification;
 import onemessagecompany.onemessage.model.NotificationResponse;
@@ -25,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ForgetPasswordListActivity extends AppCompatActivity implements ForgetPasswordAdapter.ForgetPasswordAdapterOnClickHandler {
+public class ForgetPasswordListActivity extends BaseActivity implements ForgetPasswordAdapter.ForgetPasswordAdapterOnClickHandler {
 
     private RecyclerView mRecyclerView;
 

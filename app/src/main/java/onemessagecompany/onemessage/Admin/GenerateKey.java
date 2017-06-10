@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.sharedData;
@@ -20,7 +21,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class GenerateKey extends AppCompatActivity {
+public class GenerateKey extends BaseActivity {
 
   private GenerateActivationKeyApi generateActivationKeyApi;
   private EditText mGeneratedActivationKey;

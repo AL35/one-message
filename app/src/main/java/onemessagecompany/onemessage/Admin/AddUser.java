@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -17,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import onemessagecompany.onemessage.AdminMainActivity;
+import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.model.RegisterRequest;
 import onemessagecompany.onemessage.rest.ApiClient;
@@ -25,7 +27,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AddUser extends AppCompatActivity {
+public class AddUser extends BaseActivity {
 
     private TextView mTextMessage;
 
@@ -98,11 +100,6 @@ public class AddUser extends AppCompatActivity {
                 // other stuffs
             }
         });
-
-
-
-
-
 
         Button mRegisterButton = (Button) findViewById(R.id.register_button);
         mRegisterButton.setOnClickListener(new View.OnClickListener() {

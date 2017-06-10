@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import onemessagecompany.onemessage.AdminMainActivity;
+import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.model.EditUserRequest;
 import onemessagecompany.onemessage.model.EditUserResponse;
@@ -25,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditUserActivity extends AppCompatActivity {
+public class EditUserActivity extends BaseActivity {
 
     private User user;
     private EditText mEditUserName;

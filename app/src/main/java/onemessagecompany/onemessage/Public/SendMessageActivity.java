@@ -2,6 +2,7 @@ package onemessagecompany.onemessage.Public;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -55,7 +56,11 @@ public class SendMessageActivity extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
     public void sendMessage() {
         String msg = txtMsg.getText().toString();
 

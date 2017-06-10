@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.model.ChangeUserPasswordRequest;
 import onemessagecompany.onemessage.model.User;
@@ -21,7 +22,9 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ChangePasswordActivity extends AppCompatActivity {
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
+public class ChangePasswordActivity extends BaseActivity {
 
     private EditText mPassword;
     private EditText mConfirmPassword;

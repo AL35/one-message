@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import onemessagecompany.onemessage.AdminMainActivity;
+import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.CustomAlert;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.sharedData;
@@ -25,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserDetailsActivity extends AppCompatActivity {
+public class UserDetailsActivity extends BaseActivity {
     private User user;
     private CustomAlert customAlert;
 
