@@ -16,6 +16,7 @@
     <activity
       android:name=".Public.ActivateApp"
       android:windowSoftInputMode="stateHidden"
+
       android:label="@string/title_activity_activate_app"
         android:configChanges="orientation"
         android:screenOrientation="portrait"

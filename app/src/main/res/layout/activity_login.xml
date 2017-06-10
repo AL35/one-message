@@ -38,7 +38,9 @@
       <EditText
         android:id="@+id/txt_user_name_login"
         style="@style/editext_graybg"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_gravity="left"
+        android:textAlignment="gravity"
         android:layout_height="56dp"
         android:drawableLeft="@drawable/ic_username"
         android:hint="@string/login_user_name"
@@ -55,6 +57,8 @@
         android:layout_marginTop="@dimen/pad_5dp"
         android:drawableLeft="@drawable/ic_pwd"
         android:hint="@string/prompt_password"
+        android:layout_gravity="left"
+        android:textAlignment="gravity"
         android:imeActionId="@+id/login"
         android:imeActionLabel="@string/action_sign_in_short"
         android:imeOptions="actionUnspecified"
@@ -73,12 +77,13 @@
 
       <Button
         android:id="@+id/email_sign_in_button"
-        style="@style/btn_white_large"
         android:layout_width="match_parent"
-          android:background="@color/colorMain"
+        android:background="@color/colorMain"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:text="@string/action_sign_in" />
+        android:text="@string/action_sign_in"
+        android:textColor="@color/white"
+        android:textAllCaps="false"/>
 
     </LinearLayout>
   </ScrollView>
