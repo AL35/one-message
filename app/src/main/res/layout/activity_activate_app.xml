@@ -46,10 +46,13 @@
         <!-- Login progress -->
         <TextView
             android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="44dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="Activation Key:"
-            android:paddingTop="@dimen/pad_10dp"
+            android:layout_gravity="left"
+            android:layout_marginLeft="@dimen/pad_10dp"
+            android:layout_marginBottom="@dimen/pad_10dp"
+            android:textAlignment="gravity"
             android:textColor="@color/colorMain"
             android:textSize="@dimen/pad_18dp"
             android:focusable="true"
@@ -58,9 +61,9 @@
 
         <EditText
             android:id="@+id/txt_activatiobn_key"
-            style="@style/editext_graybg"
             android:layout_width="match_parent"
             android:layout_height="44dp"
+            android:background="@color/gray_light"
             android:hint="Key"
             android:textAlignment="center"
             android:inputType="textEmailAddress"

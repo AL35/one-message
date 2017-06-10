@@ -13,26 +13,40 @@ android:layout_marginTop="@dimen/pad_15dp">
     android:layout_width="wrap_content"
   android:layout_marginLeft="15dp"
   android:layout_marginRight="@dimen/pad_15dp"
-  android:layout_weight="1"
-  android:orientation="horizontal"
+    android:orientation="horizontal"
   android:weightSum="1">
 
   <ImageView
-      android:layout_width="40dp"
-
-      android:layout_height="33dp"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       android:src="@drawable/om_message"
+      android:layout_marginTop="@dimen/pad_5dp"
       />
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+  <TextView
+      android:id="@+id/item_list_message_body"
+      style="@style/TextAppearance.AppCompat.Large"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Message"
+
+      android:layout_marginTop="@dimen/pad_5dp"
+      android:textSize="@dimen/pad_18dp"
+      android:paddingLeft="@dimen/pad_10dp"/>
 
   <TextView
-    android:id="@+id/item_list_message_body"
-    style="@style/TextAppearance.AppCompat.Large"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="wesadfasfsf"
-    android:layout_marginTop="@dimen/pad_5dp"
-    android:textSize="@dimen/pad_18dp"
-    android:paddingLeft="16dp"/>
+      android:id="@+id/item_list_message_date"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textSize="@dimen/pad_15dp"
+      android:text="datetime"
+      android:paddingLeft="@dimen/pad_10dp"
+      android:textColor="@color/colorGreyLight" />
+</LinearLayout>
+
 
 </LinearLayout>
 <LinearLayout
@@ -40,13 +54,6 @@ android:layout_marginTop="@dimen/pad_15dp">
     android:layout_height="wrap_content"
     android:layout_marginLeft="50dp">
 
-  <TextView
-      android:id="@+id/item_list_message_date"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="@dimen/pad_15dp"
 
-      android:paddingLeft="20dp"
-      android:textColor="@color/colorGreyLight" />
 </LinearLayout>
 </LinearLayout>

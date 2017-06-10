@@ -37,10 +37,14 @@
 
       <EditText
         android:id="@+id/txt_user_name_login"
-        style="@style/editext_graybg"
+          android:background="@color/gray_light"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_gravity="left"
+        android:textAlignment="gravity"
+        android:layout_height="50dp"
+          android:drawablePadding="@dimen/pad_5dp"
         android:drawableLeft="@drawable/ic_username"
+        android:paddingLeft="@dimen/pad_10dp"
         android:hint="@string/login_user_name"
         android:inputType="textEmailAddress"
         android:maxLines="1"
@@ -49,16 +53,26 @@
 
       <EditText
         android:id="@+id/txt_password_login"
+<<<<<<< HEAD
         style="@style/editext_graybg"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+=======
+        android:background="@color/gray_light"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:drawablePadding="@dimen/pad_5dp"
+>>>>>>> b1323d91d2dde0944f46eb0c4e13c4cc66595ba3
         android:layout_marginBottom="@dimen/pad_20dp"
         android:layout_marginTop="@dimen/pad_5dp"
         android:drawableLeft="@drawable/ic_pwd"
         android:hint="@string/prompt_password"
+        android:layout_gravity="left"
+        android:textAlignment="gravity"
         android:imeActionId="@+id/login"
         android:imeActionLabel="@string/action_sign_in_short"
-        android:imeOptions="actionUnspecified"
+        android:paddingLeft="@dimen/pad_10dp"
+          android:imeOptions="actionUnspecified"
         android:inputType="textPassword"
         android:maxLines="1"
         android:singleLine="true" />
@@ -74,12 +88,14 @@
 
       <Button
         android:id="@+id/email_sign_in_button"
-        style="@style/btn_white_large"
         android:layout_width="match_parent"
-          android:background="@color/colorMain"
+        android:background="@color/colorMain"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-        android:text="@string/action_sign_in" />
+        android:text="@string/action_sign_in"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+          android:textSize="18dp"/>
 
     </LinearLayout>
   </ScrollView>
