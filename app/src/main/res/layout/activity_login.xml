@@ -83,7 +83,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/action_sign_in"
         android:textColor="@color/white"
-        android:textAllCaps="false"/>
+        android:textAllCaps="false"
+          android:textSize="18dp"/>
 
     </LinearLayout>
   </ScrollView>

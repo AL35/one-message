@@ -13,7 +13,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/user"
+        android:src="@drawable/om_user"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="13dp"/>
   <LinearLayout
