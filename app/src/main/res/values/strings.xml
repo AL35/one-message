@@ -115,7 +115,7 @@
 
   <!-- Strings related to Menu-->
   <string name="Users_List">Users List</string>
-  <string name="config">Config</string>
+  <string name="config">Configuration</string>
 
 
   <string name="open">open</string>
