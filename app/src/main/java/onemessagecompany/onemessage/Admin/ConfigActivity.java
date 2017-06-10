@@ -37,14 +37,7 @@ public class ConfigActivity extends AppCompatActivity {
 
     setContentView(R.layout.activity_config);
 
-    findViewById(R.id.ac_config).setOnTouchListener(new View.OnTouchListener() {
-      @Override
-      public boolean onTouch(View v, MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        return true;
-      }
-    });
+    
 
     numberpicker = (NumberPicker) findViewById(R.id.numberPicker1);
 
@@ -58,7 +51,7 @@ public class ConfigActivity extends AppCompatActivity {
       @Override
       public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 
-        textview.setText("Deletion Time is : " + newVal);
+        textview.setText("Selected Time is : " + newVal);
         time =newVal;
       }
     });
