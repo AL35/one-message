@@ -10,28 +10,44 @@
   android:orientation="horizontal">
 
   <LinearLayout
-    android:layout_width="0dp"
-    android:layout_height="wrap_content"
-    android:layout_weight="1"
-    android:orientation="vertical">
-
-    <TextView
-      android:id="@+id/item_list_message_body"
-      style="@style/TextAppearance.AppCompat.Large"
-      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:text="wesadfasfsf"
-      android:paddingTop="@dimen/pad_15dp"
-      android:paddingLeft="16dp"/>
-
-
-    <TextView
-      android:id="@+id/item_list_message_date"
       android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="@dimen/pad_20dp"
-      android:paddingLeft="16dp"
-      android:textColor="@color/colorGreyLight" />
+      android:layout_marginLeft="@dimen/pad_20dp"
+      android:layout_marginRight="@dimen/pad_15dp"
+      android:orientation="horizontal"
+      android:weightSum="1">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/om_message"
+        android:layout_marginTop="@dimen/pad_5dp"
+        />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+      <TextView
+          android:id="@+id/item_list_message_body"
+          style="@style/TextAppearance.AppCompat.Large"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Message"
+
+          android:layout_marginTop="@dimen/pad_5dp"
+          android:textSize="@dimen/pad_18dp"
+          android:paddingLeft="@dimen/pad_10dp"/>
+
+      <TextView
+          android:id="@+id/item_list_message_date"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:textSize="@dimen/pad_15dp"
+          android:text="datetime"
+          android:paddingLeft="@dimen/pad_10dp"
+          android:textColor="@color/colorGreyLight" />
+    </LinearLayout>
+
 
   </LinearLayout>
 
@@ -39,15 +55,22 @@
     android:layout_marginRight="@dimen/pad_15dp"
     android:layout_width="wrap_content"
     android:layout_height="35dp"
+    android:layout_marginEnd="@dimen/pad_20dp"
+
     android:orientation="horizontal">
+
+    <View
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <ImageView
       android:id="@+id/remove_msg"
-      android:layout_width="15dp"
-      android:layout_height="15dp"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
       android:layout_centerInParent="true"
       android:scaleType="centerCrop"
-      android:src="@drawable/ic_cancel"
+      android:src="@drawable/om_delete"
       android:tint="@color/colorAccent" />
 
 

@@ -13,11 +13,8 @@ import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
-import android.view.MotionEvent;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -28,7 +25,6 @@ import onemessagecompany.onemessage.Admin.ConfigActivity;
 import onemessagecompany.onemessage.Admin.ForgetPasswordListActivity;
 import onemessagecompany.onemessage.Admin.GenerateKey;
 import onemessagecompany.onemessage.Admin.UserDetailsActivity;
-import onemessagecompany.onemessage.Public.ChatHistoryActivity;
 import onemessagecompany.onemessage.Public.SendMessageActivity;
 import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.UsersResponse;

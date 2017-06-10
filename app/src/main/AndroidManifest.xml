@@ -70,16 +70,6 @@
                 android:value=".AdminMainActivity" />
         </activity>
         <activity
-            android:name=".Public.ChatHistoryActivity"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_chat_history"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AdminMainActivity" />
-        </activity>
-        <activity
             android:name=".Admin.UserDetailsActivity"
             android:configChanges="orientation"
             android:label="@string/Details"

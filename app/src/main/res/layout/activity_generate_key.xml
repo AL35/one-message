@@ -23,10 +23,12 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="44dp"
         android:text="@string/title_activity_generate_key_body"
         android:textColor="@color/colorMain"
+        android:gravity="left"
+        android:textAlignment="gravity"
         android:textSize="@dimen/pad_20dp"
         android:paddingLeft="@dimen/pad_10dp"
         android:paddingTop="3dp"
@@ -47,20 +49,20 @@
 
       <EditText
         android:id="@+id/generated_activation_key"
-        style="@style/editext_graybg"
         android:layout_width="match_parent"
         android:enabled="false"
         android:textAlignment="center"
         android:textColor="@color/black"
+          android:background="@color/gray_light"
         android:layout_height="44dp"
-        android:inputType="textEmailAddress"
-        android:maxLines="1"
         android:layout_marginBottom="@dimen/pad_20dp"
         android:singleLine="true" />
 
       <Button
         android:id="@+id/generate_activation_button"
-        style="@style/btn_white_large"
+          android:textColor="@color/white"
+          android:textAllCaps="false"
+          android:textSize="@dimen/pad_18dp"
         android:layout_width="match_parent"
           android:background="@color/colorMain"
         android:layout_height="49dp"
