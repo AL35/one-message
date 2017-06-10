@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import onemessagecompany.onemessage.AdminMainActivity;
+import onemessagecompany.onemessage.CustomAlert;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.DeleteAccountRequest;
@@ -26,7 +27,7 @@ import retrofit2.Response;
 
 public class UserDetailsActivity extends AppCompatActivity {
     private User user;
-
+    private CustomAlert customAlert;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,16 @@ public class UserDetailsActivity extends AppCompatActivity {
             }
         });
 
+        customAlert = new CustomAlert(UserDetailsActivity.this,
+                "Delete User",
+                "Are you sure you want to delete ?",
+                new CustomAlert.MyDialogListener() {
+            @Override
+            public void userSelectedAValue() {
+                deleteUserPost();
+            }
+        }) ;
+
         final Button changePassword = (Button) findViewById(R.id.btnEditPassword);
         changePassword.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,11 +79,12 @@ public class UserDetailsActivity extends AppCompatActivity {
         });
 
 
+
         final Button deleteUser = (Button) findViewById(R.id.btnDeleteUser);
         deleteUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteUserPost();
+                customAlert.show();
             }
         });
     }

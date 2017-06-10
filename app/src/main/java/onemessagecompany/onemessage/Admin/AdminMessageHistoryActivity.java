@@ -40,7 +40,8 @@ public class AdminMessageHistoryActivity extends AppCompatActivity {
     public Dialog dialog;
     public TextView description;
     public TextView header;
-
+    public int deletingPosition;
+    private CustomAlert customAlert;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,35 +61,10 @@ public class AdminMessageHistoryActivity extends AppCompatActivity {
         mRecyclerView.setHasFixedSize(true);
 
         getMessages();
-//        initializeDialogAlert();
 
     }
 
-    public void initializeDialogAlert() {
-        dialog = new Dialog(this);
 
-
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.custom_alert_dialog);
-
-        description = (TextView) findViewById(R.id.custom_alert_description);
-        header = (TextView) findViewById(R.id.custom_alert_header);
-
-        description.setText("Are you sure you want to delete ?");
-        header.setText("Delete Message");
-        dialog.findViewById(R.id.customDialogOk).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-        dialog.findViewById(R.id.customDialogCancel).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
-    }
 
     public void getMessages() {
         SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
@@ -112,7 +88,18 @@ public class AdminMessageHistoryActivity extends AppCompatActivity {
 
                                 @Override
                                 public void onRemoveMessageClick(View v, int position) {
-                                    mAdminMessagsAdapter.deleteMessage(position);
+                                    deletingPosition=position;
+                                     customAlert = new CustomAlert(AdminMessageHistoryActivity.this,
+                                            "Delete Message",
+                                            "Are you sure you want to delete ?",
+                                            new CustomAlert.MyDialogListener() {
+                                                @Override
+                                                public void userSelectedAValue() {
+                                                    mAdminMessagsAdapter.deleteMessage(deletingPosition);
+                                                }
+                                            }
+                                    );
+                                    customAlert.show();
                                 }
                             }
                     );
