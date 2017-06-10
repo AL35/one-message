@@ -56,7 +56,7 @@
         completions."
     </string>
   <string name="title_activity_login">Sign in</string>
-  <string name="title_activity_add_user">Add User</string>
+  <string name="title_activity_add_user">Create User</string>
   <string name="title_home">Contacts</string>
   <string name="title_dashboard">Dashboard</string>
   <string name="title_notifications">Notifications</string>
