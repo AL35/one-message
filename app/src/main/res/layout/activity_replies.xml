@@ -14,14 +14,14 @@
         android:id="@+id/v1_admin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/pad_10dp"
-        android:layout_marginTop="@dimen/pad_15dp"
         android:background="@drawable/chat_bubble_gray"
-        android:gravity="center_vertical"
+        android:gravity="left|top"
+        android:paddingTop="@dimen/pad_10dp"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/pad_5dp"
         android:paddingLeft="@dimen/pad_chat_item"
-        android:paddingTop="@dimen/pad_5dp" >
+        android:layout_marginTop="@dimen/pad_15dp"
+        android:layout_marginLeft="@dimen/pad_10dp"
+        android:layout_marginRight="@dimen/pad_15dp">
 
       <TextView
           android:id="@+id/admin_msg"
@@ -29,11 +29,9 @@
           android:layout_height="wrap_content"
           android:text="TextView"
           android:textColor="@color/main_color_gray_dk"
-          android:textSize="@dimen/txt_16sp"
-          android:layout_marginLeft="@dimen/pad_15dp"
-          android:layout_marginRight="@dimen/pad_5dp"
-          android:paddingRight="@dimen/pad_15dp"
-          android:paddingLeft="@dimen/pad_5dp"/>
+          android:textSize="@dimen/txt_15sp"
+          android:paddingLeft="@dimen/pad_15dp"
+          android:enabled="false"/>
 
 
       <TextView
@@ -41,13 +39,11 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="admin"
-          android:layout_gravity="start|bottom"
+          android:layout_gravity="end|bottom"
           android:layout_marginBottom="0dp"
-          android:layout_marginTop="@dimen/pad_10dp"
-          android:paddingBottom="@dimen/pad_5dp"
           android:layout_marginLeft="@dimen/pad_15dp"
           android:textColor="@color/colorGrey"
-          app:paddingStart="@dimen/pad_10dp"
+          android:layout_marginTop="@dimen/pad_30dp"
           android:textSize="@dimen/txt_14sp"
           android:layout_alignRight="@+id/v1"
           android:layout_below="@+id/v1"

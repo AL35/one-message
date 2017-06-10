@@ -25,34 +25,51 @@
       <LinearLayout
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_marginBottom="@dimen/pad_20dp"
-          android:orientation="horizontal">
+          android:orientation="horizontal"
+
+          android:layout_marginBottom="@dimen/pad_10dp">
 
 
         <ImageView
-            android:layout_width="39dp"
-            android:layout_height="match_parent"
-            android:maxHeight="@dimen/pad_5dp"
-            android:maxWidth="@dimen/pad_15dp"
-            android:minWidth="@dimen/pad_10dp"
-            android:src="@drawable/ic_email" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/om_message" />
 
         <TextView
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Message :"
+            android:layout_marginTop="@dimen/pad_5dp"
+            android:layout_marginLeft="@dimen/pad_5dp"
+            android:textColor="@color/colorMain"
             android:textSize="@dimen/pad_20dp" />
       </LinearLayout>
 
 
-      <TextView
-          android:id="@+id/txt_current_Message"
-          style="@style/textView_graybg"
-          android:layout_width="match_parent"
+      <LinearLayout
+          android:id="@+id/v1_admin"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:gravity="top"
-          android:hint="@string/Message" />
+          android:background="@drawable/chat_bubble_gray"
+          android:gravity="left|top"
+          android:paddingTop="@dimen/pad_10dp"
+          android:orientation="vertical"
+          android:paddingLeft="@dimen/pad_chat_item">
+
+        <TextView
+            android:id="@+id/txt_current_Message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/main_color_gray_dk"
+            android:textSize="@dimen/txt_15sp"
+            android:paddingLeft="@dimen/pad_15dp"
+            android:enabled="false"
+            />
+
+
+      </LinearLayout>
 
 
       <LinearLayout
@@ -66,43 +83,64 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/pad_5dp">
+            android:layout_marginBottom="@dimen/pad_10dp">
 
           <ImageView
-              android:layout_width="39dp"
-              android:layout_height="25dp"
-              android:maxHeight="@dimen/pad_5dp"
-              android:maxWidth="@dimen/pad_15dp"
-              android:minWidth="@dimen/pad_10dp"
-              android:src="@drawable/ic_compose" />
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="@dimen/pad_5dp"
+              android:src="@drawable/om_send" />
 
           <TextView
               android:id="@+id/txt_user_reply"
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
-              android:layout_gravity="left"
+              android:textColor="@color/colorMain"
+              android:layout_marginLeft="@dimen/pad_10dp"
               android:text="Reply :"
               android:textSize="@dimen/pad_20dp" />
         </LinearLayout>
 
 
-        <EditText
-            android:id="@+id/txt_sendMessage"
-            style="@style/editextMultiLines_graybg"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:id="@+id/v1_reply"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:gravity="top"
-            android:hint="Reply"
-            android:inputType="textMultiLine"
-            android:singleLine="true" />
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/pad_10dp"
+            android:background="@drawable/chat_bubble_green"
+            android:gravity="left|top"
+            android:backgroundTint="@color/colorGreyLight"
+            android:orientation="vertical"
+            android:paddingLeft="@dimen/pad_15dp"
+            android:paddingRight="@dimen/pad_chat_item" >
+
+          <EditText
+              android:paddingTop="@dimen/pad_10dp"
+              android:textColor="@color/white"
+              android:textSize="@dimen/txt_16sp"
+              android:id="@+id/txt_sendMessage"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:ems="10"
+              android:layout_marginRight="@dimen/pad_10dp"
+              android:hint="Reply"
+              android:maxLines="5"
+              android:textColorHint="@color/gray_light"
+              android:inputType="textMultiLine"
+              android:background="@color/transparent"
+              />
+
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnSendReply"
             style="@style/btn_white_large"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="42dp"
             android:layout_gravity="center"
+            android:background="@color/colorMain"
             android:layout_marginTop="@dimen/pad_15dp"
             android:layout_weight="1"
             android:text="Reply and delete" />
@@ -110,7 +148,8 @@
         <Button
             android:id="@+id/btnDismiss"
             style="@style/btn_white_large"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@color/colorMain"
             android:layout_height="42dp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/pad_15dp"
