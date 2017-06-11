@@ -14,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -43,6 +44,7 @@ public class AdminMessageHistoryActivity extends BaseActivity {
     public TextView header;
     public int deletingPosition;
     private CustomAlert customAlert;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,7 +68,6 @@ public class AdminMessageHistoryActivity extends BaseActivity {
     }
 
 
-
     public void getMessages() {
         SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
         Call<MessageResponse> call = apiService.GetMessages();
@@ -74,10 +75,12 @@ public class AdminMessageHistoryActivity extends BaseActivity {
             @Override
             public void onResponse(Call<MessageResponse> call, Response<MessageResponse> response) {
                 int statusCode = response.code();
-                if (statusCode == 401) {
+                if (statusCode != 200) {
                     Intent intentLogin = new Intent(AdminMessageHistoryActivity.this, LoginActivity.class);
                     startActivity(intentLogin);
                     finish();
+                    Toast.makeText(getApplicationContext(), "Session Expired Please Login Again", Toast.LENGTH_LONG).show();
+
                 } else {
                     List<Message> messages = response.body().getMessages();
                     mAdminMessagsAdapter = new AdminMessagsAdapter(messages, R.layout.list_item_admin_message, MyApplication.getContext(),
@@ -89,8 +92,8 @@ public class AdminMessageHistoryActivity extends BaseActivity {
 
                                 @Override
                                 public void onRemoveMessageClick(View v, int position) {
-                                    deletingPosition=position;
-                                     customAlert = new CustomAlert(AdminMessageHistoryActivity.this,
+                                    deletingPosition = position;
+                                    customAlert = new CustomAlert(AdminMessageHistoryActivity.this,
                                             "Delete Message",
                                             "Are you sure you want to delete ?",
                                             new CustomAlert.MyDialogListener() {

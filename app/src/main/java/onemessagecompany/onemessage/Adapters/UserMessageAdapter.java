@@ -14,8 +14,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+  import java.util.TimeZone;
 
-import onemessagecompany.onemessage.R;
+  import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.MyApplication;
 import onemessagecompany.onemessage.model.Message;
 import onemessagecompany.onemessage.rest.ApiClient;
@@ -105,6 +106,8 @@ public class UserMessageAdapter extends RecyclerView.Adapter<UserMessageAdapter.
 
     try {
       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+      dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+
       Date date = dateFormat.parse(message.getRV());
 
       SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd,yyyy  hh:mm a");

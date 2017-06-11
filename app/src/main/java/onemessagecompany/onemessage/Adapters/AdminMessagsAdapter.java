@@ -15,6 +15,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import onemessagecompany.onemessage.Public.MessageDetailsActivity;
 import onemessagecompany.onemessage.Public.PublicMainActivity;
@@ -135,11 +136,10 @@ public class AdminMessagsAdapter extends RecyclerView.Adapter<AdminMessagsAdapte
 
         try {
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
             Date date = dateFormat.parse(message.getRV());
-
             SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd,yyyy  hh:mm a");
             String dateTime = dateFormatTime.format(date);
-
             holder.messageDate.setText(dateTime);
 
         } catch (ParseException ex) {
