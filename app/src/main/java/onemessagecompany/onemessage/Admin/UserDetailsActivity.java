@@ -26,7 +26,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class UserDetailsActivity extends BaseActivity {
+public class UserDetailsActivity extends AppCompatActivity {
     private User user;
     private CustomAlert customAlert;
 
@@ -53,7 +53,7 @@ public class UserDetailsActivity extends BaseActivity {
 
                 Intent userDetails = new Intent(context, EditUserActivity.class);
                 userDetails.putExtra("userDetails", user);
-                startActivity(userDetails);
+                startActivityForResult(userDetails, 1);
             }
         });
 
@@ -61,11 +61,11 @@ public class UserDetailsActivity extends BaseActivity {
                 "Delete User",
                 "Are you sure you want to delete ?",
                 new CustomAlert.MyDialogListener() {
-            @Override
-            public void userSelectedAValue() {
-                deleteUserPost();
-            }
-        }) ;
+                    @Override
+                    public void userSelectedAValue() {
+                        deleteUserPost();
+                    }
+                });
 
         final Button changePassword = (Button) findViewById(R.id.btnEditPassword);
         changePassword.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +78,6 @@ public class UserDetailsActivity extends BaseActivity {
                 startActivity(userDetails);
             }
         });
-
 
 
         final Button deleteUser = (Button) findViewById(R.id.btnDeleteUser);
@@ -139,12 +138,7 @@ public class UserDetailsActivity extends BaseActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         if (requestCode == 1) {
-            if (resultCode == Activity.RESULT_OK) {
-                user = (User) getIntent().getSerializableExtra("userDetails");
-            }
-            if (resultCode == Activity.RESULT_CANCELED) {
-                //Write your code if there's no result
-            }
+            // make use of "data" = profit
         }
     }
 

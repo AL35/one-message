@@ -37,9 +37,10 @@ public class BaseActivity extends AppCompatActivity {
                 startActivity(intentSendMessage);
                 return true;
             case R.id.action_logout:
-                sharedData.setAccessToken(getApplicationContext(), " ");
+                sharedData.setAccessToken(getApplicationContext(), null);
                 Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intentLogin);
+                finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
@@ -16,7 +17,10 @@ import android.widget.Toast;
 
 import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.BaseActivity;
+import onemessagecompany.onemessage.LoginActivity;
+import onemessagecompany.onemessage.Public.SendMessageActivity;
 import onemessagecompany.onemessage.R;
+import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.EditUserRequest;
 import onemessagecompany.onemessage.model.EditUserResponse;
 import onemessagecompany.onemessage.model.User;
@@ -26,7 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class EditUserActivity extends BaseActivity {
+public class EditUserActivity extends AppCompatActivity {
 
     private User user;
     private EditText mEditUserName;
@@ -119,16 +123,26 @@ public class EditUserActivity extends BaseActivity {
 
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(MenuItem item) {
-//        switch (item.getItemId()) {
-//            case android.R.id.home:
-//                onBackPressed();
-//                return true;
-//            default:
-//                return true;
-//        }
-//    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            case R.id.action_send_message:
+                Intent intentSendMessage = new Intent(getApplicationContext(), SendMessageActivity.class);
+                startActivity(intentSendMessage);
+                return true;
+            case R.id.action_logout:
+                sharedData.setAccessToken(getApplicationContext(), null);
+                Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intentLogin);
+                finish();
+                return true;
+            default:
+                return true;
+        }
+    }
 
 
     @Override
@@ -138,7 +152,6 @@ public class EditUserActivity extends BaseActivity {
         setResult(RESULT_OK, intent);
         finish();
     }
-
 
     public boolean validate() {
         initialize();

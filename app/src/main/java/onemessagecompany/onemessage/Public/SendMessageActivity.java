@@ -1,8 +1,10 @@
 package onemessagecompany.onemessage.Public;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -11,7 +13,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
+import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.SendMessageRequest;
 import onemessagecompany.onemessage.model.SendMessageResponse;
 import onemessagecompany.onemessage.rest.ApiClient;
@@ -61,6 +65,33 @@ public class SendMessageActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int itemId = item.getItemId();
+
+        switch (itemId) {
+            /*
+             * When you click the reset menu item, we want to start all over
+             * and display the pretty gradient again. There are a few similar
+             * ways of doing this, with this one being the simplest of those
+             * ways. (in our humble opinion)
+             */
+            case R.id.action_send_message:
+                Intent intentSendMessage = new Intent(getApplicationContext(), SendMessageActivity.class);
+                startActivity(intentSendMessage);
+                return true;
+            case R.id.action_logout:
+                sharedData.setAccessToken(getApplicationContext(), null);
+                Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(intentLogin);
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
     public void sendMessage() {
         String msg = txtMsg.getText().toString();
 

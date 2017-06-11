@@ -1,7 +1,9 @@
 package onemessagecompany.onemessage;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -52,6 +54,18 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
                 WindowManager.LayoutParams.FLAG_SECURE);
 
         setContentView(R.layout.activity_admin_main);
+
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.package.ACTION_LOGOUT");
+        registerReceiver(new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                //At this point you should start the login activity and finish this one
+                finish();
+            }
+        }, intentFilter);
+
+
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.admin_main_activity_drawer_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
@@ -147,6 +161,7 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
             case R.id.action_send_message:
                 Intent intentSendMessage = new Intent(AdminMainActivity.this, SendMessageActivity.class);
                 startActivity(intentSendMessage);
+                finish();
                 return true;
             case R.id.action_logout:
                 sharedData.setAccessToken(getApplicationContext(), " ");
@@ -184,6 +199,7 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
                 sharedData.setAccessToken(getApplicationContext(), " ");
                 Intent intentLogin = new Intent(AdminMainActivity.this, LoginActivity.class);
                 startActivity(intentLogin);
+                finish();
                 break;
             case R.id.chat_history:
                 Intent intentAdminMessages = new Intent(AdminMainActivity.this, AdminMessageHistoryActivity.class);
