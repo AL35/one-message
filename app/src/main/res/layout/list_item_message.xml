@@ -8,52 +8,70 @@ android:gravity="center_vertical"
     android:orientation="vertical"
 android:layout_marginTop="@dimen/pad_15dp">
 
-<LinearLayout
-  android:layout_height="wrap_content"
-    android:layout_width="wrap_content"
-  android:layout_marginLeft="15dp"
-  android:layout_marginRight="@dimen/pad_15dp"
-    android:orientation="horizontal"
-  android:weightSum="1">
-
-  <ImageView
+  <LinearLayout
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:src="@drawable/om_message"
-      android:layout_marginTop="@dimen/pad_5dp"
-      />
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-  <TextView
-      android:id="@+id/item_list_message_body"
-      style="@style/TextAppearance.AppCompat.Large"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Message"
+      android:layout_marginLeft="15dp"
+      android:layout_marginRight="@dimen/pad_5dp"
+      android:paddingBottom="@dimen/pad_5dp"
+      android:orientation="horizontal"
+      android:weightSum="1">
 
-      android:layout_marginTop="@dimen/pad_5dp"
-      android:textSize="@dimen/pad_18dp"
-      android:paddingLeft="@dimen/pad_10dp"/>
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_5dp"
+        android:src="@drawable/om_message" />
 
-  <TextView
-      android:id="@+id/item_list_message_date"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:textSize="@dimen/pad_15dp"
-      android:text="datetime"
-      android:paddingLeft="@dimen/pad_10dp"
-      android:textColor="@color/colorGreyLight" />
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+      <TextView
+          android:id="@+id/item_list_message_body"
+          style="@style/TextAppearance.AppCompat.Large"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/pad_5dp"
 
-</LinearLayout>
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="50dp">
+          android:paddingLeft="@dimen/pad_10dp"
+          android:text="Message"
+          android:textSize="@dimen/pad_18dp" />
 
+      <TextView
+          android:id="@+id/item_list_message_date"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:paddingLeft="@dimen/pad_10dp"
+          android:text="datetime"
+          android:textColor="@color/colorGreyLight"
+          android:textSize="@dimen/pad_15dp" />
+    </LinearLayout>
 
-</LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="20dp"
+        android:gravity="center">
+
+      <ImageView
+          android:id="@+id/imgNewMsg"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_gravity="center|end"
+          android:src="@drawable/om_new_message" />
+
+    </LinearLayout>
+
+  </LinearLayout>
+
+  <View
+      android:layout_width="match_parent"
+      android:layout_height="1dp"
+      android:background="#dadada"
+      android:layout_marginLeft="8dp"
+      android:layout_marginRight="8dp" />
+
 </LinearLayout>

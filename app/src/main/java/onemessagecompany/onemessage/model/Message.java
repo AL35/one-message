@@ -41,10 +41,15 @@ public class Message implements Serializable {
     this.RV = RV;
   }
 
+  public boolean getSeen() { return Seen; }
+
+  public void setSeen() { this.Seen = Seen; }
+
   private String Body;
   private int DeleteAfter;
   private int ID;
   private String RV;
+  private boolean Seen;
 
 
 }

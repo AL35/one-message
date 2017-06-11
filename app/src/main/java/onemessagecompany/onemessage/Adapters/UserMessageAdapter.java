@@ -60,11 +60,13 @@ public class UserMessageAdapter extends RecyclerView.Adapter<UserMessageAdapter.
     TextView messageBody;
     TextView messageDate;
     ImageView removemsg;
+    ImageView imgNewMessage;
 
     public UserMessageAdapterViewHolder(View view) {
       super(view);
       messageBody = (TextView) view.findViewById(R.id.item_list_message_body);
       messageDate = (TextView) view.findViewById(R.id.item_list_message_date);
+      imgNewMessage = (ImageView) view.findViewById(R.id.imgNewMsg);
 
       view.setOnClickListener(this);
     }
@@ -102,8 +104,9 @@ public class UserMessageAdapter extends RecyclerView.Adapter<UserMessageAdapter.
     holder.messageBody.setText("Tab here to read this message...");
 
 
-
-
+    if(message.getSeen())
+        holder.imgNewMessage.setVisibility(View.INVISIBLE);
+    
     try {
       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
       dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
