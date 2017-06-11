@@ -132,14 +132,10 @@
 
             <Switch
                 android:id="@+id/add_user_switch"
-<<<<<<< HEAD
-                
-=======
-                android:layout_width="147dp"
-                android:layout_height="0.50dp"
-                android:text="Active User"
-                android:textColor="@color/colorMain"
->>>>>>> c0f10e53f5778a97d7f97a1d5dc82ea3e768c346
+                android:text="Active User  "
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:shadowColor="@color/colorMain"
                 android:layout_marginLeft="@dimen/pad_5dp"
                 android:textSize="17dp"/>
 
