@@ -22,6 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:focusableInTouchMode="true"
             android:weightSum="1">
 
             <LinearLayout
@@ -65,22 +66,6 @@
                 android:paddingLeft="@dimen/pad_5dp"
                 android:singleLine="true"
                 android:textAlignment="gravity" />
-
-
-            <EditText
-                android:id="@+id/register_Email"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="@dimen/pad_10dp"
-                android:background="@color/gray_light"
-                android:gravity="left|center"
-                android:hint="@string/add_user_emai"
-                android:inputType="textEmailAddress"
-                android:maxLines="1"
-                android:paddingLeft="@dimen/pad_5dp"
-                android:singleLine="true"
-                android:textAlignment="gravity" />
-
 
             <EditText
                 android:id="@+id/register_FirstName"
@@ -147,10 +132,10 @@
 
             <Switch
                 android:id="@+id/add_user_switch"
-                android:layout_width="147dp"
-                android:layout_height="0.50dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:shadowColor="@color/colorMain"
-                android:text="Active User"
+                android:text="Active User  "
                 android:layout_marginLeft="@dimen/pad_5dp"
                 android:textSize="17dp"/>
 

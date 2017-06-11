@@ -3,14 +3,11 @@ package onemessagecompany.onemessage.Admin;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -37,7 +34,6 @@ public class AddUser extends BaseActivity {
     private EditText mConfirmPassword;
     private Switch mRegisterActivateSwitch;
     private EditText mUserName;
-    private EditText mRegisterEmail;
     private Context context = AddUser.this;
 
     private String firstName;
@@ -67,38 +63,22 @@ public class AddUser extends BaseActivity {
             }
         });
 
+        findViewById(R.id.email_login_form).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                return true;
+            }
+        });
+
         mFirstName = (EditText) findViewById(R.id.register_FirstName);
         mLastName = (EditText) findViewById(R.id.register_LastName);
         mRegisterPassword = (EditText) findViewById(R.id.register_Password);
         mConfirmPassword = (EditText) findViewById(R.id.register_ConfirmPassword);
         mRegisterActivateSwitch = (Switch) findViewById(R.id.add_user_switch);
         mUserName = (EditText) findViewById(R.id.register_UserName);
-        mRegisterEmail = (EditText) findViewById(R.id.register_Email);
 
-
-        mRegisterEmail .addTextChangedListener(new TextWatcher() {
-            public void afterTextChanged(Editable s) {
-                String registerEmail = mRegisterEmail.getText().toString().trim();
-
-                if (registerEmail.matches(emailPattern) && s.length() > 0)
-                {
-//                    Toast.makeText(getApplicationContext(),"valid email address",Toast.LENGTH_SHORT).show();
-//                    // or
-//                    mRegisterEmail.setText("valid email");
-                }
-                else
-                {
-                    //or
-                    mRegisterEmail.setError("invalid email");
-                }
-            }
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                // other stuffs
-            }
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // other stuffs
-            }
-        });
 
         Button mRegisterButton = (Button) findViewById(R.id.register_button);
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
@@ -106,8 +86,8 @@ public class AddUser extends BaseActivity {
             public void onClick(View view) {
                 if (validate())
                     RegisterPost();
-                else
-                    Toast.makeText(getApplicationContext(), "Create Failed", Toast.LENGTH_LONG).show();
+                //else
+                //    Toast.makeText(getApplicationContext(), "Creation failed", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -120,7 +100,7 @@ public class AddUser extends BaseActivity {
         confirmPassword = mConfirmPassword.getText().toString();
         registerEnabled = mRegisterActivateSwitch.isChecked();
         userName = mUserName.getText().toString();
-        email = mRegisterEmail.getText().toString();
+        email = "mail@domain.com";
 
         registerApi = ApiClient.getAuthorizedClient().create(RegisterApi.class);
         RegisterRequest registerRequest = new RegisterRequest();
@@ -139,13 +119,13 @@ public class AddUser extends BaseActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 int statusCode = response.code();
                 if (statusCode == 200) {
-                    Toast.makeText(getApplicationContext(), "Create Success", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "User created successfully", Toast.LENGTH_LONG).show();
                     Intent userMain = new Intent(context, AdminMainActivity.class);
                     startActivity(userMain);
                 }
                 else
                 {
-                    Toast.makeText(getApplicationContext(), "Create Failed , User Name or Email Already Taken", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Creation failed , Username is already taken", Toast.LENGTH_LONG).show();
 
                 }
 
@@ -153,7 +133,7 @@ public class AddUser extends BaseActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Create Failed", Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Creation failed", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -175,13 +155,6 @@ public class AddUser extends BaseActivity {
             mUserName.setError("Required");
             valid = false;
         }
-        if (email.isEmpty()) {
-            mRegisterEmail.setError("Required");
-        }
-        if(!email.matches(emailPattern))
-        {
-            valid = false;
-        }
         if (firstName.isEmpty()) {
             mFirstName.setError("Required");
             valid = false;
@@ -195,7 +168,7 @@ public class AddUser extends BaseActivity {
             valid = false;
         }
         if (!confirmPassword.equals(password)) {
-            mConfirmPassword.setError("Confirm & Password Should Be Similar");
+            mConfirmPassword.setError("Confirm Password & Password must be the same");
             valid = false;
         }
         return valid;
@@ -208,7 +181,6 @@ public class AddUser extends BaseActivity {
         confirmPassword = mConfirmPassword.getText().toString();
         registerEnabled = mRegisterActivateSwitch.isChecked();
         userName = mUserName.getText().toString();
-        email = mRegisterEmail.getText().toString();
     }
 
 
