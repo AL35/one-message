@@ -149,7 +149,10 @@
                 android:id="@+id/add_user_switch"
                 android:layout_width="147dp"
                 android:layout_height="0.50dp"
-                android:text="Active User" />
+                android:shadowColor="@color/colorMain"
+                android:text="Active User"
+                android:layout_marginLeft="@dimen/pad_5dp"
+                android:textSize="17dp"/>
 
             <Button
                 android:id="@+id/register_button"
