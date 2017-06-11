@@ -43,6 +43,16 @@ public class SendMessageActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        /*findViewById(R.id.v1_admin).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.showSoftInput(getCurrentFocus().getWindowToken(), 0);
+                return true;
+            }
+        });*/
+
         Button btnSnd = (Button) findViewById(R.id.btnSendMessage);
 
 
