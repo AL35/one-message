@@ -106,7 +106,9 @@ public class UserMessageAdapter extends RecyclerView.Adapter<UserMessageAdapter.
 
     if(message.getSeen())
         holder.imgNewMessage.setVisibility(View.INVISIBLE);
-    
+
+
+
     try {
       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
       dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));

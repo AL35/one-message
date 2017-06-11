@@ -2,20 +2,18 @@ package onemessagecompany.onemessage.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import onemessagecompany.onemessage.Adapters.AdminMessageRepliesAdapter;
-import onemessagecompany.onemessage.Adapters.AdminMessagsAdapter;
 import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
@@ -23,11 +21,8 @@ import onemessagecompany.onemessage.data.MyApplication;
 import onemessagecompany.onemessage.model.AdminRepliesResponse;
 import onemessagecompany.onemessage.model.AdminReply;
 import onemessagecompany.onemessage.model.Message;
-import onemessagecompany.onemessage.model.MessageResponse;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.RepliesApi;
-import onemessagecompany.onemessage.rest.RepliesApi;
-import onemessagecompany.onemessage.rest.SendMessageApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -48,7 +43,25 @@ public class RepliesActivity extends BaseActivity implements AdminMessageReplies
     message = (Message) getIntent().getSerializableExtra("message");
 
     TextView admin_msg=(TextView)findViewById(R.id.admin_msg);
+
     admin_msg.setText(message.getBody());
+
+    TextView tvUsername = (TextView)findViewById(R.id.v1_username);
+
+    try {
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+      dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+      Date date = dateFormat.parse(message.getRV());
+      SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd hh:mm a");
+      String dateTime = dateFormatTime.format(date);
+
+      tvUsername.setText("admin @ :" + dateTime);
+
+
+    } catch (ParseException ex) {
+    }
+
+
     //Set Home Page User List Recycle View
 
     mRecyclerView = (RecyclerView) findViewById(R.id.replies_recycler_view);
