@@ -18,6 +18,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.Toast;
+
+import com.google.firebase.iid.FirebaseInstanceId;
 
 import java.util.List;
 
@@ -64,6 +67,10 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
                 finish();
             }
         }, intentFilter);
+
+
+
+
 
 
 
