@@ -174,7 +174,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/pad_15dp"
             android:layout_weight="1"
-            android:text="Delete message" />
+            android:text="Confirm Message" />
 
 
       </LinearLayout>

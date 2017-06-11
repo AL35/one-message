@@ -1,7 +1,6 @@
 package onemessagecompany.onemessage.Admin;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -20,8 +19,6 @@ import onemessagecompany.onemessage.rest.ConfigurationApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static android.content.Context.INPUT_METHOD_SERVICE;
 
 public class ConfigActivity extends BaseActivity {
 
@@ -52,7 +49,7 @@ public class ConfigActivity extends BaseActivity {
 
         textview = (TextView) findViewById(R.id.textView1);
 
-        numberpicker.setMinValue(0);
+        numberpicker.setMinValue(1);
 
         numberpicker.setMaxValue(100);
 
