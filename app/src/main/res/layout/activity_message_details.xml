@@ -49,8 +49,8 @@
 
       <LinearLayout
           android:id="@+id/v1_admin"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
+          android:layout_width="match_parent"
+          android:layout_height="95dp"
           android:background="@drawable/chat_bubble_gray"
           android:gravity="left|top"
           android:paddingTop="@dimen/pad_10dp"
@@ -104,37 +104,42 @@
 
         <LinearLayout
             android:id="@+id/v1_reply"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_marginLeft="@dimen/pad_10dp"
-            android:background="@drawable/chat_bubble_green"
             android:gravity="left|top"
             android:backgroundTint="@color/colorGreyLight"
-            android:orientation="vertical"
-            android:paddingLeft="@dimen/pad_15dp"
-            android:paddingRight="@dimen/pad_chat_item" >
+
+             >
 
           <EditText
               android:paddingTop="@dimen/pad_10dp"
-              android:textColor="@color/white"
+              android:textColor="@color/black"
               android:textSize="@dimen/txt_16sp"
+              android:layout_margin="@dimen/pad_5dp"
               android:id="@+id/txt_sendMessage"
               android:layout_width="match_parent"
               android:layout_height="wrap_content"
-              android:ems="10"
-              android:layout_marginRight="@dimen/pad_10dp"
-              android:hint="Reply"
-              android:maxLines="5"
-              android:textColorHint="@color/gray_light"
-              android:inputType="textMultiLine"
-              android:background="@color/transparent"
+              android:layout_weight="1"
+              android:hint="Send a reply"
+              android:maxLines="2"
+              android:textColorHint="@color/colorMain"
               />
 
-
+          <ImageButton
+              android:id="@+id/btnSendReply"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_weight="5"
+              android:layout_gravity="center"
+              android:padding="4dp"
+              android:tint="@color/black"
+              android:background="@color/transparent"
+              android:src="@android:drawable/ic_menu_send" />
         </LinearLayout>
 
-        <Button
+        <!--Button
             android:id="@+id/btnSendReply"
             style="@style/btn_white_large"
             android:layout_width="match_parent"
@@ -143,7 +148,7 @@
             android:background="@color/colorMain"
             android:layout_marginTop="@dimen/pad_15dp"
             android:layout_weight="1"
-            android:text="Reply and delete" />
+            android:text="Reply and delete" /-->
 
         <Button
             android:id="@+id/btnDismiss"
@@ -158,8 +163,11 @@
 
         <Button
             android:id="@+id/btnDeleteMsg"
-            style="@style/btn_red_large"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
+            android:background="@color/red"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="@dimen/pad_18dp"
             android:layout_height="42dp"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/pad_15dp"
