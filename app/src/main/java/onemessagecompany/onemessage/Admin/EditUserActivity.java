@@ -13,6 +13,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import onemessagecompany.onemessage.AdminMainActivity;
@@ -36,7 +37,7 @@ public class EditUserActivity extends AppCompatActivity {
     private EditText mEditUserName;
     private EditText mFirstName;
     private EditText mLastName;
-    private CheckBox mRegisterActivateCheckbox;
+    private Switch mRegisterActivateSwitch;
     private Context context = EditUserActivity.this;
     private String userName;
     private String firstName;
@@ -65,13 +66,13 @@ public class EditUserActivity extends AppCompatActivity {
         mEditUserName = (EditText) findViewById(R.id.edit_UserName);
         mFirstName = (EditText) findViewById(R.id.edit_FirstName);
         mLastName = (EditText) findViewById(R.id.edit_LastName);
-        mRegisterActivateCheckbox = (CheckBox) findViewById(R.id.edit_checkBox);
+        mRegisterActivateSwitch = (Switch) findViewById(R.id.edit_switch);
 
         mEditUserName.setText(user.getUserName());
         mEditUserName.setFocusable(false);
         mFirstName.setText(user.getFirstName());
         mLastName.setText(user.getLastName());
-        mRegisterActivateCheckbox.setChecked(user.getIsEnabled());
+        mRegisterActivateSwitch.setChecked(user.getIsEnabled());
 
         Button mRegisterButton = (Button) findViewById(R.id.edit_button);
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
@@ -92,7 +93,7 @@ public class EditUserActivity extends AppCompatActivity {
         userName = mEditUserName.getText().toString();
         firstName = mFirstName.getText().toString();
         lastName = mLastName.getText().toString();
-        boolean registerEnabled = mRegisterActivateCheckbox.isChecked();
+        boolean registerEnabled = mRegisterActivateSwitch.isChecked();
 
 
         UsersApi usersApi = ApiClient.getAuthorizedClient().create(UsersApi.class);

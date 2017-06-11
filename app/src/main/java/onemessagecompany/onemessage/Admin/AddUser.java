@@ -12,6 +12,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,7 +35,7 @@ public class AddUser extends BaseActivity {
     private EditText mLastName;
     private EditText mRegisterPassword;
     private EditText mConfirmPassword;
-    private CheckBox mRegisterActivateCheckbox;
+    private Switch mRegisterActivateSwitch;
     private EditText mUserName;
     private EditText mRegisterEmail;
     private Context context = AddUser.this;
@@ -70,7 +71,7 @@ public class AddUser extends BaseActivity {
         mLastName = (EditText) findViewById(R.id.register_LastName);
         mRegisterPassword = (EditText) findViewById(R.id.register_Password);
         mConfirmPassword = (EditText) findViewById(R.id.register_ConfirmPassword);
-        mRegisterActivateCheckbox = (CheckBox) findViewById(R.id.register_checkBox);
+        mRegisterActivateSwitch = (Switch) findViewById(R.id.add_user_switch);
         mUserName = (EditText) findViewById(R.id.register_UserName);
         mRegisterEmail = (EditText) findViewById(R.id.register_Email);
 
@@ -117,7 +118,7 @@ public class AddUser extends BaseActivity {
         lastName = mLastName.getText().toString();
         password = mRegisterPassword.getText().toString();
         confirmPassword = mConfirmPassword.getText().toString();
-        registerEnabled = mRegisterActivateCheckbox.isChecked();
+        registerEnabled = mRegisterActivateSwitch.isChecked();
         userName = mUserName.getText().toString();
         email = mRegisterEmail.getText().toString();
 
@@ -205,7 +206,7 @@ public class AddUser extends BaseActivity {
         lastName = mLastName.getText().toString();
         password = mRegisterPassword.getText().toString();
         confirmPassword = mConfirmPassword.getText().toString();
-        registerEnabled = mRegisterActivateCheckbox.isChecked();
+        registerEnabled = mRegisterActivateSwitch.isChecked();
         userName = mUserName.getText().toString();
         email = mRegisterEmail.getText().toString();
     }

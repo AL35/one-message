@@ -144,12 +144,12 @@
                 android:textAlignment="gravity" />
 
 
-            <CheckBox
-                android:id="@+id/register_checkBox"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_weight="0.50"
-                android:text="@string/add_new_active" />
+
+            <Switch
+                android:id="@+id/add_user_switch"
+                android:layout_width="147dp"
+                android:layout_height="0.50dp"
+                android:text="Active User" />
 
             <Button
                 android:id="@+id/register_button"
