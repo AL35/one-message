@@ -100,7 +100,7 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
 
     @Override
     public void onDestroy() {
-        if(timer!=null)
+        if (timer != null)
             timer.cancel();
         super.onDestroy();
     }
@@ -136,7 +136,7 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
 
         switch (id) {
             case R.id.logout:
-                if(timer!=null)
+                if (timer != null)
                     timer.cancel();
                 sharedData.setAccessToken(getApplicationContext(), null);
                 Intent intentLogin = new Intent(PublicMainActivity.this, LoginActivity.class);

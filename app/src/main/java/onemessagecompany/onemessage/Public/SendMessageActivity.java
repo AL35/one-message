@@ -125,8 +125,7 @@ public class SendMessageActivity extends AppCompatActivity {
                 if (statusCode == 200) {
                     String responsemsg = response.body().getResponse();
                     Toast.makeText(getApplicationContext(), responsemsg, Toast.LENGTH_LONG).show();
-                    sendNotification();
-//                    finish();
+                    finish();
                 }
             }
 
@@ -137,35 +136,35 @@ public class SendMessageActivity extends AppCompatActivity {
         });
     }
 
-    public void sendNotification() {
-        SendNotificationApi apiService =
-                ApiClient.getFirebaseClient().create(SendNotificationApi.class);
-
-        SendNotificationRequest sendNotificationRequest = new SendNotificationRequest();
-        OneMessageNotification oneMessageNotification = new OneMessageNotification();
-
-        oneMessageNotification.setBody("New Message");
-        oneMessageNotification.setTitle("New Message From Admin");
-
-
-        sendNotificationRequest.setTo(FirebaseInstanceId.getInstance().getToken());
-        sendNotificationRequest.setNotification(oneMessageNotification);
-
-
-        Call<Void> call = apiService.SendNotification(sendNotificationRequest);
-        call.enqueue(new Callback<Void>() {
-            @Override
-            public void onResponse(Call<Void> call, Response<Void> response) {
-                int statusCode = response.code();
-                if (statusCode == 200) {
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<Void> call, Throwable t) {
-
-            }
-        });
-    }
+//    public void sendNotification() {
+//        SendNotificationApi apiService =
+//                ApiClient.getFirebaseClient().create(SendNotificationApi.class);
+//
+//        SendNotificationRequest sendNotificationRequest = new SendNotificationRequest();
+//        OneMessageNotification oneMessageNotification = new OneMessageNotification();
+//
+//        oneMessageNotification.setBody("New Message");
+//        oneMessageNotification.setTitle("New Message From Admin");
+//
+//
+//        sendNotificationRequest.setTo(FirebaseInstanceId.getInstance().getToken());
+//        sendNotificationRequest.setNotification(oneMessageNotification);
+//
+//
+//        Call<Void> call = apiService.SendNotification(sendNotificationRequest);
+//        call.enqueue(new Callback<Void>() {
+//            @Override
+//            public void onResponse(Call<Void> call, Response<Void> response) {
+//                int statusCode = response.code();
+//                if (statusCode == 200) {
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<Void> call, Throwable t) {
+//
+//            }
+//        });
+//    }
 }
