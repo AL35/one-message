@@ -3,10 +3,8 @@ package onemessagecompany.onemessage.Admin;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.view.Menu;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -59,7 +57,7 @@ public class AddUser extends BaseActivity {
 
         setContentView(R.layout.activity_add_user);
 
-        findViewById(R.id.login_form).setOnTouchListener(new View.OnTouchListener() {
+        findViewById(R.id.ac_create_user).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
