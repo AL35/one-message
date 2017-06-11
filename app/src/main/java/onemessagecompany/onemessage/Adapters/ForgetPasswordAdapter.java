@@ -85,7 +85,7 @@ public class ForgetPasswordAdapter  extends RecyclerView.Adapter<ForgetPasswordA
     public void onBindViewHolder(ForgetPasswordAdapterViewHolder holder, final int position) {
 
       Notification notification = notifications.get(position);
-      holder.userName.setText(notification.getValue());
+      holder.userName.setText(notification.getValue()+" Forget Password");
 
     }
 

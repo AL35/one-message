@@ -39,7 +39,7 @@
   </LinearLayout>
 <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     android:paddingTop="@dimen/pad_30dp">
 
@@ -47,7 +47,7 @@
   <onemessagecompany.onemessage.NumberPickerCustom
     android:id="@+id/numberPicker1"
     android:layout_width="wrap_content"
-    android:layout_margin="50dp"
+    android:layout_margin="40dp"
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
     android:layout_gravity="center"
@@ -73,15 +73,14 @@
     android:id="@+id/config_button"
     android:layout_width="match_parent"
       android:background="@color/colorMain"
-    android:layout_height="49dp"
-    android:text="Save"
+      android:layout_height="49dp"
+      android:text="Save"
     android:layout_below="@+id/textView1"
       android:textColor="@color/white"
       android:textAllCaps="false"
       android:textSize="@dimen/pad_18dp"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginTop="42dp" />
+
+    android:layout_marginTop="5dp" />
 </LinearLayout>
 
 </RelativeLayout>

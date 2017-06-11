@@ -49,8 +49,8 @@
 
       <LinearLayout
           android:id="@+id/v1_admin"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
+          android:layout_width="match_parent"
+          android:layout_height="95dp"
           android:background="@drawable/chat_bubble_gray"
           android:gravity="left|top"
           android:paddingTop="@dimen/pad_10dp"
