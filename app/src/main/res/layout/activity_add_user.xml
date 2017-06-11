@@ -135,7 +135,7 @@
                 android:text="Active User  "
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:shadowColor="@color/colorMain"
+                android:textColor="@color/colorMain"
                 android:layout_marginLeft="@dimen/pad_5dp"
                 android:textSize="17dp"/>
 
