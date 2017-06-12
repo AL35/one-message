@@ -52,10 +52,10 @@ public class RepliesActivity extends BaseActivity implements AdminMessageReplies
       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
       dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
       Date date = dateFormat.parse(message.getRV());
-      SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd hh:mm a");
+      SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd HH:mm");
       String dateTime = dateFormatTime.format(date);
 
-      tvUsername.setText("admin @ :" + dateTime);
+      tvUsername.setText("admin, " + dateTime);
 
 
     } catch (ParseException ex) {

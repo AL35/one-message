@@ -15,23 +15,21 @@ import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
-import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.sharedData;
-import onemessagecompany.onemessage.model.OneMessageNotification;
 import onemessagecompany.onemessage.model.SendMessageRequest;
 import onemessagecompany.onemessage.model.SendMessageResponse;
-import onemessagecompany.onemessage.model.SendNotificationRequest;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.SendMessageApi;
-import onemessagecompany.onemessage.rest.SendNotificationApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+
 public class SendMessageActivity extends AppCompatActivity {
     private EditText txtMsg;
+    int count =0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +59,20 @@ public class SendMessageActivity extends AppCompatActivity {
 
         Button btnSnd = (Button) findViewById(R.id.btnSendMessage);
 
+        //final String token = FirebaseInstanceId.getInstance().getToken();
 
         txtMsg = (EditText) findViewById(R.id.txt_sendMessage);
+
+
 
 
         btnSnd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+
+
                 String msg = txtMsg.getText().toString();
                 if (!msg.isEmpty())
                     sendMessage();
@@ -138,6 +143,7 @@ public class SendMessageActivity extends AppCompatActivity {
             }
         });
     }
+
 
 //    public void sendNotification() {
 //        SendNotificationApi apiService =

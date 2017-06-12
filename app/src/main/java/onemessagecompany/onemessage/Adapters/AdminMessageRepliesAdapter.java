@@ -91,16 +91,15 @@ public class AdminMessageRepliesAdapter extends RecyclerView.Adapter<AdminMessag
   public void onBindViewHolder(AdminMessageRepliesViewHolder holder, final int position) {
 
     AdminReply adminReply = adminReplies.get(position);
-    holder.v1_username.setText(adminReply.getUserName() + "@ " + adminReply.getRV());
     holder.v1_msg.setText(adminReply.getBody());
 
     try {
       SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
       dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
       Date date = dateFormat.parse(adminReply.getRV());
-      SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd hh:mm a");
+      SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd HH:mm");
       String dateTime = dateFormatTime.format(date);
-      holder.v1_username.setText(adminReply.getUserName() + " @: " + dateTime);
+      holder.v1_username.setText(adminReply.getUserName() + ", " + dateTime);
 
     } catch (ParseException ex) {
     }

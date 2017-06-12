@@ -57,7 +57,7 @@ public class ConfigActivity extends BaseActivity {
             @Override
             public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
 
-                textview.setText("Deletion Time is : " + newVal + " mins");
+                textview.setText("Deletion Time is : " + newVal + " Min(s)");
                 time = newVal;
             }
         });
@@ -86,7 +86,7 @@ public class ConfigActivity extends BaseActivity {
                 if (statusCode == 200) {
                     int time=response.body().getTime();
                     numberpicker.setValue(time);
-                    textview.setText("Deletion Time is : " + time + " mins");
+                    textview.setText("Deletion Time is : " + time + " Min(s)");
                 }
             }
 
