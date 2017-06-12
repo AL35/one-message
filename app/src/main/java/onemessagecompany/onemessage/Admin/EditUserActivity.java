@@ -111,8 +111,10 @@ public class EditUserActivity extends AppCompatActivity {
                 int statusCode = response.code();
                 if (statusCode == 200 && response.body().isUserChanged()) {
                     Toast.makeText(getApplicationContext(), "Saved Success", Toast.LENGTH_LONG).show();
-                    Intent userMain = new Intent(context, AdminMainActivity.class);
+                    Intent userMain = new Intent(getApplicationContext(), AdminMainActivity.class);
+                    userMain.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(userMain);
+                    finish();
                 }
             }
 

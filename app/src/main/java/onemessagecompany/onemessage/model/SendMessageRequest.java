@@ -15,4 +15,14 @@ public class SendMessageRequest {
     }
 
     private String msg;
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
+    }
+
+    private String to;
 }

@@ -54,19 +54,20 @@ public class ActivateApp extends AppCompatActivity {
 
                 switch (sharedData.getRole(MyApplication.getContext())) {
                     case "Administrator":
-                        Intent adminMainIntent = new Intent(ActivateApp.this, AdminMainActivity.class);
+                        Intent adminMainIntent = new Intent(getApplicationContext(), AdminMainActivity.class);
+                        adminMainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(adminMainIntent);
                         finish();
                         break;
                     default:
-                        Intent publicMainIntent = new Intent(ActivateApp.this, PublicMainActivity.class);
+                        Intent publicMainIntent = new Intent(getApplicationContext(), PublicMainActivity.class);
                         startActivity(publicMainIntent);
                         finish();
                 }
 
 
             } else {
-                Intent loginIntent = new Intent(ActivateApp.this, LoginActivity.class);
+                Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(loginIntent);
                 finish();
             }

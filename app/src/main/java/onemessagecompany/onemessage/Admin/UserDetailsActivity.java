@@ -104,6 +104,7 @@ public class UserDetailsActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Deleted Success", Toast.LENGTH_LONG).show();
                     Intent MainActivity = new Intent(UserDetailsActivity.this, AdminMainActivity.class);
                     startActivity(MainActivity);
+                    finish();
                 }
             }
 

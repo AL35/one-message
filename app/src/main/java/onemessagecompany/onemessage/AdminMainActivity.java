@@ -171,9 +171,10 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
                 finish();
                 return true;
             case R.id.action_logout:
-                sharedData.setAccessToken(getApplicationContext(), " ");
+                sharedData.setAccessToken(getApplicationContext(), null);
                 Intent intentLogin = new Intent(AdminMainActivity.this, LoginActivity.class);
                 startActivity(intentLogin);
+                finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -203,7 +204,7 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
                 startActivity(intentSendMessage);
                 break;
             case R.id.logout:
-                sharedData.setAccessToken(getApplicationContext(), " ");
+                sharedData.setAccessToken(getApplicationContext(), null);
                 Intent intentLogin = new Intent(AdminMainActivity.this, LoginActivity.class);
                 startActivity(intentLogin);
                 finish();

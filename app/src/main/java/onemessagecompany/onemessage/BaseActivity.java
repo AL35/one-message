@@ -40,6 +40,7 @@ public class BaseActivity extends AppCompatActivity {
                 sharedData.setAccessToken(getApplicationContext(), null);
                 Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(intentLogin);
+
                 finish();
                 return true;
         }

@@ -84,7 +84,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 WindowManager.LayoutParams.FLAG_SECURE);
 
         setContentView(R.layout.activity_login);
-
+        String dsf = sharedData.getAccessToken(getApplicationContext());
 
         // hide keyboard when touch outside
         findViewById(email_login_form).setOnTouchListener(new View.OnTouchListener() {
@@ -360,6 +360,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         broadcastIntent.setAction("com.package.ACTION_LOGOUT");
         sendBroadcast(broadcastIntent);
         finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
     }
 
     private interface ProfileQuery {

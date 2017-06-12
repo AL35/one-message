@@ -117,6 +117,9 @@ public class SendMessageActivity extends AppCompatActivity {
                 ApiClient.getAuthorizedClient().create(SendMessageApi.class);
         SendMessageRequest sendMessageRequest = new SendMessageRequest();
         sendMessageRequest.setMsg(msg);
+        sendMessageRequest.setTo("Key=" + FirebaseInstanceId.getInstance().getToken());
+
+
         Call<SendMessageResponse> call = apiService.SendAdminMessage(sendMessageRequest);
         call.enqueue(new Callback<SendMessageResponse>() {
             @Override
