@@ -28,6 +28,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,9 +38,12 @@ import onemessagecompany.onemessage.Public.ForgetPasswordActivity;
 import onemessagecompany.onemessage.Public.PublicMainActivity;
 import onemessagecompany.onemessage.data.MyApplication;
 import onemessagecompany.onemessage.data.sharedData;
+import onemessagecompany.onemessage.model.DeviceIdRequest;
 import onemessagecompany.onemessage.model.TokenResponse;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.LoginApi;
+import onemessagecompany.onemessage.rest.SendDeviceIdApi;
+import onemessagecompany.onemessage.rest.SendMessageApi;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -261,6 +266,8 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             sharedData.setAccessToken(getApplicationContext(), tokenResponse.getAccess_token());
             sharedData.setRole(MyApplication.getContext(), tokenResponse.getRole());
+            SendDeviceId();
+
             switch (tokenResponse.getRole()) {
                 case "Administrator":
                     Intent adminMainIntent = new Intent(LoginActivity.this, AdminMessageHistoryActivity.class);
@@ -284,6 +291,30 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
         return password.length() > 4;
+    }
+
+    public void SendDeviceId() {
+       String token= FirebaseInstanceId.getInstance().getToken();
+
+        SendDeviceIdApi sendMessageApi = ApiClient.getAuthorizedClient().create(SendDeviceIdApi.class);
+        DeviceIdRequest deviceIdRequest =new DeviceIdRequest();
+
+        deviceIdRequest.setDeviceId(token);
+
+        sendMessageApi.SendDeviceId(deviceIdRequest).enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                int statusCode = response.code();
+                if (statusCode == 200) {
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
     }
 
     /**
