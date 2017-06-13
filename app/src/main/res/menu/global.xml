@@ -10,7 +10,7 @@
 
   <item
     android:id="@+id/contact_list"
-    android:icon="@mipmap/ic_chat_history"
+    android:icon="@mipmap/ic_contacts"
     android:title="@string/title_activity_admin_main" />
 
   <item
