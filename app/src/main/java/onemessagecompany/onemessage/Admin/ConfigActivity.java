@@ -71,6 +71,8 @@ public class ConfigActivity extends BaseActivity {
                 SaveConfig();
             }
         });
+
+
     }
 
     private void GetConfig() {
