@@ -142,7 +142,7 @@
         <activity
             android:name=".Admin.RepliesActivity"
             android:configChanges="orientation"
-            android:label="@string/title_activity_replies"
+            android:label="Message"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -157,6 +157,16 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Public.PublicMainActivity" />
+        </activity>
+        <activity
+            android:name=".Admin.ChangeAdminPasswordActivity"
+            android:configChanges="orientation"
+            android:windowSoftInputMode="stateHidden"
+            android:label="Change Password"
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Admin.AdminMessageHistoryActivity" />
         </activity>
         <activity
             android:name=".Admin.ForgetPasswordListActivity"

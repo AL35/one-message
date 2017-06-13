@@ -28,6 +28,10 @@
     android:icon="@mipmap/ic_key_large"
     android:title="@string/title_activity_generate_key" />
 
+  <item
+      android:id="@+id/change_password"
+      android:icon="@mipmap/ic_password"
+      android:title="Change Password" />
 
   <item
     android:id="@+id/config"
