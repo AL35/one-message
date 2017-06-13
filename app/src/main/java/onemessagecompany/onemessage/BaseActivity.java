@@ -20,6 +20,14 @@ public class BaseActivity extends AppCompatActivity {
         return true;
     }
 
+    public void LogoutWess(){
+
+        Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
+        intentLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        startActivity(intentLogin);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

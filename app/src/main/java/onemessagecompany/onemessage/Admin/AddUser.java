@@ -120,8 +120,7 @@ public class AddUser extends BaseActivity {
                 int statusCode = response.code();
                 if (statusCode == 200) {
                     Toast.makeText(getApplicationContext(), "User created successfully", Toast.LENGTH_LONG).show();
-                    Intent userMain = new Intent(context, AdminMainActivity.class);
-                    startActivity(userMain);
+                    finish();
                 }
                 else
                 {

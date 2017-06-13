@@ -31,6 +31,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import onemessagecompany.onemessage.Admin.AdminMessageHistoryActivity;
 import onemessagecompany.onemessage.Public.ForgetPasswordActivity;
 import onemessagecompany.onemessage.Public.PublicMainActivity;
 import onemessagecompany.onemessage.data.MyApplication;
@@ -262,7 +263,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             sharedData.setRole(MyApplication.getContext(), tokenResponse.getRole());
             switch (tokenResponse.getRole()) {
                 case "Administrator":
-                    Intent adminMainIntent = new Intent(LoginActivity.this, AdminMainActivity.class);
+                    Intent adminMainIntent = new Intent(LoginActivity.this, AdminMessageHistoryActivity.class);
                     startActivity(adminMainIntent);
                     finish();
                     break;

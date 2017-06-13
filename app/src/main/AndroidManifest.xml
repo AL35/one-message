@@ -36,39 +36,46 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
+
         <activity
             android:name=".AdminMainActivity"
-            android:label="@string/title_activity_admin_main" />
+            android:label="@string/title_activity_admin_main" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Admin.AdminMessageHistoryActivity" />
+        </activity>
+
         <activity
             android:name=".Admin.AddUser"
             android:configChanges="orientation"
             android:windowSoftInputMode="stateHidden"
             android:label="@string/title_activity_add_user"
-            android:parentActivityName=".AdminMainActivity"
+            android:parentActivityName=".Admin.AdminMessageHistoryActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AdminMainActivity" />
+                android:value=".Admin.AdminMessageHistoryActivity" />
         </activity>
+
         <activity
             android:name=".Admin.GenerateKey"
             android:configChanges="orientation"
             android:label="@string/title_activity_generate_key"
-            android:parentActivityName=".AdminMainActivity"
+            android:parentActivityName=".Admin.AdminMessageHistoryActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AdminMainActivity" />
+                android:value=".Admin.AdminMessageHistoryActivity" />
         </activity>
         <activity
             android:name=".Admin.ConfigActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_config"
-            android:parentActivityName=".AdminMainActivity"
+            android:parentActivityName=".Admin.AdminMessageHistoryActivity"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AdminMainActivity" />
+                android:value=".Admin.AdminMessageHistoryActivity" />
         </activity>
         <activity
             android:name=".Admin.UserDetailsActivity"
@@ -78,7 +85,7 @@
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AdminMainActivity" />
+                android:value=".Admin.AdminMessageHistoryActivity" />
         </activity>
         <activity
             android:name=".Admin.EditUserActivity"
@@ -109,7 +116,7 @@
             android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AdminMainActivity" />
+                android:value=".Admin.AdminMessageHistoryActivity" />
         </activity>
         <activity
             android:name=".Admin.NotificationActivity"
@@ -130,11 +137,7 @@
         <activity
             android:name=".Admin.AdminMessageHistoryActivity"
             android:configChanges="orientation"
-            android:label="@string/title_activity_admin_message_history"
-            android:screenOrientation="portrait">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AdminMainActivity" />
+            android:label="@string/title_activity_admin_message_history">
         </activity>
         <activity
             android:name=".Admin.RepliesActivity"
@@ -162,7 +165,7 @@
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".AdminMainActivity" />
+                android:value=".Admin.AdminMessageHistoryActivity" />
         </activity>
         <activity
             android:name=".Public.ForgetPasswordActivity"

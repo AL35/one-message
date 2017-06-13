@@ -9,9 +9,9 @@
       android:title="@string/title_activity_send_message" />
 
   <item
-    android:id="@+id/chat_history"
+    android:id="@+id/contact_list"
     android:icon="@mipmap/ic_chat_history"
-    android:title="@string/title_activity_chat_history" />
+    android:title="@string/title_activity_admin_main" />
 
   <item
     android:id="@+id/notifications"

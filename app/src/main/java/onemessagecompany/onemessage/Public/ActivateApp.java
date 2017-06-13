@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import onemessagecompany.onemessage.Admin.AdminMessageHistoryActivity;
 import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
@@ -54,8 +55,7 @@ public class ActivateApp extends AppCompatActivity {
 
                 switch (sharedData.getRole(MyApplication.getContext())) {
                     case "Administrator":
-                        Intent adminMainIntent = new Intent(getApplicationContext(), AdminMainActivity.class);
-                        adminMainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        Intent adminMainIntent = new Intent(getApplicationContext(), AdminMessageHistoryActivity.class);
                         startActivity(adminMainIntent);
                         finish();
                         break;

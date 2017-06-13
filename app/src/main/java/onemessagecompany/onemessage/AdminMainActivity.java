@@ -41,11 +41,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AdminMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, UsersAdapter.UserAdapterOnClickHandler {
+public class AdminMainActivity extends AppCompatActivity implements UsersAdapter.UserAdapterOnClickHandler {
 
 
-    private DrawerLayout mDrawerLayout;
-    private ActionBarDrawerToggle mToggle;
+
     private RecyclerView mRecyclerView;
     private UsersAdapter mUsersAdapter;
     private List<User> users ;
@@ -58,44 +57,21 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
 
         setContentView(R.layout.activity_admin_main);
 
-        IntentFilter intentFilter = new IntentFilter();
-        intentFilter.addAction("com.package.ACTION_LOGOUT");
-        registerReceiver(new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                //At this point you should start the login activity and finish this one
-                finish();
-            }
-        }, intentFilter);
+//        IntentFilter intentFilter = new IntentFilter();
+//        intentFilter.addAction("com.package.ACTION_LOGOUT");
+//        registerReceiver(new BroadcastReceiver() {
+//            @Override
+//            public void onReceive(Context context, Intent intent) {
+//                //At this point you should start the login activity and finish this one
+//                finish();
+//            }
+//        }, intentFilter);
 
 
-
-
-
-
-
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.admin_main_activity_drawer_layout);
-        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
-
-        mDrawerLayout.addDrawerListener(mToggle);
-        mToggle.syncState();
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        //Set Home Page User List Recycle View
-
-        mRecyclerView = (RecyclerView) findViewById(R.id.users_recycler_view);
-
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-
-        mRecyclerView.setLayoutManager(layoutManager);
-
-        mRecyclerView.setHasFixedSize(true);
+        initializeRecycler();
 
         getUsersList();
+
         final EditText searchView = (EditText) findViewById(R.id.contact_search);
         searchView.addTextChangedListener(new TextWatcher() {
             @Override
@@ -117,6 +93,17 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
 
     }
 
+public void initializeRecycler()
+{
+
+    mRecyclerView = (RecyclerView) findViewById(R.id.users_recycler_view);
+
+    LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+
+    mRecyclerView.setLayoutManager(layoutManager);
+
+    mRecyclerView.setHasFixedSize(true);
+}
 
     public void getUsersList() {
         UsersApi apiService =
@@ -144,86 +131,6 @@ public class AdminMainActivity extends AppCompatActivity implements NavigationVi
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if (mToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        int itemId = item.getItemId();
-
-        switch (itemId) {
-            /*
-             * When you click the reset menu item, we want to start all over
-             * and display the pretty gradient again. There are a few similar
-             * ways of doing this, with this one being the simplest of those
-             * ways. (in our humble opinion)
-             */
-            case R.id.action_send_message:
-                Intent intentSendMessage = new Intent(AdminMainActivity.this, SendMessageActivity.class);
-                startActivity(intentSendMessage);
-                finish();
-                return true;
-            case R.id.action_logout:
-                sharedData.setAccessToken(getApplicationContext(), null);
-                Intent intentLogin = new Intent(AdminMainActivity.this, LoginActivity.class);
-                startActivity(intentLogin);
-                finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        switch (id) {
-            case R.id.add_users:
-                Intent intentAddUser = new Intent(AdminMainActivity.this, AddUser.class);
-                startActivity(intentAddUser);
-                break;
-            case R.id.generate_key:
-                Intent intentGenerateKey = new Intent(AdminMainActivity.this, GenerateKey.class);
-                startActivity(intentGenerateKey);
-                break;
-            case R.id.config:
-                Intent intentConfig = new Intent(AdminMainActivity.this, ConfigActivity.class);
-                startActivity(intentConfig);
-                break;
-            case R.id.message:
-                Intent intentSendMessage = new Intent(AdminMainActivity.this, SendMessageActivity.class);
-                startActivity(intentSendMessage);
-                break;
-            case R.id.logout:
-                sharedData.setAccessToken(getApplicationContext(), null);
-                Intent intentLogin = new Intent(AdminMainActivity.this, LoginActivity.class);
-                startActivity(intentLogin);
-                finish();
-                break;
-            case R.id.chat_history:
-                Intent intentAdminMessages = new Intent(AdminMainActivity.this, AdminMessageHistoryActivity.class);
-                startActivity(intentAdminMessages);
-                break;
-            case R.id.notifications:
-                Intent intentForgetPassword = new Intent(AdminMainActivity.this, ForgetPasswordListActivity.class);
-                startActivity(intentForgetPassword);
-                break;
-
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.admin_main_activity_drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
 
     @Override
     public void onClick(User user) {

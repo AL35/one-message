@@ -6,9 +6,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -23,8 +29,10 @@ import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.CustomAlert;
 import onemessagecompany.onemessage.LoginActivity;
+import onemessagecompany.onemessage.Public.SendMessageActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.MyApplication;
+import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.Message;
 import onemessagecompany.onemessage.model.MessageResponse;
 import onemessagecompany.onemessage.rest.ApiClient;
@@ -33,7 +41,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AdminMessageHistoryActivity extends BaseActivity {
+public class AdminMessageHistoryActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private RecyclerView mRecyclerView;
     private AdminMessagsAdapter mAdminMessagsAdapter;
@@ -44,7 +52,8 @@ public class AdminMessageHistoryActivity extends BaseActivity {
     public TextView header;
     public int deletingPosition;
     private CustomAlert customAlert;
-
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mToggle;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +62,110 @@ public class AdminMessageHistoryActivity extends BaseActivity {
 
         setContentView(R.layout.activity_admin_message_history);
 
-        //Set Home Page User List Recycle View
+        initializeNavigation();
+        initializeRecycler();
+        getMessages();
+
+    }
+
+    public void initializeNavigation()
+    {
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.admin_chat_history_activity_drawer_layout);
+        mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
+
+        mDrawerLayout.addDrawerListener(mToggle);
+        mToggle.syncState();
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(AdminMessageHistoryActivity.this);
+
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if (mToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        int itemId = item.getItemId();
+
+        switch (itemId) {
+            /*
+             * When you click the reset menu item, we want to start all over
+             * and display the pretty gradient again. There are a few similar
+             * ways of doing this, with this one being the simplest of those
+             * ways. (in our humble opinion)
+             */
+            case R.id.action_send_message:
+                Intent intentSendMessage = new Intent(this, SendMessageActivity.class);
+                startActivity(intentSendMessage);
+                finish();
+                return true;
+            case R.id.action_logout:
+                sharedData.setAccessToken(getApplicationContext(), null);
+                Intent intentLogin = new Intent(this, LoginActivity.class);
+                intentLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                startActivity(intentLogin);
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @SuppressWarnings("StatementWithEmptyBody")
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+        switch (id) {
+            case R.id.add_users:
+                Intent intentAddUser = new Intent(AdminMessageHistoryActivity.this, AddUser.class);
+                startActivity(intentAddUser);
+                break;
+            case R.id.generate_key:
+                Intent intentGenerateKey = new Intent(this, GenerateKey.class);
+                startActivity(intentGenerateKey);
+                break;
+            case R.id.config:
+                Intent intentConfig = new Intent(this, ConfigActivity.class);
+                startActivity(intentConfig);
+                break;
+            case R.id.message:
+                Intent intentSendMessage = new Intent(this, SendMessageActivity.class);
+                startActivity(intentSendMessage);
+                break;
+            case R.id.logout:
+                sharedData.setAccessToken(getApplicationContext(), null);
+                Intent intentLogin = new Intent(this, LoginActivity.class);
+                startActivity(intentLogin);
+                finish();
+                break;
+            case R.id.contact_list:
+                Intent intentAdminMain = new Intent(this, AdminMainActivity.class);
+                startActivity(intentAdminMain);
+                break;
+            case R.id.notifications:
+                Intent intentForgetPassword = new Intent(this, ForgetPasswordListActivity.class);
+                startActivity(intentForgetPassword);
+                break;
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.admin_chat_history_activity_drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+    public void initializeRecycler() {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.messages_recycler_view);
 
@@ -63,10 +175,7 @@ public class AdminMessageHistoryActivity extends BaseActivity {
 
         mRecyclerView.setHasFixedSize(true);
 
-        getMessages();
-
     }
-
 
     public void getMessages() {
         SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
