@@ -97,10 +97,34 @@ public class ForgetPasswordListActivity extends BaseActivity implements ForgetPa
                 }
             }
 
+<<<<<<< Updated upstream
             @Override
             public void onFailure(Call<UsersResponse> call, Throwable t) {
 
             }
         });
     }
+=======
+    Call<UsersResponse> call = apiService.GetUserById(Id,"user");
+    call.enqueue(new Callback<UsersResponse>() {
+      @Override
+      public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response) {
+        int statusCode = response.code();
+        if (statusCode == 200) {
+          UsersResponse user = response.body();
+          Context context = ForgetPasswordListActivity.this;
+
+          Intent userDetails = new Intent(context, UserDetailsActivity.class);
+          userDetails.putExtra("userDetails", user.getUser());
+         startActivity(userDetails);
+        }
+      }
+
+      @Override
+      public void onFailure(Call<UsersResponse> call, Throwable t) {
+
+      }
+    });
+  }
+>>>>>>> Stashed changes
 }
