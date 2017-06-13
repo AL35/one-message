@@ -71,7 +71,6 @@ public class CustomAlert extends Dialog implements
         switch (v.getId()) {
             case R.id.customDialogOk:
                 myDialogListener.userSelectedAValue();
-                c.finish();
                 break;
             case R.id.customDialogCancel:
                 dismiss();

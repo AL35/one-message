@@ -89,6 +89,12 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
     }
 
     @Override
+    protected void onRestart() {
+        super.onRestart();
+        getMessages();
+    }
+
+    @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (mToggle.onOptionsItemSelected(item)) {
