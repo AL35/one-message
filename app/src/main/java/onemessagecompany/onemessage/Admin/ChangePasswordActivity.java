@@ -2,14 +2,13 @@ package onemessagecompany.onemessage.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.design.widget.TextInputLayout;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import onemessagecompany.onemessage.BaseActivity;
@@ -25,13 +24,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.content.Context.INPUT_METHOD_SERVICE;
-
 public class ChangePasswordActivity extends BaseActivity {
 
-    private EditText mPassword;
-    private EditText mConfirmPassword;
+    private TextInputLayout mPassword;
+    private TextInputLayout mConfirmPassword;
     private User user;
+    //private TextInputLayout userPassword;
+    //private TextInputLayout userConfirmPassword;
 
     private String password;
     private String confirmPassword;
@@ -55,8 +54,10 @@ public class ChangePasswordActivity extends BaseActivity {
 
         user = (User) getIntent().getSerializableExtra("userDetails");
 
-        mPassword = (EditText) findViewById(R.id.edit_password);
-        mConfirmPassword = (EditText) findViewById(R.id.edit_confirmPassword);
+        mPassword = (TextInputLayout) findViewById(R.id.edit_password);
+        mConfirmPassword = (TextInputLayout) findViewById(R.id.edit_confirmPassword);
+
+
 
         Button mRegisterButton = (Button) findViewById(R.id.change_password_button);
         mRegisterButton.setOnClickListener(new View.OnClickListener() {
@@ -64,8 +65,6 @@ public class ChangePasswordActivity extends BaseActivity {
             public void onClick(View view) {
                 if (validate())
                     ChangePasswordPost();
-                else
-                    Toast.makeText(getApplicationContext(), "Saved Failed", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -79,26 +78,32 @@ public class ChangePasswordActivity extends BaseActivity {
             mPassword.setError("Required & Should not be less than 6 characters");
             valid = false;
         }
+        else {
+            mPassword.setError(null);
+        }
         if (confirmPassword.isEmpty() || confirmPassword.length() < 6) {
             mConfirmPassword.setError("Required & Should not be less than 6 characters");
             valid = false;
         }
+        else{
+            mConfirmPassword.setError(null);
+        }
         if (!confirmPassword.equals(password)) {
-            mConfirmPassword.setError("Confirm & Password Should Be Similar");
+            mConfirmPassword.setError("Confirm & Password must be the same");
             valid = false;
         }
         return valid;
     }
 
     public void initialize() {
-        password = mPassword.getText().toString();
-        confirmPassword = mConfirmPassword.getText().toString();
+        password = mPassword.getEditText().getText().toString();
+        confirmPassword = mConfirmPassword.getEditText().getText().toString();
     }
 
     private void ChangePasswordPost() {
 
-        password = mPassword.getText().toString();
-        confirmPassword = mConfirmPassword.getText().toString();
+        password = mPassword.getEditText().getText().toString();
+        confirmPassword = mConfirmPassword.getEditText().getText().toString();
 
 
         UsersApi usersApi = ApiClient.getAuthorizedClient().create(UsersApi.class);
