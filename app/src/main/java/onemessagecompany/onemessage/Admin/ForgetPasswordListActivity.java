@@ -3,21 +3,14 @@ package onemessagecompany.onemessage.Admin;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
 
 import onemessagecompany.onemessage.Adapters.ForgetPasswordAdapter;
-import onemessagecompany.onemessage.Adapters.UsersAdapter;
 import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.model.Notification;
 import onemessagecompany.onemessage.model.NotificationResponse;
-import onemessagecompany.onemessage.model.User;
 import onemessagecompany.onemessage.model.UsersResponse;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.ForgetPasswordApi;
@@ -97,34 +90,10 @@ public class ForgetPasswordListActivity extends BaseActivity implements ForgetPa
                 }
             }
 
-<<<<<<< Updated upstream
             @Override
             public void onFailure(Call<UsersResponse> call, Throwable t) {
 
             }
         });
     }
-=======
-    Call<UsersResponse> call = apiService.GetUserById(Id,"user");
-    call.enqueue(new Callback<UsersResponse>() {
-      @Override
-      public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response) {
-        int statusCode = response.code();
-        if (statusCode == 200) {
-          UsersResponse user = response.body();
-          Context context = ForgetPasswordListActivity.this;
-
-          Intent userDetails = new Intent(context, UserDetailsActivity.class);
-          userDetails.putExtra("userDetails", user.getUser());
-         startActivity(userDetails);
-        }
-      }
-
-      @Override
-      public void onFailure(Call<UsersResponse> call, Throwable t) {
-
-      }
-    });
-  }
->>>>>>> Stashed changes
 }

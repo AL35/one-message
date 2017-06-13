@@ -134,7 +134,7 @@
 
     <string name="title_activity_change_password">ChangePasswordActivity</string>
     <string name="change_password">Change Password</string>
-    <string name="change_password_body">Change Password :</string>
+    <string name="change_password_body">Change Password</string>
 
 
     <string name="title_activity_send_message">Send message</string>
