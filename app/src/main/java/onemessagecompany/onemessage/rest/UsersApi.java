@@ -1,10 +1,10 @@
 package onemessagecompany.onemessage.rest;
 
+import onemessagecompany.onemessage.model.ChangeAdminPasswordRequest;
 import onemessagecompany.onemessage.model.ChangeUserPasswordRequest;
 import onemessagecompany.onemessage.model.DeleteAccountRequest;
 import onemessagecompany.onemessage.model.EditUserRequest;
 import onemessagecompany.onemessage.model.EditUserResponse;
-import onemessagecompany.onemessage.model.User;
 import onemessagecompany.onemessage.model.UsersResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -36,5 +36,9 @@ public interface UsersApi {
 
   @GET("/api/User/UserById")
   Call<UsersResponse> GetUserById(@Query("id") String id,@Query("type") String type);
+
+
+  @POST("/api/Account/ChangePassword")
+  Call<Void> ChangeAdminPassword(@Body ChangeAdminPasswordRequest changeAdminPasswordRequest);
 
 }

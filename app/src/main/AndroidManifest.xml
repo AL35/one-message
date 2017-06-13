@@ -162,7 +162,7 @@
             android:name=".Admin.ChangeAdminPasswordActivity"
             android:configChanges="orientation"
             android:windowSoftInputMode="stateHidden"
-            android:label="Change Password"
+            android:label="Admin"
             android:screenOrientation="portrait">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
