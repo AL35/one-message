@@ -163,7 +163,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 } else
                     Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
 
-                showProgress(false);
             }
 
             @Override
@@ -207,6 +206,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void navigateToMain() {
+        showProgress(false);
 
         if (!sharedData.getAccessToken(getApplicationContext()).isEmpty() && sharedData.getAccessToken(getApplicationContext()) != " ") {
             SendDeviceId();
