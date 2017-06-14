@@ -156,10 +156,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 if (statusCode == 200) {
                     TokenResponse tokenResponse = response.body();
                     setTokenAndRole(tokenResponse);
-                    if (sharedData.getRole(MyApplication.getContext()) != "Administrator" && sharedData.getFirstChangePassword(MyApplication.getContext()))
-                        checkFirstLoginChangePassword();
-                    else
+                    if (sharedData.getRole(MyApplication.getContext()).equals("Administrator"))
                         navigateToMain();
+                    else
+                        checkFirstLoginChangePassword();
                 } else
                     Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
 

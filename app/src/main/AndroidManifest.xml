@@ -22,11 +22,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
 
@@ -197,8 +193,20 @@
 
         <activity
             android:name=".Splash"
-            android:label="@string/title_activity_splash"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:label="One Message"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Public.ChangeUserActivityPassword"
+            android:label="Change Password" >
+
+        </activity>
     </application>
 
 </manifest>
