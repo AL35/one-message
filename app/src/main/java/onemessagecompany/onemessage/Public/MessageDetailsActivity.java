@@ -63,8 +63,7 @@ public class MessageDetailsActivity extends AppCompatActivity {
     btnDismiss.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
-        Intent publicMainLogin = new Intent(MessageDetailsActivity.this, PublicMainActivity.class);
-        startActivity(publicMainLogin);
+        finish();
       }
     });
 

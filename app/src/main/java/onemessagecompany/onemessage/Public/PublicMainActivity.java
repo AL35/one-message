@@ -1,6 +1,9 @@
 package onemessagecompany.onemessage.Public;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.NonNull;
@@ -22,9 +25,6 @@ import android.widget.Toast;
 import org.reactivestreams.Subscription;
 
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
-import java.util.concurrent.TimeUnit;
 
 import onemessagecompany.onemessage.Adapters.AdminMessagsAdapter;
 import onemessagecompany.onemessage.Adapters.UserMessageAdapter;
@@ -51,8 +51,7 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
     private ActionBarDrawerToggle mToggle;
     private RecyclerView mRecyclerView;
     private AdminMessagsAdapter mAdminMessagsAdapter;
-    private Timer timer;
-
+    private Context context = MyApplication.getContext();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,21 +86,12 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
 
         getMessages();
 
-        timer = new Timer();
-        TimerTask hourlyTask = new TimerTask() {
-            @Override
-            public void run() {
-                getMessages();
-            }
-        };
-        timer.schedule(hourlyTask, 0l, 10000);
     }
 
 
     @Override
     public void onDestroy() {
-        if (timer != null)
-            timer.cancel();
+
         super.onDestroy();
     }
 
@@ -136,8 +126,6 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
 
         switch (id) {
             case R.id.logout:
-                if (timer != null)
-                    timer.cancel();
                 sharedData.setAccessToken(getApplicationContext(), null);
                 Intent intentLogin = new Intent(PublicMainActivity.this, LoginActivity.class);
                 startActivity(intentLogin);
@@ -166,4 +154,34 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
         msgDetailsLogin.putExtra("message", message);
         startActivity(msgDetailsLogin);
     }
+
+
+    //register your activity onResume()
+    @Override
+    public void onResume() {
+        super.onResume();
+        context.registerReceiver(mMessageReceiver, new IntentFilter("unique_name"));
+    }
+
+    //Must unregister onPause()
+    @Override
+    protected void onPause() {
+        super.onPause();
+        context.unregisterReceiver(mMessageReceiver);
+    }
+
+
+    //This is the handler that will manager to process the broadcast intent
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            // Extract data included in the Intent
+            String message = intent.getStringExtra("message");
+            getMessages();
+            //do other stuff here
+        }
+    };
+
+
 }
