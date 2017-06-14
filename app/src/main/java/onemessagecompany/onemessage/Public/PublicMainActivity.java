@@ -163,6 +163,12 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
         context.registerReceiver(mMessageReceiver, new IntentFilter("unique_name"));
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        getMessages();
+    }
+
     //Must unregister onPause()
     @Override
     protected void onPause() {
