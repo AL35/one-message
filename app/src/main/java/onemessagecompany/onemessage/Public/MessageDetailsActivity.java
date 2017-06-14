@@ -97,8 +97,7 @@ public class MessageDetailsActivity extends AppCompatActivity {
         int statusCode = response.code();
         if (statusCode == 200) {
           Toast.makeText(getApplicationContext(), "Message Deleted", Toast.LENGTH_LONG).show();
-          Intent publicMainLogin = new Intent(MessageDetailsActivity.this, PublicMainActivity.class);
-          startActivity(publicMainLogin);
+          finish();
         }
         else
         {
