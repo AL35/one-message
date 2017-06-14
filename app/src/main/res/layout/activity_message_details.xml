@@ -24,29 +24,36 @@
         android:orientation="vertical"
         android:weightSum="1">
 
-      <LinearLayout
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:orientation="horizontal"
-
-          android:layout_marginBottom="@dimen/pad_10dp">
-
-
-        <ImageView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/om_message" />
+            android:orientation="horizontal"
+            android:background="@drawable/editext_bg_gray"
+            android:backgroundTint="#F0E68C"
+            android:layout_marginLeft="@dimen/pad_20dp"
+            android:layout_marginRight="@dimen/pad_20dp"
+            android:layout_marginBottom="@dimen/pad_10dp">
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Message"
-            android:layout_marginTop="@dimen/pad_5dp"
-            android:layout_marginLeft="@dimen/pad_5dp"
-            android:textColor="@color/colorMain"
-            android:textSize="@dimen/pad_20dp" />
-      </LinearLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/om_password"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/pad_5dp"
+                android:paddingRight="@dimen/pad_5dp"
+                android:paddingBottom="@dimen/pad_5dp"
+                android:textAlignment="center"
+                android:text="Messages you send to this chat are secured with end-to-end encryption"
+                android:textSize="12dp"
+                android:textColor="@color/colorMain"
+                >
+            </TextView>
+
+        </LinearLayout>
+
 
 <LinearLayout
     android:layout_width="wrap_content"
