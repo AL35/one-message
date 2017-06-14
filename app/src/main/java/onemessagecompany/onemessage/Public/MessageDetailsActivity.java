@@ -13,7 +13,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.TimeZone;
 
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.model.Message;
@@ -25,10 +29,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static onemessagecompany.onemessage.R.id.v1_username;
+
 public class MessageDetailsActivity extends AppCompatActivity {
 
   private Message message;
   private EditText txtReply;
+  private TextView username;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -47,12 +54,35 @@ public class MessageDetailsActivity extends AppCompatActivity {
       }
     });
 
+    findViewById(R.id.sv_panel).setOnTouchListener(new View.OnTouchListener() {
+      @Override
+      public boolean onTouch(View v, MotionEvent event) {
+        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        return true;
+      }
+    });
+
     message = (Message) getIntent().getSerializableExtra("message");
 
     TextView txtMsg = (TextView) findViewById(R.id.txt_current_Message);
     txtReply = (EditText) findViewById(R.id.txt_sendMessage);
 
     txtMsg.setText(message.getBody());
+
+    username = (TextView) findViewById(v1_username);
+
+    try {
+      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+      dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+      Date date = dateFormat.parse(message.getRV());
+      SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd HH:mm");
+      String dateTime = dateFormatTime.format(date);
+      username.setText( "admin, " + dateTime);
+
+    }//end try
+    catch (ParseException ex) {
+    }//end catch
 
     seenMessage();
 

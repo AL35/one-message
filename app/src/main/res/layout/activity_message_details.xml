@@ -9,16 +9,18 @@
   android:paddingTop="@dimen/activity_vertical_margin"
   tools:context="onemessagecompany.onemessage.Public.SendMessageActivity">
 
-  <ScrollView
-      android:id="@+id/message_details_form"
-      android:layout_width="match_parent"
-      android:layout_height="match_parent">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/message_details_form">
 
 
     <LinearLayout
         android:id="@+id/email_login_form"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -39,17 +41,20 @@
             android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Message :"
+            android:text="Message"
             android:layout_marginTop="@dimen/pad_5dp"
             android:layout_marginLeft="@dimen/pad_5dp"
             android:textColor="@color/colorMain"
             android:textSize="@dimen/pad_20dp" />
       </LinearLayout>
 
-
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
       <LinearLayout
           android:id="@+id/v1_admin"
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:background="@drawable/chat_bubble_gray"
           android:gravity="left|top"
@@ -71,114 +76,104 @@
             />
 
 
+
       </LinearLayout>
 
+      <TextView
+          android:id="@+id/v1_username"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="admin"
+          android:layout_gravity="end"
+          android:layout_marginBottom="0dp"
+          android:layout_marginLeft="@dimen/pad_15dp"
+          android:textColor="@color/colorGrey"
+          android:textSize="@dimen/txt_14sp"
+          android:paddingRight="@dimen/pad_10dp"
+          android:layout_alignRight="@+id/v1"
+          android:layout_below="@+id/v1"
+          android:layout_marginRight="@dimen/pad_10dp"/>
 
+</LinearLayout>
       <LinearLayout
           android:id="@+id/message_actions_login_form"
-          android:layout_width="match_parent"
           android:layout_height="wrap_content"
+          android:layout_width="match_parent"
           android:layout_marginTop="@dimen/pad_15dp"
-          android:orientation="vertical"
-          android:weightSum="1">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/pad_10dp">
-
-          <ImageView
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_marginLeft="@dimen/pad_5dp"
-              android:src="@drawable/om_send" />
-
-          <TextView
-              android:id="@+id/txt_user_reply"
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:textColor="@color/colorMain"
-              android:layout_marginLeft="@dimen/pad_10dp"
-              android:text="Reply :"
-              android:textSize="@dimen/pad_20dp" />
-        </LinearLayout>
+          android:orientation="horizontal"
+          android:weightSum="2">
 
 
-        <LinearLayout
-            android:id="@+id/v1_reply"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/pad_10dp"
-            android:gravity="left|top"
-            android:backgroundTint="@color/colorGreyLight"
 
-             >
 
-          <EditText
-              android:paddingTop="@dimen/pad_10dp"
-              android:textColor="@color/black"
-              android:textSize="@dimen/txt_16sp"
-              android:layout_margin="@dimen/pad_5dp"
-              android:id="@+id/txt_sendMessage"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_weight="1"
-              android:hint="Send a reply"
-              android:maxLines="2"
-              android:textColorHint="@color/colorMain"
-              />
-
-          <ImageButton
-              android:id="@+id/btnSendReply"
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_weight="5"
-              android:layout_gravity="center"
-              android:padding="4dp"
-              android:tint="@color/black"
-              android:background="@color/transparent"
-              android:src="@android:drawable/ic_menu_send" />
-        </LinearLayout>
-
-        <!--Button
-            android:id="@+id/btnSendReply"
-            style="@style/btn_white_large"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_gravity="center"
-            android:background="@color/colorMain"
-            android:layout_marginTop="@dimen/pad_15dp"
-            android:layout_weight="1"
-            android:text="Reply and delete" /-->
 
         <Button
             android:id="@+id/btnDismiss"
             style="@style/btn_white_large"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:background="@color/colorMain"
             android:layout_height="42dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/pad_15dp"
+            android:layout_margin="@dimen/pad_5dp"
             android:layout_weight="1"
             android:text="Dismiss" />
 
         <Button
             android:id="@+id/btnDeleteMsg"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:background="@color/red"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="@dimen/pad_18dp"
             android:layout_height="42dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/pad_15dp"
+            android:layout_margin="@dimen/pad_5dp"
             android:layout_weight="1"
-            android:text="Confirm Message" />
+            android:text="Confirm " />
 
 
       </LinearLayout>
-    </LinearLayout>
-  </ScrollView>
+      <ScrollView
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:id="@+id/sv_panel"
+          android:focusableInTouchMode="true">
+      <LinearLayout
+          android:id="@+id/v1_reply"
+          android:layout_width="match_parent"
+          android:layout_height="match_parent"
+          android:layout_gravity="bottom"
+          android:layout_marginLeft="@dimen/pad_10dp"
+          android:backgroundTint="@color/colorGreyLight"
 
+          >
+
+        <EditText
+            android:paddingTop="@dimen/pad_10dp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/txt_16sp"
+            android:layout_margin="@dimen/pad_5dp"
+            android:id="@+id/txt_sendMessage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="Send a reply"
+            android:maxLines="2"
+            android:textColorHint="@color/colorMain"
+            android:layout_gravity="bottom"
+            />
+
+        <ImageButton
+            android:id="@+id/btnSendReply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="@dimen/pad_15dp"
+            android:layout_weight="5"
+            android:padding="4dp"
+            android:tint="@color/black"
+            android:background="@color/transparent"
+            android:src="@android:drawable/ic_menu_send" />
+      </LinearLayout>
+      </ScrollView>
+    </LinearLayout>
+</RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

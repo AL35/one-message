@@ -61,14 +61,14 @@ public class AddUser extends BaseActivity {
             }
         });
 
-        findViewById(R.id.email_login_form).setOnTouchListener(new View.OnTouchListener() {
+        /*findViewById(R.id.email_login_form).setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 return true;
             }
-        });
+        });*/
 
         mFirstName = (TextInputLayout) findViewById(R.id.register_FirstName);
         mLastName = (TextInputLayout) findViewById(R.id.register_LastName);
