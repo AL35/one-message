@@ -60,7 +60,6 @@
           android:gravity="left|top"
           android:paddingTop="@dimen/pad_10dp"
           android:orientation="vertical"
-          android:paddingLeft="@dimen/pad_chat_item"
           android:paddingBottom="@dimen/pad_10dp">
 
         <TextView
@@ -68,11 +67,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:layout_gravity="end"
             android:textColor="@color/main_color_gray_dk"
             android:textSize="@dimen/txt_15sp"
-            android:paddingLeft="@dimen/pad_15dp"
             android:enabled="false"
             android:paddingRight="@dimen/pad_10dp"
+            android:paddingLeft="50dp"
             />
 
 
@@ -89,7 +89,6 @@
           android:layout_marginLeft="@dimen/pad_15dp"
           android:textColor="@color/colorGrey"
           android:textSize="@dimen/txt_14sp"
-          android:paddingRight="@dimen/pad_10dp"
           android:layout_alignRight="@+id/v1"
           android:layout_below="@+id/v1"
           android:layout_marginRight="@dimen/pad_10dp"/>
