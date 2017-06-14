@@ -150,6 +150,7 @@
     <string name="title_activity_forget_password">Forget Password</string>
     <string name="change_password_button">Change Password</string>
     <string name="title_activity_change_admin_password">ChangeAdminPasswordActivity</string>
+    <string name="title_activity_change_user_password">ChangeUserPassword</string>
 
 
 </resources>

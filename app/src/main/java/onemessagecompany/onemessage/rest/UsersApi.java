@@ -18,7 +18,7 @@ import retrofit2.http.Query;
 
 public interface UsersApi {
 
-  @GET("/api/User")
+  @GET("/api/User/UsersList")
   Call<UsersResponse> GetUsersList();
 
 

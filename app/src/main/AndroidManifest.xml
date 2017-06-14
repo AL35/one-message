@@ -21,13 +21,11 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity
             android:name=".LoginActivity"
@@ -36,27 +34,24 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
-
         <activity
             android:name=".AdminMainActivity"
-            android:label="@string/title_activity_admin_main" >
+            android:label="@string/title_activity_admin_main">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Admin.AdminMessageHistoryActivity" />
         </activity>
-
         <activity
             android:name=".Admin.AddUser"
             android:configChanges="orientation"
-            android:windowSoftInputMode="stateHidden"
             android:label="@string/title_activity_add_user"
             android:parentActivityName=".Admin.AdminMessageHistoryActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Admin.AdminMessageHistoryActivity" />
         </activity>
-
         <activity
             android:name=".Admin.GenerateKey"
             android:configChanges="orientation"
@@ -128,17 +123,17 @@
             android:name=".Public.PublicMainActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_publick_main"
-            android:screenOrientation="portrait" >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="OPEN_ACTIVITY_1" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
         <activity
             android:name=".Admin.AdminMessageHistoryActivity"
             android:configChanges="orientation"
-            android:label="@string/title_activity_admin_message_history">
-        </activity>
+            android:label="@string/title_activity_admin_message_history"></activity>
         <activity
             android:name=".Admin.RepliesActivity"
             android:configChanges="orientation"
@@ -151,9 +146,9 @@
         <activity
             android:name=".Public.MessageDetailsActivity"
             android:configChanges="orientation"
-            android:windowSoftInputMode="stateHidden"
             android:label="@string/title_activity_message_details"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Public.PublicMainActivity" />
@@ -161,9 +156,9 @@
         <activity
             android:name=".Admin.ChangeAdminPasswordActivity"
             android:configChanges="orientation"
-            android:windowSoftInputMode="stateHidden"
             android:label="Admin"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Admin.AdminMessageHistoryActivity" />
@@ -189,15 +184,18 @@
 
         <service android:name=".rest.FirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".rest.FirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
 
-        <service android:name=".rest.FirebaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-            </intent-filter>
-        </service>
+        <activity
+            android:name=".Public.ChangeUserActivityPassword"
+            android:label="@string/title_activity_change_user_password"/>
     </application>
 
 </manifest>

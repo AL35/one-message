@@ -84,7 +84,21 @@ public final  class sharedData {
     return mySharedPreferences.getString("role", " ");
   }
 
+  public static void setFirstChangePassword(Context context, boolean passwordChanged) {
 
+    final int mode = context.MODE_PRIVATE;
+    mySharedPreferences = context.getSharedPreferences("sharedState", mode);
+    SharedPreferences.Editor myEditor = mySharedPreferences.edit();
+    myEditor.putBoolean("passwordChanged", passwordChanged);
+    myEditor.commit();
+
+  }
+
+  public static boolean getFirstChangePassword(Context context) {
+    final int mode = context.MODE_PRIVATE;
+    mySharedPreferences = context.getSharedPreferences("sharedState", mode);
+    return mySharedPreferences.getBoolean("passwordChanged", false);
+  }
 
 
 

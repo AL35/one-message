@@ -51,21 +51,26 @@ public class ActivateApp extends AppCompatActivity {
 
         if (sharedData.getFirstActivation(getApplicationContext())) {
             if (!sharedData.getAccessToken(getApplicationContext()).isEmpty() && sharedData.getAccessToken(getApplicationContext()) != " ") {
+               if(sharedData.getFirstChangePassword(MyApplication.getContext()))
+               {
+                   Intent changeUserPassIntent = new Intent(ActivateApp.this, ChangeUserActivityPassword.class);
+                   startActivity(changeUserPassIntent);
+                   finish();
+               }
+                else {
+                   switch (sharedData.getRole(MyApplication.getContext())) {
+                       case "Administrator":
+                           Intent adminMainIntent = new Intent(getApplicationContext(), AdminMessageHistoryActivity.class);
+                           startActivity(adminMainIntent);
+                           finish();
+                           break;
+                       default:
+                           Intent publicMainIntent = new Intent(getApplicationContext(), PublicMainActivity.class);
+                           startActivity(publicMainIntent);
+                           finish();
+                   }
 
-
-                switch (sharedData.getRole(MyApplication.getContext())) {
-                    case "Administrator":
-                        Intent adminMainIntent = new Intent(getApplicationContext(), AdminMessageHistoryActivity.class);
-                        startActivity(adminMainIntent);
-                        finish();
-                        break;
-                    default:
-                        Intent publicMainIntent = new Intent(getApplicationContext(), PublicMainActivity.class);
-                        startActivity(publicMainIntent);
-                        finish();
-                }
-
-
+               }
             } else {
                 Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
                 startActivity(loginIntent);

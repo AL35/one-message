@@ -34,13 +34,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 import onemessagecompany.onemessage.Admin.AdminMessageHistoryActivity;
+import onemessagecompany.onemessage.Admin.ChangeAdminPasswordActivity;
+import onemessagecompany.onemessage.Public.ChangeUserActivityPassword;
 import onemessagecompany.onemessage.Public.ForgetPasswordActivity;
 import onemessagecompany.onemessage.Public.PublicMainActivity;
 import onemessagecompany.onemessage.data.MyApplication;
 import onemessagecompany.onemessage.data.sharedData;
+import onemessagecompany.onemessage.model.BoolResponse;
 import onemessagecompany.onemessage.model.DeviceIdRequest;
 import onemessagecompany.onemessage.model.TokenResponse;
 import onemessagecompany.onemessage.rest.ApiClient;
+import onemessagecompany.onemessage.rest.CheckFirstTimeLoginApi;
 import onemessagecompany.onemessage.rest.LoginApi;
 import onemessagecompany.onemessage.rest.SendDeviceIdApi;
 import onemessagecompany.onemessage.rest.SendMessageApi;
@@ -53,34 +57,19 @@ import static onemessagecompany.onemessage.R.id.email_login_form;
 import static onemessagecompany.onemessage.R.id.txt_password_login;
 import static onemessagecompany.onemessage.R.id.txt_user_name_login;
 
-/**
- * A login screen that offers login via email/password.
- */
+
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
-    /**
-     * Id to identity READ_CONTACTS permission request.
-     */
     private static final int REQUEST_READ_CONTACTS = 0;
     private LoginApi loginApi;
-    /**
-     * A dummy authentication store containing known user names and passwords.
-     * TODO: remove after connecting to a real authentication system.
-     */
-    private static final String[] DUMMY_CREDENTIALS = new String[]{
-            "foo@example.com:hello", "bar@example.com:world"
-    };
-    /**
-     * Keep track of the login task to ensure we can cancel it if requested.
-     */
-    private UserLoginTask mAuthTask = null;
 
-    // UI references.
+
     private EditText mEmailView;
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
     private TextView mForgot_password;
+    boolean isFirstLogin = false;
 
 
     @Override
@@ -132,13 +121,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
-    private void populateAutoComplete() {
-        if (!mayRequestContacts()) {
-            return;
-        }
-
-        getLoaderManager().initLoader(0, null, this);
-    }
 
     private boolean mayRequestContacts() {
         if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
@@ -162,77 +144,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         return false;
     }
 
-    /**
-     * Callback received when a permissions request has been completed.
-     */
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == REQUEST_READ_CONTACTS) {
-            if (grantResults.length == 1 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                populateAutoComplete();
-            }
-        }
-    }
-
-
-    /**
-     * Attempts to sign in or register the account specified by the login form.
-     * If there are form errors (invalid email, missing fields, etc.), the
-     * errors are presented and no actual login attempt is made.
-     */
-    private void attemptLogin() {
-        if (mAuthTask != null) {
-            return;
-        }
-
-        // Reset errors.
-        //   mEmailView.setError(null);
-        //  mPasswordView.setError(null);
-
-        // Store values at the time of the login attempt.
-//        mEmailView = (EditText)findViewById(R.id.email);
-//        mPasswordView = (EditText)findViewById(R.id.password);
-//
-//      String email=mEmailView.getText().toString();
-//      String password=mPasswordView.getText().toString();
-//
-//
-//        boolean cancel = false;
-//        View focusView = null;
-//
-//        // Check for a valid password, if the user entered one.
-//        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
-//            mPasswordView.setError(getString(R.string.error_invalid_password));
-//            focusView = mPasswordView;
-//            cancel = true;
-//        }
-//
-//        // Check for a valid email address.
-//        if (TextUtils.isEmpty(email)) {
-//            mEmailView.setError(getString(R.string.error_field_required));
-//            focusView = mEmailView;
-//            cancel = true;
-//        }
-//
-//        if (cancel) {
-//            // There was an error; don't attempt login and focus the first
-//            // form field with an error.
-//            focusView.requestFocus();
-//        } else {
-        // Show a progress spinner, and kick off a background task to
-        // perform the user login attempt.
-//            showProgress(true);
-//          TokenRequest tokenRequest =new TokenRequest();
-//
-//          tokenRequest.setUsername(email);
-//          tokenRequest.setPassword(password);
-//          tokenRequest.setGrant_type("password");
-
-        //  mAuthTask = new UserLoginTask(email, password);
-        //   mAuthTask.execute((Void) null);
-//        }
-    }
 
     private void LoginPost(String username, String password) {
         showProgress(true);
@@ -244,7 +155,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                 int statusCode = response.code();
                 if (statusCode == 200) {
                     TokenResponse tokenResponse = response.body();
-                    navigateToMain(tokenResponse);
+                    setTokenAndRole(tokenResponse);
+                    if (sharedData.getRole(MyApplication.getContext()) != "Administrator" && sharedData.getFirstChangePassword(MyApplication.getContext()))
+                        checkFirstLoginChangePassword();
+                    else
+                        navigateToMain();
                 } else
                     Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
 
@@ -260,15 +175,42 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     }
 
-    private void navigateToMain(TokenResponse tokenResponse) {
+    public void checkFirstLoginChangePassword() {
 
-        if (!tokenResponse.getAccess_token().isEmpty()) {
+        CheckFirstTimeLoginApi checkFirstTimeLoginApi = ApiClient.getAuthorizedClient().create(CheckFirstTimeLoginApi.class);
+        checkFirstTimeLoginApi.CheckFirstTimePasswordChanged().enqueue(new Callback<BoolResponse>() {
+            @Override
+            public void onResponse(Call<BoolResponse> call, Response<BoolResponse> response) {
+                int statusCode = response.code();
+                if (statusCode == 200) {
+                    isFirstLogin = response.body().isResponse();
+                    if (isFirstLogin) {
+                        Intent changeUserPassIntent = new Intent(LoginActivity.this, ChangeUserActivityPassword.class);
+                        startActivity(changeUserPassIntent);
+                        finish();
+                    } else
+                        navigateToMain();
+                }
+            }
 
-            sharedData.setAccessToken(getApplicationContext(), tokenResponse.getAccess_token());
-            sharedData.setRole(MyApplication.getContext(), tokenResponse.getRole());
+            @Override
+            public void onFailure(Call<BoolResponse> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
+                showProgress(false);
+            }
+        });
+    }
+
+    public void setTokenAndRole(TokenResponse tokenResponse) {
+        sharedData.setAccessToken(getApplicationContext(), tokenResponse.getAccess_token());
+        sharedData.setRole(MyApplication.getContext(), tokenResponse.getRole());
+    }
+
+    private void navigateToMain() {
+
+        if (!sharedData.getAccessToken(getApplicationContext()).isEmpty() && sharedData.getAccessToken(getApplicationContext()) != " ") {
             SendDeviceId();
-
-            switch (tokenResponse.getRole()) {
+            switch (sharedData.getRole(this)) {
                 case "Administrator":
                     Intent adminMainIntent = new Intent(LoginActivity.this, AdminMessageHistoryActivity.class);
                     startActivity(adminMainIntent);
@@ -294,10 +236,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     public void SendDeviceId() {
-       String token= FirebaseInstanceId.getInstance().getToken();
+        String token = FirebaseInstanceId.getInstance().getToken();
 
         SendDeviceIdApi sendMessageApi = ApiClient.getAuthorizedClient().create(SendDeviceIdApi.class);
-        DeviceIdRequest deviceIdRequest =new DeviceIdRequest();
+        DeviceIdRequest deviceIdRequest = new DeviceIdRequest();
 
         deviceIdRequest.setDeviceId(token);
 
@@ -409,48 +351,5 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         int IS_PRIMARY = 1;
     }
 
-    /**
-     * Represents an asynchronous login/registration task used to authenticate
-     * the user.
-     */
-    public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-
-        private final String mEmail;
-        private final String mPassword;
-
-        UserLoginTask(String email, String password) {
-            mEmail = email;
-            mPassword = password;
-        }
-
-        @Override
-        protected Boolean doInBackground(Void... params) {
-            // TODO: attempt authentication against a network service.
-
-
-            // TODO: register the new account here.
-            return true;
-        }
-
-        @Override
-        protected void onPostExecute(final Boolean success) {
-            mAuthTask = null;
-            showProgress(false);
-
-            if (success) {
-                Intent i = new Intent(LoginActivity.this, AdminMainActivity.class);
-                startActivity(i);
-            } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
-            }
-        }
-
-        @Override
-        protected void onCancelled() {
-            mAuthTask = null;
-            showProgress(false);
-        }
-    }
 }
 
