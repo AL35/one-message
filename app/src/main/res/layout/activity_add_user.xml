@@ -71,7 +71,9 @@
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Username"/>
+                    android:hint="Username"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
             </android.support.design.widget.TextInputLayout>
 
 
@@ -92,7 +94,9 @@
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="First Name"/>
+                    android:hint="First Name"
+                    android:maxLines="1"
+                    android:singleLine="true"/>
             </android.support.design.widget.TextInputLayout>
 
 
@@ -112,7 +116,9 @@
                 <android.support.design.widget.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Last Name"/>
+                    android:hint="Last Name"
+                    android:singleLine="true"
+                    android:maxLines="1"/>
             </android.support.design.widget.TextInputLayout>
 
 
@@ -133,7 +139,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password"
-                    android:inputType="textPassword"/>
+                    android:singleLine="true"
+                    android:inputType="textPassword"
+                    android:maxLines="1"/>
             </android.support.design.widget.TextInputLayout>
 
 
@@ -155,6 +163,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Confirm Password"
+                    android:singleLine="true"
                     android:inputType="textPassword"
                     android:maxLines="1"/>
             </android.support.design.widget.TextInputLayout>
@@ -164,9 +173,11 @@
             <Switch
                 android:id="@+id/add_user_switch"
                 android:text="Active User  "
+                android:focusable="false"
                 android:layout_marginTop="@dimen/pad_10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textIsSelectable="false"
                 android:textColor="@color/colorMain"
                 android:layout_marginLeft="@dimen/pad_5dp"
                 android:textSize="17dp"

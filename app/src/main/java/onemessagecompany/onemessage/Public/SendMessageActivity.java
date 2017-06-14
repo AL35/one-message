@@ -70,14 +70,12 @@ public class SendMessageActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
-
                 String msg = txtMsg.getText().toString();
                 if (!msg.isEmpty())
                     sendMessage();
                 else
-                    Toast.makeText(getApplicationContext(), "Message Required", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Type a message first", Toast.LENGTH_LONG).show();
+
             }
         });
     }

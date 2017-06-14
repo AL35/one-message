@@ -86,6 +86,9 @@ public class ChangeAdminPasswordActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Password Changed Successfully", Toast.LENGTH_LONG).show();
                     finish() ;
                 }
+                else{
+                    Toast.makeText(getApplicationContext(), "Incorrect password", Toast.LENGTH_LONG).show();
+                }
             }
 
             @Override
