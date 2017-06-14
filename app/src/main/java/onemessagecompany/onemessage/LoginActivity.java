@@ -206,8 +206,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     }
 
     private void navigateToMain() {
-        showProgress(false);
-
         if (!sharedData.getAccessToken(getApplicationContext()).isEmpty() && sharedData.getAccessToken(getApplicationContext()) != " ") {
             SendDeviceId();
             switch (sharedData.getRole(this)) {
