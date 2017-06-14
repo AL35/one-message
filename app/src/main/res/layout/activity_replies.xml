@@ -100,7 +100,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/pad_10dp">
+        android:layout_marginTop="@dimen/pad_5dp">
 
       <android.support.v7.widget.RecyclerView
           android:id="@+id/replies_recycler_view"
