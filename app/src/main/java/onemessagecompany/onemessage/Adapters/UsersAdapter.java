@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -47,11 +48,13 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserAdapterV
   public class UserAdapterViewHolder extends RecyclerView.ViewHolder implements OnClickListener{
     TextView firstLastName;
     TextView userName;
+    ImageView userImg;
 
     public UserAdapterViewHolder(View view) {
       super(view);
       firstLastName = (TextView) view.findViewById(R.id.item_list_fistlastname);
       userName = (TextView) view.findViewById(R.id.item_list_username);
+      userImg = (ImageView) view.findViewById(R.id.img_user);
 
       view.setOnClickListener(this);
 
@@ -69,16 +72,6 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserAdapterV
   @Override
   public UsersAdapter.UserAdapterViewHolder onCreateViewHolder(ViewGroup parent,int viewType) {
 
-//    Context context = parent.getContext();
-//    int layoutIdForListItem = R.layout.list_item_user;
-//    LayoutInflater inflater = LayoutInflater.from(context);
-//    boolean shouldAttachToParentImmediately = false;
-//
-//    View view = inflater.inflate(layoutIdForListItem, parent, shouldAttachToParentImmediately);
-//    return new UserAdapterViewHolder(view);
-
-
-
     View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
     return new UserAdapterViewHolder(view);
   }
@@ -89,6 +82,11 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserAdapterV
     User user = users.get(position);
     holder.firstLastName.setText(user.getFirstName() + " " + user.getLastName());
     holder.userName.setText(user.getUserName());
+
+    if(user.getIsEnabled() == false)
+    {
+        holder.userImg.setImageResource(R.drawable.om_disabled_user);
+    }
 
   }
 
