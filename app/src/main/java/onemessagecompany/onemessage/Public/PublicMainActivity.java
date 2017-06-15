@@ -184,7 +184,8 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
 
             // Extract data included in the Intent
             String message = intent.getStringExtra("message");
-            getMessages();
+            if (message.equals("User"))
+                getMessages();
             //do other stuff here
         }
     };

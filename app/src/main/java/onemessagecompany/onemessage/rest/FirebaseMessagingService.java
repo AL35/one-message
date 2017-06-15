@@ -15,7 +15,9 @@ import java.util.Map;
 import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.Public.PublicMainActivity;
 import onemessagecompany.onemessage.R;
+import onemessagecompany.onemessage.data.MyApplication;
 import onemessagecompany.onemessage.data.sharedData;
+
 /**
  * Created by 52Solution on 11/06/2017.
  */
@@ -25,34 +27,45 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-        if(remoteMessage.getData()!=null ){
+        if (remoteMessage.getData() != null) {
             Map<String, String> data = remoteMessage.getData();
             String title = data.get("title");
             String body = data.get("body");
-
-            sendNotification(title,body);
+            String isDeleted = data.get("deleted");
+            if (isDeleted.equals("true") && sharedData.getRole(MyApplication.getContext()).equals("User"))
+                sendDeleteNotification();
+            else
+                sendNotification(title, body);
         }
     }
 
-    private void sendNotification(String title ,String body) {
+    private void sendDeleteNotification() {
+        updateUserMainActivity(getApplicationContext(), "User");
+    }
+
+    private void sendNotification(String title, String body) {
         Intent intent = new Intent(this, PublicMainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent =PendingIntent.getActivity(this,0,intent,PendingIntent.FLAG_ONE_SHOT);
-        Uri notificationSound= RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-        NotificationCompat.Builder notificationBuilder= new NotificationCompat.Builder(this)
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setAutoCancel(true)
                 .setSound(notificationSound)
                 .setContentIntent(pendingIntent);
-        NotificationManager notificationManager =(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0,notificationBuilder.build());
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(0, notificationBuilder.build());
 
-        updateMyActivity(getApplicationContext(),"Hi");
+        if (sharedData.getRole(MyApplication.getContext()).equals("Administrator"))
+            updateUserMainActivity(getApplicationContext(), "Administrator");
+        else
+            updateUserMainActivity(getApplicationContext(), "User");
+
     }
 
-    static void updateMyActivity(Context context, String message) {
+    static void updateUserMainActivity(Context context, String message) {
 
         Intent intent = new Intent("unique_name");
 

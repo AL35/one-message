@@ -219,8 +219,10 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                     startActivity(publicMainPublic);
                     finish();
             }
-        } else
+        } else {
+            showProgress(false);
             Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
+        }
     }
 
     private boolean isEmailValid(String email) {

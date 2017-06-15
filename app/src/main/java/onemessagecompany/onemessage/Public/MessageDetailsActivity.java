@@ -33,166 +33,161 @@ import static onemessagecompany.onemessage.R.id.v1_username;
 
 public class MessageDetailsActivity extends AppCompatActivity {
 
-  private Message message;
-  private EditText txtReply;
-  private TextView username;
+    private Message message;
+    private EditText txtReply;
+    private TextView username;
 
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-      WindowManager.LayoutParams.FLAG_SECURE);
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE);
 
-    setContentView(R.layout.activity_message_details);
+        setContentView(R.layout.activity_message_details);
 
-    findViewById(R.id.message_details_form).setOnTouchListener(new View.OnTouchListener() {
-      @Override
-      public boolean onTouch(View v, MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        return true;
-      }
-    });
+        findViewById(R.id.message_details_form).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                return true;
+            }
+        });
 
-    findViewById(R.id.sv_panel).setOnTouchListener(new View.OnTouchListener() {
-      @Override
-      public boolean onTouch(View v, MotionEvent event) {
-        InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        return true;
-      }
-    });
+        findViewById(R.id.sv_panel).setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                return true;
+            }
+        });
 
-    message = (Message) getIntent().getSerializableExtra("message");
+        message = (Message) getIntent().getSerializableExtra("message");
 
-    TextView txtMsg = (TextView) findViewById(R.id.txt_current_Message);
-    txtReply = (EditText) findViewById(R.id.txt_sendMessage);
+        TextView txtMsg = (TextView) findViewById(R.id.txt_current_Message);
+        txtReply = (EditText) findViewById(R.id.txt_sendMessage);
 
-    txtMsg.setText(message.getBody());
+        txtMsg.setText(message.getBody());
 
-    username = (TextView) findViewById(v1_username);
+        username = (TextView) findViewById(v1_username);
 
-    try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-      dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-      Date date = dateFormat.parse(message.getRV());
-      SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd HH:mm");
-      String dateTime = dateFormatTime.format(date);
-      username.setText( "admin, " + dateTime);
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+            Date date = dateFormat.parse(message.getRV());
+            SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd HH:mm");
+            String dateTime = dateFormatTime.format(date);
+            username.setText("admin, " + dateTime);
 
-    }//end try
-    catch (ParseException ex) {
-    }//end catch
+        }//end try
+        catch (ParseException ex) {
+        }//end catch
 
-    seenMessage();
+        seenMessage();
 
-    ImageButton btnSendReply = (ImageButton) findViewById(R.id.btnSendReply);
-    Button btnDelete = (Button) findViewById(R.id.btnDeleteMsg);
-    Button btnDismiss = (Button) findViewById(R.id.btnDismiss);
+        ImageButton btnSendReply = (ImageButton) findViewById(R.id.btnSendReply);
+        Button btnDelete = (Button) findViewById(R.id.btnDeleteMsg);
+        Button btnDismiss = (Button) findViewById(R.id.btnDismiss);
 
-    btnDismiss.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        finish();
-      }
-    });
-
-
-    btnDelete.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        deleteMessage();
-      }
-    });
+        btnDismiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
-    btnSendReply.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        String reply = txtReply.getText().toString();
-        sendReply(reply);
-      }
-    });
-
-  }
-
-  public void deleteMessage() {
-    SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deleteMessage();
+            }
+        });
 
 
-    Call<Void> call = apiService.RemoveMessage(message.getID());
-    call.enqueue(new Callback<Void>() {
-      @Override
-      public void onResponse(Call<Void> call, Response<Void> response) {
-        int statusCode = response.code();
-        if (statusCode == 200) {
-          Toast.makeText(getApplicationContext(), "Message Deleted", Toast.LENGTH_LONG).show();
-          finish();
-        }
-        else
-        {
-          Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-        }
-      }
+        btnSendReply.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String reply = txtReply.getText().toString();
+                sendReply(reply);
+            }
+        });
 
-      @Override
-      public void onFailure(Call<Void> call, Throwable t) {
+    }
 
-      }
-    });
-  }
+    public void deleteMessage() {
+        SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
 
-  public void seenMessage() {
-    SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
-    ArrayList<Integer> ids = new ArrayList<Integer>();
-    ids.add(message.getID());
 
-    Call<Void> call = apiService.SeenMessages(ids);
-    call.enqueue(new Callback<Void>() {
-      @Override
-      public void onResponse(Call<Void> call, Response<Void> response) {
-        int statusCode = response.code();
-        if (statusCode == 200) {
+        Call<Void> call = apiService.RemoveMessage(message.getID());
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                int statusCode = response.code();
+                if (statusCode == 200) {
+                    Toast.makeText(getApplicationContext(), "Message Deleted", Toast.LENGTH_LONG).show();
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                }
+            }
 
-        }
-        else
-        {
-        }
-      }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
 
-      @Override
-      public void onFailure(Call<Void> call, Throwable t) {
+            }
+        });
+    }
 
-      }
-    });
+    public void seenMessage() {
+        SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
+        ArrayList<Integer> ids = new ArrayList<Integer>();
+        ids.add(message.getID());
 
-  }
+        Call<Void> call = apiService.SeenMessages(ids);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                int statusCode = response.code();
+                if (statusCode == 200) {
 
-  public void sendReply(String reply) {
-    RepliesApi apiService = ApiClient.getAuthorizedClient().create(RepliesApi.class);
-    ReplyRequest replyRequest = new ReplyRequest();
+                } else {
+                }
+            }
 
-    replyRequest.setParentMessageId(message.getID());
-    replyRequest.setReplyMessage(reply);
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
 
-    Call<Void> call = apiService.sendReply(replyRequest);
-    call.enqueue(new Callback<Void>() {
-      @Override
-      public void onResponse(Call<Void> call, Response<Void> response) {
-        int statusCode = response.code();
-        if (statusCode == 200) {
-          Intent publicMainLogin = new Intent(MessageDetailsActivity.this, PublicMainActivity.class);
-          startActivity(publicMainLogin);
-        } else {
-          Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
-        }
-      }
+            }
+        });
 
-      @Override
-      public void onFailure(Call<Void> call, Throwable t) {
+    }
 
-      }
-    });
-  }
+    public void sendReply(String reply) {
+        RepliesApi apiService = ApiClient.getAuthorizedClient().create(RepliesApi.class);
+        ReplyRequest replyRequest = new ReplyRequest();
+
+        replyRequest.setParentMessageId(message.getID());
+        replyRequest.setReplyMessage(reply);
+
+        Call<Void> call = apiService.sendReply(replyRequest);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                int statusCode = response.code();
+                if (statusCode == 200) {
+                    finish();
+                } else {
+                    Toast.makeText(getApplicationContext(), "Error", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
 
 }

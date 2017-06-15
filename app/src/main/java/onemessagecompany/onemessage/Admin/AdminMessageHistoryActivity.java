@@ -1,7 +1,10 @@
 package onemessagecompany.onemessage.Admin;
 
 import android.app.Dialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -49,6 +52,8 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
     private CustomAlert customAlert;
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
+    private Context context = MyApplication.getContext();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -240,4 +245,36 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
     public void onRemoveClick(Message message) {
 
     }
+
+
+
+
+    //register your activity onResume()
+    @Override
+    public void onResume() {
+        super.onResume();
+        context.registerReceiver(mMessageReceiver, new IntentFilter("unique_name"));
+    }
+
+
+    //Must unregister onPause()
+    @Override
+    protected void onPause() {
+        super.onPause();
+        context.unregisterReceiver(mMessageReceiver);
+    }
+
+
+    //This is the handler that will manager to process the broadcast intent
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            // Extract data included in the Intent
+            String message = intent.getStringExtra("message");
+            if (message.equals("Administrator"))
+                getMessages();
+            //do other stuff here
+        }
+    };
 }
