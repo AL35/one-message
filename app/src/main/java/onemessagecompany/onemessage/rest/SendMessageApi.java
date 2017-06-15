@@ -6,6 +6,7 @@ import java.util.Map;
 import onemessagecompany.onemessage.model.MessageResponse;
 import onemessagecompany.onemessage.model.SendMessageRequest;
 import onemessagecompany.onemessage.model.SendMessageResponse;
+import onemessagecompany.onemessage.model.SendMessageToSpecUsers;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -42,5 +43,9 @@ public interface SendMessageApi {
 
   @DELETE("/api/Message/RemoveMessage")
   Call<Void> RemoveMessage(@Query("msgid") int msgid);
+
+
+  @POST("/api/Message/SendMessageToSpecificUsers")
+  Call<Void> SendMessageToSpecificUsers(@Body SendMessageToSpecUsers sendMessageToSpecUsers);
 
 }

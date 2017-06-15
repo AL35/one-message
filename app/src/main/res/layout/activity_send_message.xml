@@ -86,6 +86,15 @@
         android:text="@string/send_message"
           android:background="@color/colorMain"/>
       <Button
+          android:id="@+id/btnSendSpecific"
+          style="@style/btn_white_large"
+          android:layout_width="match_parent"
+          android:layout_height="49dp"
+          android:layout_gravity="center"
+          android:layout_marginTop="16dp"
+          android:text="Send Selected Users"
+          android:background="@color/colorMain"/>
+      <Button
           android:id="@+id/btnSelectSpecificUser"
           style="@style/btn_white_large"
           android:layout_width="match_parent"
@@ -94,7 +103,6 @@
           android:layout_marginTop="16dp"
           android:text="Select Users"
           android:background="@color/colorMain"/>
-
 
 
     </LinearLayout>

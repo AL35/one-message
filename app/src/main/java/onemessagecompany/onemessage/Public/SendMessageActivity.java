@@ -1,5 +1,6 @@
 package onemessagecompany.onemessage.Public;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -15,12 +16,17 @@ import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import java.security.PrivilegedAction;
+import java.util.ArrayList;
+
 import onemessagecompany.onemessage.Admin.SelectSpecificUsersActivity;
 import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.SendMessageRequest;
 import onemessagecompany.onemessage.model.SendMessageResponse;
+import onemessagecompany.onemessage.model.SendMessageToSpecUsers;
+import onemessagecompany.onemessage.model.User;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.SendMessageApi;
 import retrofit2.Call;
@@ -30,7 +36,8 @@ import retrofit2.Response;
 
 public class SendMessageActivity extends AppCompatActivity {
     private EditText txtMsg;
-    int count =0;
+    int count = 0;
+    private ArrayList<String> usersIdsList =new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +66,10 @@ public class SendMessageActivity extends AppCompatActivity {
         });
 
         Button btnSnd = (Button) findViewById(R.id.btnSendMessage);
+        Button btnSndSelected = (Button) findViewById(R.id.btnSendSpecific);
 
-        //final String token = FirebaseInstanceId.getInstance().getToken();
 
         txtMsg = (EditText) findViewById(R.id.txt_sendMessage);
-
-
 
 
         btnSnd.setOnClickListener(new View.OnClickListener() {
@@ -80,12 +85,30 @@ public class SendMessageActivity extends AppCompatActivity {
             }
         });
 
+        btnSndSelected.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String msg = txtMsg.getText().toString();
+                if (!msg.isEmpty())
+                    if (usersIdsList.size() < 1)
+                        Toast.makeText(getApplicationContext(), "Please Select At Least One User", Toast.LENGTH_LONG).show();
+                    else
+                        sendSelectedUsersMessage();
+                else
+                    Toast.makeText(getApplicationContext(), "Type a message first", Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+
         Button btnSelectUsers = (Button) findViewById(R.id.btnSelectSpecificUser);
         btnSelectUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intentSelectUsers = new Intent(getApplicationContext(), SelectSpecificUsersActivity.class);
-                startActivity(intentSelectUsers);
+                intentSelectUsers.putExtra("usersIdsList", usersIdsList);
+                startActivityForResult(intentSelectUsers, 1);
             }
         });
 
@@ -154,35 +177,41 @@ public class SendMessageActivity extends AppCompatActivity {
     }
 
 
-//    public void sendNotification() {
-//        SendNotificationApi apiService =
-//                ApiClient.getFirebaseClient().create(SendNotificationApi.class);
-//
-//        SendNotificationRequest sendNotificationRequest = new SendNotificationRequest();
-//        OneMessageNotification oneMessageNotification = new OneMessageNotification();
-//
-//        oneMessageNotification.setBody("New Message");
-//        oneMessageNotification.setTitle("New Message From Admin");
-//
-//
-//        sendNotificationRequest.setTo(FirebaseInstanceId.getInstance().getToken());
-//        sendNotificationRequest.setNotification(oneMessageNotification);
-//
-//
-//        Call<Void> call = apiService.SendNotification(sendNotificationRequest);
-//        call.enqueue(new Callback<Void>() {
-//            @Override
-//            public void onResponse(Call<Void> call, Response<Void> response) {
-//                int statusCode = response.code();
-//                if (statusCode == 200) {
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Void> call, Throwable t) {
-//
-//            }
-//        });
-//    }
+    public void sendSelectedUsersMessage() {
+        String msg = txtMsg.getText().toString();
+
+        SendMessageApi apiService =
+                ApiClient.getAuthorizedClient().create(SendMessageApi.class);
+        SendMessageToSpecUsers sendMessageToSpecUsers = new SendMessageToSpecUsers();
+        sendMessageToSpecUsers.setMessage(msg);
+        sendMessageToSpecUsers.setUsersId(usersIdsList);
+
+
+        Call<Void> call = apiService.SendMessageToSpecificUsers(sendMessageToSpecUsers);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                int statusCode = response.code();
+                if (statusCode == 200) {
+                    Toast.makeText(getApplicationContext(), "Send Success", Toast.LENGTH_LONG).show();
+                    finish();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+
+            }
+        });
+    }
+
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1) {
+            if (resultCode == RESULT_OK) {
+                usersIdsList = (ArrayList<String>) data.getSerializableExtra("usersList");
+            }
+        }
+    }
 }
