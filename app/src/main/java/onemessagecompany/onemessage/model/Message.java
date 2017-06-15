@@ -43,13 +43,18 @@ public class Message implements Serializable {
 
   public boolean getSeen() { return Seen; }
 
-  public void setSeen() { this.Seen = Seen; }
+  public void setSeen(boolean Seen) { this.Seen = Seen; }
+
+  public boolean getHasReply(){ return HasReply; }
+
+  public void setHasReply(boolean HasReply){ this.HasReply = HasReply; }
 
   private String Body;
   private int DeleteAfter;
   private int ID;
   private String RV;
   private boolean Seen;
+  private boolean HasReply;
 
 
 }

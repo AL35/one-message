@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:id="@+id/movies_layout"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:gravity="center_vertical"
-  android:minHeight="72dp"
-  android:orientation="horizontal">
+  android:layout_marginTop="@dimen/pad_10dp"
+
+  android:orientation="vertical">
 
   <LinearLayout
       android:layout_height="wrap_content"
@@ -21,7 +20,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/om_message"
-        android:layout_marginTop="@dimen/pad_5dp"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +32,6 @@
           android:layout_height="wrap_content"
           android:text="Message"
 
-          android:layout_marginTop="@dimen/pad_5dp"
           android:textSize="@dimen/pad_18dp"
           android:paddingLeft="@dimen/pad_10dp"/>
 
@@ -48,38 +45,48 @@
           android:textColor="@color/colorGreyLight" />
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_marginRight="@dimen/pad_15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_marginEnd="@dimen/pad_10dp"
+        android:weightSum="3"
+        android:orientation="horizontal">
 
-  </LinearLayout>
+      <View
+          android:layout_width="0dp"
+          android:layout_height="0dp"
+          android:layout_weight="3" />
 
-  <LinearLayout
-    android:layout_marginRight="@dimen/pad_15dp"
-    android:layout_width="wrap_content"
-    android:layout_height="35dp"
-    android:layout_marginEnd="@dimen/pad_20dp"
+      <ImageView
+          android:id="@+id/img_new_message"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:scaleType="centerCrop"
+          android:layout_marginRight="@dimen/pad_20dp"
+          android:src="@drawable/om_new_message"
+          />
 
-    android:orientation="horizontal">
-
-    <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
-
-    <ImageView
-      android:id="@+id/remove_msg"
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-      android:layout_centerInParent="true"
-      android:scaleType="centerCrop"
-      android:src="@drawable/om_delete"
-      android:tint="@color/colorAccent" />
+      <ImageView
+          android:id="@+id/remove_msg"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_centerInParent="true"
+          android:scaleType="centerCrop"
+          android:src="@drawable/om_delete"
+          android:tint="@color/colorAccent"
+          />
 
 
+    </LinearLayout>
   </LinearLayout>
 
   <View
       android:layout_width="match_parent"
       android:layout_height="1dp"
       android:background="#dadada"
+      android:layout_marginTop="@dimen/pad_10dp"
       android:layout_marginLeft="8dp"
       android:layout_marginRight="8dp" />
 

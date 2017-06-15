@@ -1,12 +1,12 @@
 package onemessagecompany.onemessage.rest;
 
 import onemessagecompany.onemessage.model.AdminRepliesResponse;
-import onemessagecompany.onemessage.model.MessageResponse;
 import onemessagecompany.onemessage.model.ReplyRequest;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Query;
 
 /**
@@ -21,4 +21,8 @@ public interface RepliesApi {
 
   @POST("/api/Reply/Reply")
   Call<Void> sendReply(@Body ReplyRequest replyRequest);
+
+  @PUT("/api/Reply/ReplyOnMessage")
+  Call<Void> MarkMessageAsHasNoReply(@Body ReplyRequest replyRequest);
+
 }

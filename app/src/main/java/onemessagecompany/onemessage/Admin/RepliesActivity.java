@@ -21,6 +21,7 @@ import onemessagecompany.onemessage.data.MyApplication;
 import onemessagecompany.onemessage.model.AdminRepliesResponse;
 import onemessagecompany.onemessage.model.AdminReply;
 import onemessagecompany.onemessage.model.Message;
+import onemessagecompany.onemessage.model.ReplyRequest;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.RepliesApi;
 import retrofit2.Call;
@@ -71,8 +72,15 @@ public class RepliesActivity extends BaseActivity implements AdminMessageReplies
     mRecyclerView.setLayoutManager(layoutManager);
 
     mRecyclerView.setHasFixedSize(true);
+    try{
+      markMessageAsHasNoReplies(message.getID());
+    }
+    catch(Exception ex){}
+
 
     getReplies();
+
+
   }
 
   public  void getReplies()
@@ -99,6 +107,32 @@ public class RepliesActivity extends BaseActivity implements AdminMessageReplies
 
       }
     });
+  }
+
+  public void markMessageAsHasNoReplies(int msgId){
+      RepliesApi apiService = ApiClient.getAuthorizedClient().create(RepliesApi.class);
+
+      ReplyRequest replyRequest = new ReplyRequest();
+      replyRequest.setParentMessageId(msgId);
+      replyRequest.setReplyMessage("nothig");
+
+      Call<Void> call = apiService.MarkMessageAsHasNoReply(replyRequest);
+      call.enqueue(new Callback<Void>() {
+        @Override
+        public void onResponse(Call<Void> call, Response<Void> response) {
+          if(response.code() == 200){
+            //nothing to say just a mark.
+          }
+          else{
+
+          }
+        }
+
+        @Override
+        public void onFailure(Call<Void> call, Throwable t) {
+
+        }
+      });
   }
 
   @Override
