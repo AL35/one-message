@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+
+    tools:context="onemessagecompany.onemessage.Admin.SelectSpecificUsersActivity">
+android:id="@+id/select_specific_user_activity_drawer_layout">
+<LinearLayout
+    android:id="@+id/ac_select_specific_user"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginTop="@dimen/pad_10dp"
+    android:layout_marginLeft="@dimen/pad_5dp"
+    android:layout_marginEnd="@dimen/pad_5dp"
+    android:layout_marginRight="@dimen/pad_5dp"
+    android:focusableInTouchMode="true">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="@dimen/pad_5dp"
+        android:layout_marginRight="@dimen/pad_5dp"
+        android:layout_marginLeft="@dimen/pad_10dp">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/select_specific_user_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="vertical" />
+
+    </RelativeLayout>
+
+</LinearLayout>
+
+
+
+
+</LinearLayout>

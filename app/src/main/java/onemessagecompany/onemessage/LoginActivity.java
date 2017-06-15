@@ -160,15 +160,17 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                         navigateToMain();
                     else
                         checkFirstLoginChangePassword();
-                } else
+                } else {
+                    showProgress(false);
                     Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
-
+                }
             }
 
             @Override
             public void onFailure(Call<TokenResponse> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
                 showProgress(false);
+
+                Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
             }
         });
 
@@ -194,8 +196,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
             @Override
             public void onFailure(Call<BoolResponse> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
                 showProgress(false);
+                Toast.makeText(getApplicationContext(), "Invalid Login username or password", Toast.LENGTH_LONG).show();
+
             }
         });
     }
