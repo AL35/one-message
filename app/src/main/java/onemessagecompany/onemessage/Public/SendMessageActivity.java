@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
+import onemessagecompany.onemessage.Admin.SelectSpecificUsersActivity;
 import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.sharedData;
@@ -78,6 +79,16 @@ public class SendMessageActivity extends AppCompatActivity {
 
             }
         });
+
+        Button btnSelectUsers = (Button) findViewById(R.id.btnSelectSpecificUser);
+        btnSelectUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentSelectUsers = new Intent(getApplicationContext(), SelectSpecificUsersActivity.class);
+                startActivity(intentSelectUsers);
+            }
+        });
+
     }
 
     @Override

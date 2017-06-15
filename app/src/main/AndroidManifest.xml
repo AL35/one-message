@@ -14,18 +14,14 @@
         android:roundIcon="@drawable/ic_launcher"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity
             android:name=".Public.ActivateApp"
             android:configChanges="orientation"
             android:label="@string/title_activity_activate_app"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden">
-
-        </activity>
+            android:windowSoftInputMode="stateHidden"></activity>
         <activity
-
             android:name=".LoginActivity"
             android:configChanges="orientation"
             android:label="@string/app_name"
@@ -131,7 +127,7 @@
         <activity
             android:name=".Admin.AdminMessageHistoryActivity"
             android:configChanges="orientation"
-            android:label="@string/title_activity_admin_message_history"></activity>
+            android:label="@string/title_activity_admin_message_history" />
         <activity
             android:name=".Admin.RepliesActivity"
             android:configChanges="orientation"
@@ -201,10 +197,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".Public.ChangeUserActivityPassword"
-            android:label="Change Password" >
+            android:label="Change Password"></activity>
+        <activity
+            android:name=".Admin.SelectSpecificUsersActivity"
+            android:label="@string/title_activity_select_specific_users">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Public.SendMessageActivity" />
 
         </activity>
     </application>

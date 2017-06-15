@@ -151,6 +151,7 @@
     <string name="change_password_button">Change Password</string>
     <string name="title_activity_change_admin_password">ChangeAdminPasswordActivity</string>
     <string name="title_activity_splash">Splash</string>
+    <string name="title_activity_select_specific_users">Select Specific Users</string>
 
 
 </resources>
