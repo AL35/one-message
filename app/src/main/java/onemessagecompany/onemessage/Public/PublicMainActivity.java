@@ -111,9 +111,10 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
                     finish();
                 } else {
                     List<Message> messages = response.body().getMessages();
-                    if (messages.size() > 0)
+                    if (messages.size() > 0) {
+                        noMessages.setVisibility(View.GONE);
                         mRecyclerView.setAdapter(new UserMessageAdapter(messages, R.layout.list_item_message, MyApplication.getContext(), PublicMainActivity.this));
-                    else
+                    } else
                         noMessages.setVisibility(View.VISIBLE);
                 }
             }
