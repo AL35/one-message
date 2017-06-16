@@ -4,7 +4,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.Layout;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.ParseException;
@@ -31,112 +34,122 @@ import retrofit2.Response;
 public class RepliesActivity extends BaseActivity implements AdminMessageRepliesAdapter.AdminMessageRepliesOnClickHandler {
 
 
-  private Message message;
-  private RecyclerView mRecyclerView;
-  private AdminMessageRepliesAdapter madminMessageRepliesAdapter;
-  @Override
-  protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
-      WindowManager.LayoutParams.FLAG_SECURE);
+    private Message message;
+    private RecyclerView mRecyclerView;
+    private AdminMessageRepliesAdapter madminMessageRepliesAdapter;
 
-    setContentView(R.layout.activity_replies);
-    message = (Message) getIntent().getSerializableExtra("message");
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_SECURE,
+                WindowManager.LayoutParams.FLAG_SECURE);
 
-    TextView admin_msg=(TextView)findViewById(R.id.admin_msg);
+        setContentView(R.layout.activity_replies);
+        message = (Message) getIntent().getSerializableExtra("message");
 
-    admin_msg.setText(message.getBody());
+        TextView admin_msg = (TextView) findViewById(R.id.admin_msg);
 
-    TextView tvUsername = (TextView)findViewById(R.id.v1_username);
+        admin_msg.setText(message.getBody());
 
-    try {
-      SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
-      dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
-      Date date = dateFormat.parse(message.getRV());
-      SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd HH:mm");
-      String dateTime = dateFormatTime.format(date);
-
-      tvUsername.setText("admin, " + dateTime);
+        LinearLayout adminMsgLayout = (LinearLayout) findViewById(R.id.admin_message_layout);
 
 
-    } catch (ParseException ex) {
+        adminMsgLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intentUsersWhoReadMessage = new Intent(RepliesActivity.this, UsersWhoReadMessageActivity.class);
+                intentUsersWhoReadMessage.putExtra("msg", message);
+                startActivity(intentUsersWhoReadMessage);
+            }
+        });
+        TextView tvUsername = (TextView) findViewById(R.id.v1_username);
+
+        try {
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+            dateFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+            Date date = dateFormat.parse(message.getRV());
+            SimpleDateFormat dateFormatTime = new SimpleDateFormat("MMM dd HH:mm");
+            String dateTime = dateFormatTime.format(date);
+
+            tvUsername.setText("admin, " + dateTime);
+
+
+        } catch (ParseException ex) {
+        }
+
+
+        //Set Home Page User List Recycle View
+
+        mRecyclerView = (RecyclerView) findViewById(R.id.replies_recycler_view);
+
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+
+        mRecyclerView.setLayoutManager(layoutManager);
+
+        mRecyclerView.setHasFixedSize(true);
+        try {
+            markMessageAsHasNoReplies(message.getID());
+        } catch (Exception ex) {
+        }
+
+
+        getReplies();
+
+
     }
 
+    public void getReplies() {
+        RepliesApi apiService = ApiClient.getAuthorizedClient().create(RepliesApi.class);
+        Call<AdminRepliesResponse> call = apiService.GetReplies(String.valueOf(message.getID()));
+        call.enqueue(new Callback<AdminRepliesResponse>() {
+            @Override
+            public void onResponse(Call<AdminRepliesResponse> call, Response<AdminRepliesResponse> response) {
+                int statusCode = response.code();
+                if (statusCode == 401) {
+                    Intent intentLogin = new Intent(RepliesActivity.this, LoginActivity.class);
+                    startActivity(intentLogin);
+                    finish();
+                } else {
+                    AdminRepliesResponse adminRepliesResponse = response.body();
+                    List<AdminReply> adminReplies = adminRepliesResponse.getResponse();
+                    mRecyclerView.setAdapter(new AdminMessageRepliesAdapter(adminReplies, R.layout.sender_chat_list_item, MyApplication.getContext(), RepliesActivity.this));
+                }
+            }
 
-    //Set Home Page User List Recycle View
+            @Override
+            public void onFailure(Call<AdminRepliesResponse> call, Throwable t) {
 
-    mRecyclerView = (RecyclerView) findViewById(R.id.replies_recycler_view);
-
-    LinearLayoutManager layoutManager= new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-
-    mRecyclerView.setLayoutManager(layoutManager);
-
-    mRecyclerView.setHasFixedSize(true);
-    try{
-      markMessageAsHasNoReplies(message.getID());
+            }
+        });
     }
-    catch(Exception ex){}
 
+    public void markMessageAsHasNoReplies(int msgId) {
+        RepliesApi apiService = ApiClient.getAuthorizedClient().create(RepliesApi.class);
 
-    getReplies();
+        ReplyRequest replyRequest = new ReplyRequest();
+        replyRequest.setParentMessageId(msgId);
+        replyRequest.setReplyMessage("nothig");
 
+        Call<Void> call = apiService.MarkMessageAsHasNoReply(replyRequest);
+        call.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.code() == 200) {
+                    //nothing to say just a mark.
+                } else {
 
-  }
+                }
+            }
 
-  public  void getReplies()
-  {
-    RepliesApi apiService = ApiClient.getAuthorizedClient().create(RepliesApi.class);
-    Call<AdminRepliesResponse> call=apiService.GetReplies(String.valueOf(message.getID()));
-    call.enqueue(new Callback<AdminRepliesResponse>() {
-      @Override
-      public void onResponse(Call<AdminRepliesResponse> call, Response<AdminRepliesResponse> response) {
-        int statusCode=response.code();
-        if (statusCode == 401) {
-          Intent intentLogin = new Intent(RepliesActivity.this, LoginActivity.class);
-          startActivity(intentLogin);
-          finish();
-        } else {
-          AdminRepliesResponse adminRepliesResponse=response.body();
-          List<AdminReply> adminReplies=adminRepliesResponse.getResponse();
-          mRecyclerView.setAdapter(new AdminMessageRepliesAdapter(adminReplies,R.layout.sender_chat_list_item, MyApplication.getContext(),RepliesActivity.this));
-        }
-      }
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
 
-      @Override
-      public void onFailure(Call<AdminRepliesResponse> call, Throwable t) {
+            }
+        });
+    }
 
-      }
-    });
-  }
+    @Override
+    public void onClick(AdminReply adminReply) {
 
-  public void markMessageAsHasNoReplies(int msgId){
-      RepliesApi apiService = ApiClient.getAuthorizedClient().create(RepliesApi.class);
-
-      ReplyRequest replyRequest = new ReplyRequest();
-      replyRequest.setParentMessageId(msgId);
-      replyRequest.setReplyMessage("nothig");
-
-      Call<Void> call = apiService.MarkMessageAsHasNoReply(replyRequest);
-      call.enqueue(new Callback<Void>() {
-        @Override
-        public void onResponse(Call<Void> call, Response<Void> response) {
-          if(response.code() == 200){
-            //nothing to say just a mark.
-          }
-          else{
-
-          }
-        }
-
-        @Override
-        public void onFailure(Call<Void> call, Throwable t) {
-
-        }
-      });
-  }
-
-  @Override
-  public void onClick(AdminReply adminReply) {
-
-  }
+    }
 }

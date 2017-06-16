@@ -48,7 +48,7 @@ public class AdminMessageRepliesAdapter extends RecyclerView.Adapter<AdminMessag
 
 
 
-  public class AdminMessageRepliesViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+  public class AdminMessageRepliesViewHolder extends RecyclerView.ViewHolder  {
     TextView v1_msg;
     TextView v1_username;
 
@@ -57,16 +57,16 @@ public class AdminMessageRepliesAdapter extends RecyclerView.Adapter<AdminMessag
       v1_msg = (TextView) view.findViewById(R.id.v1_msg);
       v1_username = (TextView) view.findViewById(R.id.v1_username);
 
-      view.setOnClickListener(this);
+//      view.setOnClickListener(this);
 
     }
-
-    @Override
-    public void onClick(View v) {
-      int adapterPosition = getAdapterPosition();
-      AdminReply adminReply = adminReplies.get(adapterPosition);
-      mClickHandler.onClick(adminReply);
-    }
+//
+//    @Override
+//    public void onClick(View v) {
+//      int adapterPosition = getAdapterPosition();
+//      AdminReply adminReply = adminReplies.get(adapterPosition);
+//      mClickHandler.onClick(adminReply);
+//    }
   }
 
 
