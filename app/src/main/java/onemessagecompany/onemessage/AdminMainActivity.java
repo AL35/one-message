@@ -8,6 +8,8 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.WindowManager;
 import android.widget.EditText;
 
@@ -15,6 +17,7 @@ import java.util.List;
 
 import onemessagecompany.onemessage.Adapters.UsersAdapter;
 import onemessagecompany.onemessage.Admin.UserDetailsActivity;
+import onemessagecompany.onemessage.Public.SendMessageActivity;
 import onemessagecompany.onemessage.model.User;
 import onemessagecompany.onemessage.model.UsersResponse;
 import onemessagecompany.onemessage.rest.ApiClient;
@@ -28,6 +31,33 @@ public class AdminMainActivity extends AppCompatActivity implements UsersAdapter
     private RecyclerView mRecyclerView;
     private UsersAdapter mUsersAdapter;
     private List<User> users ;
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        int itemId = item.getItemId();
+
+        switch (itemId) {
+            /*
+             * When you click the reset menu item, we want to start all over
+             * and display the pretty gradient again. There are a few similar
+             * ways of doing this, with this one being the simplest of those
+             * ways. (in our humble opinion)
+             */
+            case R.id.action_send_message:
+                Intent intentSendMessage = new Intent(getApplicationContext(), SendMessageActivity.class);
+                startActivity(intentSendMessage);
+                return true;
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
