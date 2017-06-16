@@ -31,7 +31,7 @@
   <item
       android:id="@+id/change_password"
       android:icon="@mipmap/ic_password"
-      android:title="Change Password" />
+      android:title="Change My Password" />
 
   <item
     android:id="@+id/config"

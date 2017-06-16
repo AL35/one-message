@@ -82,18 +82,19 @@ public class SpecificUsersAdapter extends RecyclerView.Adapter<SpecificUsersAdap
     public void onBindViewHolder(final SpecificUsersAdapter.SpecificUsersAdapterViewHolder holder, final int position) {
 
         final User user = users.get(position);
-        holder.firstLastName.setText(user.getFirstName() + " " + user.getLastName());
-        holder.userName.setText(user.getUserName());
+        if(user.getIsEnabled() == true){
+            holder.firstLastName.setText(user.getFirstName() + " " + user.getLastName());
+            holder.userName.setText(user.getUserName());
 
-        if(user.getIsEnabled() == false)
-            holder.userImage.setImageResource(R.drawable.om_disabled_user);
+            if(user.getIsEnabled() == false)
+                holder.userImage.setImageResource(R.drawable.om_disabled_user);
 
-        if(usersSelectedIds.contains(user.getId()))
-            holder.checkbox.setChecked(true);
+            if(usersSelectedIds.contains(user.getId()))
+                holder.checkbox.setChecked(true);
 
-        if (holder instanceof SpecificUsersAdapterViewHolder) {
+            if (holder instanceof SpecificUsersAdapterViewHolder) {
 
-            ((SpecificUsersAdapterViewHolder) holder).setOnClickListener(new View.OnClickListener() {
+                ((SpecificUsersAdapterViewHolder) holder).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     ((SpecificUsersAdapterViewHolder) holder).checkbox.setChecked(
@@ -105,6 +106,8 @@ public class SpecificUsersAdapter extends RecyclerView.Adapter<SpecificUsersAdap
                     }
                 }
             });
+        }
+
         }
 
     }

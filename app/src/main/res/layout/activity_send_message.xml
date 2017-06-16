@@ -124,14 +124,7 @@
               android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:layout_gravity="center">
-              <View
-                  android:layout_width="1dp"
-                  android:layout_height="40dp"
-                  android:layout_gravity="center"
-                  android:background="@color/colorMain" >
 
-
-              </View>
           </LinearLayout>
         <ImageButton
             android:id="@+id/btnSelectSpecificUser"
