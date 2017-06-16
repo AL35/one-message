@@ -10,7 +10,11 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -37,6 +41,7 @@ public class UsersWhoReadMessageActivity extends AppCompatActivity {
     public List<UsersWhoReadMessage> users;
     private RecyclerView mRecyclerView;
     private UserWhoReadMessageAdapter mUsersAdapter;
+    public LinearLayout noOneSeen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,10 @@ public class UsersWhoReadMessageActivity extends AppCompatActivity {
             msgId = message.getID();
 
         initializeRecycler();
+
+        noOneSeen=(LinearLayout)findViewById(R.id.no_one_seen);
+
+
         if (msgId > 0)
             getUsers();
         else
@@ -81,8 +90,12 @@ public class UsersWhoReadMessageActivity extends AppCompatActivity {
                     finish();
                 } else {
                     users = response.body().getUsers();
-                    mUsersAdapter = new UserWhoReadMessageAdapter(users, R.layout.list_item_user_who_read_message, getApplicationContext());
-                    mRecyclerView.setAdapter(mUsersAdapter);
+                    if (users.size() > 0) {
+                        mUsersAdapter = new UserWhoReadMessageAdapter(users, R.layout.list_item_user_who_read_message, getApplicationContext());
+                        mRecyclerView.setAdapter(mUsersAdapter);
+                    }
+                    else
+                        noOneSeen.setVisibility(View.VISIBLE);
                 }
             }
 

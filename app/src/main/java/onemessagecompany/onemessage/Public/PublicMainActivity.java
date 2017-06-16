@@ -20,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import org.reactivestreams.Subscription;
@@ -52,6 +53,7 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
     private RecyclerView mRecyclerView;
     private AdminMessagsAdapter mAdminMessagsAdapter;
     private Context context = MyApplication.getContext();
+    public LinearLayout noMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +62,7 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
                 WindowManager.LayoutParams.FLAG_SECURE);
 
         setContentView(R.layout.activity_public_main);
-
+        noMessages = (LinearLayout) findViewById(R.id.public_messages);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.public_main_activity_drawer_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
 
@@ -109,7 +111,10 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
                     finish();
                 } else {
                     List<Message> messages = response.body().getMessages();
-                    mRecyclerView.setAdapter(new UserMessageAdapter(messages, R.layout.list_item_message, MyApplication.getContext(), PublicMainActivity.this));
+                    if (messages.size() > 0)
+                        mRecyclerView.setAdapter(new UserMessageAdapter(messages, R.layout.list_item_message, MyApplication.getContext(), PublicMainActivity.this));
+                    else
+                        noMessages.setVisibility(View.VISIBLE);
                 }
             }
 

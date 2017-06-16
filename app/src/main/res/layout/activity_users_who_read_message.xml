@@ -2,28 +2,47 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/users_who_read_message_activity_drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="onemessagecompany.onemessage.Admin.UsersWhoReadMessageActivity">
 
-    tools:context="onemessagecompany.onemessage.Admin.UsersWhoReadMessageActivity"
-    android:id="@+id/users_who_read_message_activity_drawer_layout">
+    <LinearLayout
+        android:id="@+id/no_one_seen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="No one read the message"
+            android:textSize="20dp"
+            android:visibility="visible" />
+    </LinearLayout>
+
+
     <LinearLayout
         android:id="@+id/ac_admin_main"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/pad_10dp"
-        android:layout_marginLeft="@dimen/pad_5dp"
         android:layout_marginEnd="@dimen/pad_5dp"
+        android:layout_marginLeft="@dimen/pad_5dp"
         android:layout_marginRight="@dimen/pad_5dp"
-        android:focusableInTouchMode="true">
+        android:layout_marginTop="@dimen/pad_10dp"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginEnd="@dimen/pad_5dp"
-            android:layout_marginRight="@dimen/pad_5dp"
-            android:layout_marginLeft="@dimen/pad_10dp">
+            android:layout_marginLeft="@dimen/pad_10dp"
+            android:layout_marginRight="@dimen/pad_5dp">
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/users_who_read_message_recycler_view"
@@ -34,8 +53,6 @@
         </RelativeLayout>
 
     </LinearLayout>
-
-
 
 
 </LinearLayout>

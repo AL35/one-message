@@ -8,6 +8,23 @@
   tools:context="onemessagecompany.onemessage.Public.PublicMainActivity"
   android:id="@+id/public_main_activity_drawer_layout">
 
+
+
+  <LinearLayout
+      android:id="@+id/public_messages"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="gone"
+      android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="There is no message"
+        android:textSize="20dp"
+        android:visibility="visible" />
+  </LinearLayout>
   <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
