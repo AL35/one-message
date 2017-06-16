@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import onemessagecompany.onemessage.Public.SendMessageActivity;
-import onemessagecompany.onemessage.data.sharedData;
 
 /**
  * Created by 52Solution on 11/06/2017.
@@ -44,13 +43,7 @@ public class BaseActivity extends AppCompatActivity {
                 Intent intentSendMessage = new Intent(getApplicationContext(), SendMessageActivity.class);
                 startActivity(intentSendMessage);
                 return true;
-            case R.id.action_logout:
-                sharedData.setAccessToken(getApplicationContext(), null);
-                Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intentLogin);
 
-                finish();
-                return true;
         }
         return super.onOptionsItemSelected(item);
     }

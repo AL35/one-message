@@ -1,6 +1,5 @@
 package onemessagecompany.onemessage.Public;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,23 +9,19 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
 
-import java.security.PrivilegedAction;
 import java.util.ArrayList;
 
 import onemessagecompany.onemessage.Admin.SelectSpecificUsersActivity;
-import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
-import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.SendMessageRequest;
 import onemessagecompany.onemessage.model.SendMessageResponse;
 import onemessagecompany.onemessage.model.SendMessageToSpecUsers;
-import onemessagecompany.onemessage.model.User;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.SendMessageApi;
 import retrofit2.Call;
@@ -65,8 +60,8 @@ public class SendMessageActivity extends AppCompatActivity {
             }
         });
 
-        Button btnSnd = (Button) findViewById(R.id.btnSendMessage);
-        Button btnSndSelected = (Button) findViewById(R.id.btnSendSpecific);
+        ImageButton btnSnd = (ImageButton) findViewById(R.id.btnSendMessage);
+        ImageButton btnSndSelected = (ImageButton) findViewById(R.id.btnSendSpecific);
 
 
         txtMsg = (EditText) findViewById(R.id.txt_sendMessage);
@@ -92,7 +87,7 @@ public class SendMessageActivity extends AppCompatActivity {
                 String msg = txtMsg.getText().toString();
                 if (!msg.isEmpty())
                     if (usersIdsList.size() < 1)
-                        Toast.makeText(getApplicationContext(), "Please Select At Least One User", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Please select at least one user", Toast.LENGTH_LONG).show();
                     else
                         sendSelectedUsersMessage();
                 else
@@ -102,7 +97,7 @@ public class SendMessageActivity extends AppCompatActivity {
         });
 
 
-        Button btnSelectUsers = (Button) findViewById(R.id.btnSelectSpecificUser);
+        ImageButton btnSelectUsers = (ImageButton) findViewById(R.id.btnSelectSpecificUser);
         btnSelectUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -136,12 +131,7 @@ public class SendMessageActivity extends AppCompatActivity {
                 Intent intentSendMessage = new Intent(getApplicationContext(), SendMessageActivity.class);
                 startActivity(intentSendMessage);
                 return true;
-            case R.id.action_logout:
-                sharedData.setAccessToken(getApplicationContext(), null);
-                Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intentLogin);
-                finish();
-                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }

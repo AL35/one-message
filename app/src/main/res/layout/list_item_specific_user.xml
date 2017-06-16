@@ -1,69 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/movies_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:gravity="center_vertical"
-    android:minHeight="72dp"
-    android:orientation="horizontal"
-    android:padding="16dp">
+    android:orientation="vertical">
 
+    <!--This TextView holds the weather data for one particular day in the forecast-->
 
-    <ImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="4">
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/om_user"
-        android:layout_marginLeft="5dp"/>
+        android:orientation="horizontal"
+        android:layout_marginLeft="@dimen/pad_30dp"
+        android:layout_marginRight="@dimen/pad_30dp">
 
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/item_list_fistlastname"
-            style="@style/TextAppearance.AppCompat.Large"
+        <ImageView
+            android:id="@+id/img_user"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-
-            android:text="username"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/item_list_username"
+            android:src="@drawable/om_user"
+            android:layout_gravity="center"/>
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="usrname"
-            android:textSize="16dp"
-            android:paddingLeft="16dp"
-            android:textColor="@color/colorGreyLight" />
-    </LinearLayout>
+            android:orientation="vertical"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="@dimen/pad_5dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:orientation="horizontal">
+            <TextView
+                android:id="@+id/item_list_fistlastname"
+                style="@style/TextAppearance.AppCompat.Large"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
 
+                android:text="username"
+                android:textSize="20dp" />
 
-
-        <CheckBox
-            android:id="@+id/select_user_checkbox"
-            android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/item_list_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="usrname"
+                android:textSize="16dp"
+                android:paddingLeft="16dp"
+                android:textColor="@color/colorGreyLight" />
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="" />
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            >
+
+            <CheckBox
+                android:id="@+id/select_user_checkbox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_weight="1"
+                android:text="" />
+        </RelativeLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:orientation="horizontal">
+
+
 
     </LinearLayout>
+
+
+    <!--This View serves as a visual divider between list items-->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dadada"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp" />
+
 </LinearLayout>
-
-
-

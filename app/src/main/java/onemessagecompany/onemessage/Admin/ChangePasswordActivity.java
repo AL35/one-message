@@ -12,10 +12,8 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import onemessagecompany.onemessage.BaseActivity;
-import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.Public.SendMessageActivity;
 import onemessagecompany.onemessage.R;
-import onemessagecompany.onemessage.data.sharedData;
 import onemessagecompany.onemessage.model.ChangeUserPasswordRequest;
 import onemessagecompany.onemessage.model.User;
 import onemessagecompany.onemessage.rest.ApiClient;
@@ -141,12 +139,7 @@ public class ChangePasswordActivity extends BaseActivity {
                 Intent intentSendMessage = new Intent(getApplicationContext(), SendMessageActivity.class);
                 startActivity(intentSendMessage);
                 return true;
-            case R.id.action_logout:
-                sharedData.setAccessToken(getApplicationContext(), null);
-                Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intentLogin);
-                finish();
-                return true;
+
             default:
                 return true;
         }

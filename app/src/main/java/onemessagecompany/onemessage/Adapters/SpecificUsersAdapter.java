@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -49,11 +50,13 @@ public class SpecificUsersAdapter extends RecyclerView.Adapter<SpecificUsersAdap
         TextView firstLastName;
         TextView userName;
         CheckBox checkbox;
+        ImageView userImage;
 
         public SpecificUsersAdapterViewHolder(View view) {
             super(view);
             firstLastName = (TextView) view.findViewById(R.id.item_list_fistlastname);
             userName = (TextView) view.findViewById(R.id.item_list_username);
+            userImage = (ImageView) view.findViewById(R.id.img_user);
 
             checkbox = (CheckBox) itemView.findViewById(R.id.select_user_checkbox);
             checkbox.setClickable(false);
@@ -81,6 +84,10 @@ public class SpecificUsersAdapter extends RecyclerView.Adapter<SpecificUsersAdap
         final User user = users.get(position);
         holder.firstLastName.setText(user.getFirstName() + " " + user.getLastName());
         holder.userName.setText(user.getUserName());
+
+        if(user.getIsEnabled() == false)
+            holder.userImage.setImageResource(R.drawable.om_disabled_user);
+
         if(usersSelectedIds.contains(user.getId()))
             holder.checkbox.setChecked(true);
 

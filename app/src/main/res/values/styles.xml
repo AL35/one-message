@@ -1,6 +1,8 @@
 <resources>
 
-    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar"></style>
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        
+    </style>
 
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="android:homeAsUpIndicator">@drawable/back_arrow</item>
@@ -106,4 +108,6 @@
     <style name="splashScreenTheme" parent="@android:style/Theme.DeviceDefault.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/logo_login</item>
     </style>
+
+
 </resources>

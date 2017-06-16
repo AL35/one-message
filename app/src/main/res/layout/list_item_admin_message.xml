@@ -11,8 +11,8 @@
   <LinearLayout
       android:layout_height="wrap_content"
       android:layout_width="wrap_content"
-      android:layout_marginLeft="@dimen/pad_20dp"
-      android:layout_marginRight="@dimen/pad_15dp"
+      android:layout_marginLeft="@dimen/pad_30dp"
+      android:layout_marginRight="@dimen/pad_30dp"
       android:orientation="horizontal"
       android:weightSum="1">
 
@@ -87,7 +87,7 @@
       android:layout_height="1dp"
       android:background="#dadada"
       android:layout_marginTop="@dimen/pad_10dp"
-      android:layout_marginLeft="8dp"
-      android:layout_marginRight="8dp" />
+      android:layout_marginLeft="20dp"
+      android:layout_marginRight="20dp" />
 
 </LinearLayout>

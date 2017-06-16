@@ -12,9 +12,7 @@
         android:id="@+id/ac_select_specific_user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/pad_5dp"
-        android:layout_marginRight="@dimen/pad_5dp"
-        android:layout_marginLeft="@dimen/pad_10dp"
+        android:layout_margin="@dimen/pad_5dp"
         android:focusableInTouchMode="true"
         android:orientation="vertical">
 
@@ -23,12 +21,10 @@
             android:id="@+id/btnSelectedDone"
             style="@style/btn_white_large"
             android:layout_width="match_parent"
-            android:layout_height="49dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:layout_marginTop="16dp"
             android:text="Done"
-            android:layout_marginLeft="100dp"
-            android:layout_marginRight="100dp"
+            android:layout_margin="@dimen/pad_5dp"
             android:background="@color/colorMain"/>
         <RelativeLayout
             android:layout_width="match_parent"

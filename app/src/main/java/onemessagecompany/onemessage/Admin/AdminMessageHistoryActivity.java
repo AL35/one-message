@@ -113,13 +113,7 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
                 Intent intentSendMessage = new Intent(this, SendMessageActivity.class);
                 startActivity(intentSendMessage);
                 return true;
-            case R.id.action_logout:
-                sharedData.setAccessToken(getApplicationContext(), null);
-                Intent intentLogin = new Intent(this, LoginActivity.class);
-                intentLogin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intentLogin);
-                finish();
-                return true;
+
         }
         return super.onOptionsItemSelected(item);
     }

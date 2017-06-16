@@ -76,33 +76,75 @@
       </LinearLayout>
 
 
-      <Button
-        android:id="@+id/btnSendMessage"
-        style="@style/btn_white_large"
-        android:layout_width="match_parent"
-        android:layout_height="49dp"
-        android:layout_gravity="center"
-        android:layout_marginTop="16dp"
-        android:text="@string/send_message"
-          android:background="@color/colorMain"/>
-      <Button
-          android:id="@+id/btnSendSpecific"
-          style="@style/btn_white_large"
+
+      <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="49dp"
-          android:layout_gravity="center"
-          android:layout_marginTop="16dp"
-          android:text="Send Selected Users"
-          android:background="@color/colorMain"/>
-      <Button
-          android:id="@+id/btnSelectSpecificUser"
-          style="@style/btn_white_large"
-          android:layout_width="match_parent"
-          android:layout_height="49dp"
-          android:layout_gravity="center"
-          android:layout_marginTop="16dp"
-          android:text="Select Users"
-          android:background="@color/colorMain"/>
+          android:layout_height="wrap_content"
+          android:layout_marginTop="@dimen/pad_30dp"
+          android:orientation="horizontal"
+          android:weightSum="3">
+
+        <ImageButton
+            android:id="@+id/btnSendMessage"
+            android:layout_width="match_parent"
+            android:src="@drawable/om_send_all"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+
+            android:text="@string/send_message"
+            android:background="@color/transparent"
+            android:layout_weight="1"/>
+
+         <LinearLayout
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_gravity="center">
+             <View
+                 android:layout_width="1dp"
+                 android:layout_height="40dp"
+                 android:layout_gravity="center"
+                 android:background="@color/colorMain" >
+
+
+             </View>
+         </LinearLayout>
+
+
+        <ImageButton
+            android:id="@+id/btnSendSpecific"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/om_send_message"
+            android:layout_gravity="center"
+            android:text="Send Selected Users"
+            android:background="@color/transparent"
+            android:layout_weight="1"/>
+
+          <LinearLayout
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_gravity="center">
+              <View
+                  android:layout_width="1dp"
+                  android:layout_height="40dp"
+                  android:layout_gravity="center"
+                  android:background="@color/colorMain" >
+
+
+              </View>
+          </LinearLayout>
+        <ImageButton
+            android:id="@+id/btnSelectSpecificUser"
+            android:src="@drawable/om_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Select Users"
+            android:layout_weight="1"
+            android:background="@color/transparent"/>
+
+
+      </LinearLayout>
 
 
     </LinearLayout>
