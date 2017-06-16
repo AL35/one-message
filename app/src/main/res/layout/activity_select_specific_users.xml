@@ -28,8 +28,7 @@
             android:background="@color/colorMain"/>
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="486dp"
-            android:layout_marginEnd="@dimen/pad_5dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/pad_10dp"
             android:layout_marginRight="@dimen/pad_5dp">
 

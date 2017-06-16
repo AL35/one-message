@@ -152,6 +152,7 @@
     <string name="title_activity_change_admin_password">ChangeAdminPasswordActivity</string>
     <string name="title_activity_splash">Splash</string>
     <string name="title_activity_select_specific_users">Select Specific Users</string>
+    <string name="title_activity_users_who_read_message">Users Read Message</string>
 
 
 </resources>

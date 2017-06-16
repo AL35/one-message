@@ -5,6 +5,7 @@ import onemessagecompany.onemessage.model.ChangeUserPasswordRequest;
 import onemessagecompany.onemessage.model.DeleteAccountRequest;
 import onemessagecompany.onemessage.model.EditUserRequest;
 import onemessagecompany.onemessage.model.EditUserResponse;
+import onemessagecompany.onemessage.model.UserWhoReadMessageResponse;
 import onemessagecompany.onemessage.model.UsersResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -41,4 +42,6 @@ public interface UsersApi {
   @POST("/api/Account/ChangePassword")
   Call<Void> ChangeAdminPassword(@Body ChangeAdminPasswordRequest changeAdminPasswordRequest);
 
+  @GET("/api/Message/UserWhoReadMessage")
+  Call<UserWhoReadMessageResponse> GetUserWhoReadMessage(@Query("msgid") int msgid);
 }

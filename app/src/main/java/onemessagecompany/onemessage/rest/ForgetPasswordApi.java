@@ -17,7 +17,7 @@ public interface ForgetPasswordApi {
   @GET("/api/Notification/GetNotifications")
   Call<NotificationResponse> GetNotifications();
 
-  @POST("/api/User/ForgetPassword")
+  @POST("/api/User/UserForgetPassword")
   Call<ForgetPasswordResponse> ForgetPassword(@Body ForgetPasswordRequest forgetPasswordRequest);
 
 

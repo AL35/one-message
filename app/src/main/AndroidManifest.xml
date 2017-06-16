@@ -20,7 +20,7 @@
             android:label="@string/title_activity_activate_app"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
-            android:windowSoftInputMode="stateHidden"></activity>
+            android:windowSoftInputMode="stateHidden" />
         <activity
             android:name=".LoginActivity"
             android:configChanges="orientation"
@@ -199,14 +199,20 @@
         </activity>
         <activity
             android:name=".Public.ChangeUserActivityPassword"
-            android:label="Change Password"></activity>
+            android:label="Change Password" />
         <activity
             android:name=".Admin.SelectSpecificUsersActivity"
             android:label="@string/title_activity_select_specific_users">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".Public.SendMessageActivity" />
-
+        </activity>
+        <activity
+            android:name=".Admin.UsersWhoReadMessageActivity"
+            android:label="@string/title_activity_users_who_read_message">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Admin.RepliesActivity" />
         </activity>
     </application>
 

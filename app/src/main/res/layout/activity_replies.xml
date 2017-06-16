@@ -51,13 +51,14 @@
 
 
     <LinearLayout
-        android:id="@+id/v1_admin"
+        android:id="@+id/admin_message_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/chat_bubble_gray"
         android:gravity="center|top"
         android:paddingTop="@dimen/pad_10dp"
         android:orientation="vertical"
+        android:clickable="true"
         android:paddingLeft="40dp"
         android:layout_marginTop="@dimen/pad_15dp"
         android:paddingBottom="@dimen/pad_5dp"
