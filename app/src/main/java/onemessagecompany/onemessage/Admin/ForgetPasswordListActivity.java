@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import onemessagecompany.onemessage.Adapters.ForgetPasswordAdapter;
 import onemessagecompany.onemessage.BaseActivity;
@@ -52,8 +53,15 @@ public class ForgetPasswordListActivity extends BaseActivity implements ForgetPa
             public void onResponse(Call<NotificationResponse> call, Response<NotificationResponse> response) {
                 int statusCode = response.code();
                 if (statusCode == 200) {
+                    if(response.body().getNotifications().size() > 0){
+                        findViewById(R.id.admin_no_notifications).setVisibility(View.GONE);
                     NotificationResponse notificationList = response.body();
                     mRecyclerView.setAdapter(new ForgetPasswordAdapter(notificationList.getNotifications(), R.layout.list_item_forget_password, getApplicationContext(), ForgetPasswordListActivity.this));
+                }
+                else{
+                        findViewById(R.id.admin_no_notifications).setVisibility(View.VISIBLE);
+                    }
+
                 }
             }
 
@@ -81,12 +89,14 @@ public class ForgetPasswordListActivity extends BaseActivity implements ForgetPa
             public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response) {
                 int statusCode = response.code();
                 if (statusCode == 200) {
+                        
                     UsersResponse user = response.body();
                     Context context = ForgetPasswordListActivity.this;
 
                     Intent userDetails = new Intent(context, UserDetailsActivity.class);
                     userDetails.putExtra("userDetails", user.getUser());
                     startActivity(userDetails);
+
                 }
             }
 

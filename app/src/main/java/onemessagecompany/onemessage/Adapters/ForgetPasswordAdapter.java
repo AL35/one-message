@@ -11,7 +11,6 @@ import java.util.List;
 
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.model.Notification;
-import onemessagecompany.onemessage.model.User;
 
 /**
  * Created by 52Solution on 8/06/2017.
@@ -66,16 +65,6 @@ public class ForgetPasswordAdapter  extends RecyclerView.Adapter<ForgetPasswordA
 
     @Override
     public ForgetPasswordAdapter.ForgetPasswordAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-//    Context context = parent.getContext();
-//    int layoutIdForListItem = R.layout.list_item_user;
-//    LayoutInflater inflater = LayoutInflater.from(context);
-//    boolean shouldAttachToParentImmediately = false;
-//
-//    View view = inflater.inflate(layoutIdForListItem, parent, shouldAttachToParentImmediately);
-//    return new UserAdapterViewHolder(view);
-
-
 
       View view = LayoutInflater.from(parent.getContext()).inflate(rowLayout, parent, false);
       return new ForgetPasswordAdapterViewHolder(view);
