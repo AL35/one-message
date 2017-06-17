@@ -10,8 +10,11 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 
 import java.util.List;
 
@@ -30,7 +33,9 @@ public class AdminMainActivity extends AppCompatActivity implements UsersAdapter
 
     private RecyclerView mRecyclerView;
     private UsersAdapter mUsersAdapter;
-    private List<User> users ;
+    private List<User> users;
+    private ProgressBar mLoadingIndicator;
+    public LinearLayout noContacts;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -69,6 +74,9 @@ public class AdminMainActivity extends AppCompatActivity implements UsersAdapter
 
         initializeRecycler();
 
+        mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
+        noContacts = (LinearLayout) findViewById(R.id.no_contact_list);
+
         getUsersList();
 
         final EditText searchView = (EditText) findViewById(R.id.contact_search);
@@ -92,19 +100,22 @@ public class AdminMainActivity extends AppCompatActivity implements UsersAdapter
 
     }
 
-public void initializeRecycler()
-{
+    public void initializeRecycler() {
 
-    mRecyclerView = (RecyclerView) findViewById(R.id.users_recycler_view);
+        mRecyclerView = (RecyclerView) findViewById(R.id.users_recycler_view);
 
-    LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
 
-    mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setLayoutManager(layoutManager);
 
-    mRecyclerView.setHasFixedSize(true);
-}
+        mRecyclerView.setHasFixedSize(true);
+    }
 
     public void getUsersList() {
+        mLoadingIndicator.setVisibility(View.VISIBLE);
+        mRecyclerView.setAdapter(null);
+        noContacts.setVisibility(View.GONE);
+
         UsersApi apiService =
                 ApiClient.getAuthorizedClient().create(UsersApi.class);
 
@@ -119,8 +130,15 @@ public void initializeRecycler()
                     finish();
                 } else {
                     users = response.body().getResults();
-                    mRecyclerView.setAdapter(new UsersAdapter(users, R.layout.list_item_user, getApplicationContext(), AdminMainActivity.this));
+                    if (users.size() > 0) {
+                        noContacts.setVisibility(View.GONE);
+                        mRecyclerView.setAdapter(new UsersAdapter(users, R.layout.list_item_user, getApplicationContext(), AdminMainActivity.this));
+
+                    } else
+                        noContacts.setVisibility(View.VISIBLE);
+
                 }
+                mLoadingIndicator.setVisibility(View.GONE);
             }
 
             @Override

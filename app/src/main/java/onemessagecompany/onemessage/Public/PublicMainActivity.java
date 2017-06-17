@@ -21,6 +21,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import org.reactivestreams.Subscription;
@@ -54,6 +55,7 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
     private AdminMessagsAdapter mAdminMessagsAdapter;
     private Context context = MyApplication.getContext();
     public LinearLayout noMessages;
+    private ProgressBar mLoadingIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -86,6 +88,9 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
         mRecyclerView.setHasFixedSize(true);
 
 
+        mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
+
+
         getMessages();
 
     }
@@ -98,6 +103,10 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
     }
 
     public void getMessages() {
+        mLoadingIndicator.setVisibility(View.VISIBLE);
+        noMessages.setVisibility(View.GONE);
+        mRecyclerView.setAdapter(null);
+
         SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
         Call<MessageResponse> call = apiService.GetMessages();
         call.enqueue(new Callback<MessageResponse>() {
@@ -110,6 +119,8 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
                     startActivity(intentLogin);
                     finish();
                 } else {
+                    mLoadingIndicator.setVisibility(View.INVISIBLE);
+
                     List<Message> messages = response.body().getMessages();
                     if (messages.size() > 0) {
                         noMessages.setVisibility(View.GONE);

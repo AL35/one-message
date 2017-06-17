@@ -15,8 +15,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginLeft="@dimen/pad_30dp"
-        android:layout_marginRight="@dimen/pad_30dp">
+        android:layout_marginLeft="@dimen/pad_15dp"
+        android:layout_marginRight="@dimen/pad_15dp">
 
         <ImageView
             android:id="@+id/img_user"

@@ -1,185 +1,169 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:paddingLeft="@dimen/activity_horizontal_margin"
-  android:paddingRight="@dimen/activity_horizontal_margin"
-  android:paddingTop="@dimen/activity_vertical_margin"
-  tools:context="onemessagecompany.onemessage.Public.SendMessageActivity">
-
-
-
-<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/message_details_form">
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="onemessagecompany.onemessage.Public.SendMessageActivity">
 
 
     <LinearLayout
-        android:id="@+id/email_login_form"
+        android:id="@+id/message_details_form"
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:layout_height="match_parent">
+
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@drawable/editext_bg_gray"
-            android:backgroundTint="#F0E68C"
-            android:layout_marginLeft="@dimen/pad_20dp"
-            android:layout_marginRight="@dimen/pad_20dp"
-            android:layout_marginBottom="@dimen/pad_10dp">
+            android:id="@+id/email_login_form"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            android:orientation="vertical"
+            android:weightSum="1">
 
-            <ImageView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/om_password"/>
+                android:layout_marginBottom="@dimen/pad_10dp"
+                android:layout_marginLeft="@dimen/pad_20dp"
+                android:layout_marginRight="@dimen/pad_20dp"
+                android:background="@drawable/editext_bg_gray"
+                android:backgroundTint="#F0E68C"
+                android:orientation="horizontal">
 
-            <TextView
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/om_password" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/pad_5dp"
+                    android:paddingRight="@dimen/pad_5dp"
+                    android:paddingTop="@dimen/pad_5dp"
+                    android:text="Messages you send to this chat are secured with end-to-end encryption"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorMain"
+                    android:textSize="12dp"></TextView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/v1_admin"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/chat_bubble_gray"
+                    android:gravity="left|top"
+                    android:orientation="vertical"
+                    android:paddingBottom="@dimen/pad_10dp"
+                    android:paddingTop="@dimen/pad_10dp">
+
+                    <TextView
+                        android:id="@+id/txt_current_Message"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="end"
+                        android:enabled="false"
+                        android:paddingLeft="50dp"
+                        android:paddingRight="@dimen/pad_10dp"
+                        android:text="TextView"
+                        android:textColor="@color/main_color_gray_dk"
+                        android:textSize="@dimen/txt_15sp" />
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/v1_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignRight="@+id/v1"
+                    android:layout_below="@+id/v1"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="@dimen/pad_15dp"
+                    android:layout_marginRight="@dimen/pad_10dp"
+                    android:text="admin"
+                    android:textColor="@color/colorGrey"
+                    android:textSize="@dimen/txt_14sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/v1_reply"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/pad_5dp"
-                android:paddingRight="@dimen/pad_5dp"
-                android:paddingBottom="@dimen/pad_5dp"
-                android:textAlignment="center"
-                android:text="Messages you send to this chat are secured with end-to-end encryption"
-                android:textSize="12dp"
-                android:textColor="@color/colorMain"
-                >
-            </TextView>
+                android:layout_marginLeft="@dimen/pad_10dp"
+                android:backgroundTint="@color/colorGreyLight">
+
+                <EditText
+                    android:id="@+id/txt_sendMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/pad_5dp"
+                    android:layout_weight="1"
+                    android:hint="Send a reply"
+                    android:maxLines="2"
+                    android:paddingTop="@dimen/pad_10dp"
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/colorMain"
+                    android:textSize="@dimen/txt_16sp" />
+
+                <ImageButton
+                    android:id="@+id/btnSendReply"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/pad_15dp"
+                    android:layout_weight="5"
+                    android:background="@color/transparent"
+                    android:padding="4dp"
+                    android:src="@android:drawable/ic_menu_send"
+                    android:tint="@color/black" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+
+                <Button
+                    android:id="@+id/btnDismiss"
+                    style="@style/btn_white_large"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_margin="@dimen/pad_5dp"
+                    android:layout_weight="1"
+                    android:background="@color/colorMain"
+                    android:text="Dismiss" />
+
+                <Button
+                    android:id="@+id/btnDeleteMsg"
+                    style="@style/btn_white_large"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_margin="@dimen/pad_5dp"
+                    android:layout_weight="1"
+                    android:background="@color/red"
+                    android:text="Confirm "
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/pad_18dp" />
+            </LinearLayout>
 
         </LinearLayout>
-
-
-<LinearLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-      <LinearLayout
-          android:id="@+id/v1_admin"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:background="@drawable/chat_bubble_gray"
-          android:gravity="left|top"
-          android:paddingTop="@dimen/pad_10dp"
-          android:orientation="vertical"
-          android:paddingBottom="@dimen/pad_10dp">
-
-        <TextView
-            android:id="@+id/txt_current_Message"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TextView"
-            android:layout_gravity="end"
-            android:textColor="@color/main_color_gray_dk"
-            android:textSize="@dimen/txt_15sp"
-            android:enabled="false"
-            android:paddingRight="@dimen/pad_10dp"
-            android:paddingLeft="50dp"
-            />
-
-
-
-      </LinearLayout>
-
-      <TextView
-          android:id="@+id/v1_username"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="admin"
-          android:layout_gravity="end"
-          android:layout_marginBottom="0dp"
-          android:layout_marginLeft="@dimen/pad_15dp"
-          android:textColor="@color/colorGrey"
-          android:textSize="@dimen/txt_14sp"
-          android:layout_alignRight="@+id/v1"
-          android:layout_below="@+id/v1"
-          android:layout_marginRight="@dimen/pad_10dp"/>
-
-</LinearLayout>
-      <LinearLayout
-          android:id="@+id/message_actions_login_form"
-          android:layout_height="wrap_content"
-          android:layout_width="match_parent"
-          android:layout_marginTop="@dimen/pad_15dp"
-          android:orientation="horizontal"
-          android:weightSum="2">
-
-
-
-
-
-        <Button
-            android:id="@+id/btnDismiss"
-            style="@style/btn_white_large"
-            android:layout_width="0dp"
-            android:background="@color/colorMain"
-            android:layout_height="42dp"
-            android:layout_margin="@dimen/pad_5dp"
-            android:layout_weight="1"
-            android:text="Dismiss" />
-
-        <Button
-            android:id="@+id/btnDeleteMsg"
-            android:layout_width="0dp"
-            android:background="@color/red"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:textSize="@dimen/pad_18dp"
-            android:layout_height="42dp"
-            android:layout_margin="@dimen/pad_5dp"
-            android:layout_weight="1"
-            android:text="Confirm " />
-
-
-      </LinearLayout>
-      <ScrollView
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:id="@+id/sv_panel"
-          android:focusableInTouchMode="true">
-      <LinearLayout
-          android:id="@+id/v1_reply"
-          android:layout_width="match_parent"
-          android:layout_height="match_parent"
-          android:layout_gravity="bottom"
-          android:layout_marginLeft="@dimen/pad_10dp"
-          android:backgroundTint="@color/colorGreyLight"
-
-          >
-
-        <EditText
-            android:paddingTop="@dimen/pad_10dp"
-            android:textColor="@color/black"
-            android:textSize="@dimen/txt_16sp"
-            android:layout_margin="@dimen/pad_5dp"
-            android:id="@+id/txt_sendMessage"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:hint="Send a reply"
-            android:maxLines="2"
-            android:textColorHint="@color/colorMain"
-            android:layout_gravity="bottom"
-            />
-
-        <ImageButton
-            android:id="@+id/btnSendReply"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="@dimen/pad_15dp"
-            android:layout_weight="5"
-            android:padding="4dp"
-            android:tint="@color/black"
-            android:background="@color/transparent"
-            android:src="@android:drawable/ic_menu_send" />
-      </LinearLayout>
-      </ScrollView>
     </LinearLayout>
-</RelativeLayout>
+
 </android.support.design.widget.CoordinatorLayout>

@@ -99,6 +99,8 @@ public class RepliesActivity extends BaseActivity implements AdminMessageReplies
     }
 
     public void getReplies() {
+        mRecyclerView.setAdapter(null);
+
         RepliesApi apiService = ApiClient.getAuthorizedClient().create(RepliesApi.class);
         Call<AdminRepliesResponse> call = apiService.GetReplies(String.valueOf(message.getID()));
         call.enqueue(new Callback<AdminRepliesResponse>() {

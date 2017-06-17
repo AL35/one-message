@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -53,6 +55,8 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private Context context = MyApplication.getContext();
+    private ProgressBar mLoadingIndicator;
+    public LinearLayout noMessages;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +65,9 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
                 WindowManager.LayoutParams.FLAG_SECURE);
 
         setContentView(R.layout.activity_admin_message_history);
+        noMessages = (LinearLayout) findViewById(R.id.admin_no_message);
+
+        mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
 
         initializeNavigation();
         initializeRecycler();
@@ -68,8 +75,7 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
 
     }
 
-    public void initializeNavigation()
-    {
+    public void initializeNavigation() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.admin_chat_history_activity_drawer_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
 
@@ -82,6 +88,7 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
         navigationView.setNavigationItemSelectedListener(AdminMessageHistoryActivity.this);
 
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
@@ -180,7 +187,14 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
 
     }
 
+
     public void getMessages() {
+
+        mLoadingIndicator.setVisibility(View.VISIBLE);
+        mRecyclerView.setAdapter(null);
+        noMessages.setVisibility(View.GONE);
+
+
         SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
         Call<MessageResponse> call = apiService.GetMessages();
         call.enqueue(new Callback<MessageResponse>() {
@@ -194,32 +208,37 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
                     Toast.makeText(getApplicationContext(), "Session Expired Please Login Again", Toast.LENGTH_LONG).show();
 
                 } else {
+                    mLoadingIndicator.setVisibility(View.INVISIBLE);
                     List<Message> messages = response.body().getMessages();
-                    mAdminMessagsAdapter = new AdminMessagsAdapter(messages, R.layout.list_item_admin_message, MyApplication.getContext(),
-                            new AdminMessagsAdapter.AdminMessagsAdapterOnClickHandler() {
-                                @Override
-                                public void onClick(View v, int position) {
-                                    onMessageClick(mAdminMessagsAdapter.getSelectedMessage(position));
-                                }
+                    if (messages.size() > 0) {
+                        noMessages.setVisibility(View.GONE);
+                        mAdminMessagsAdapter = new AdminMessagsAdapter(messages, R.layout.list_item_admin_message, MyApplication.getContext(),
+                                new AdminMessagsAdapter.AdminMessagsAdapterOnClickHandler() {
+                                    @Override
+                                    public void onClick(View v, int position) {
+                                        onMessageClick(mAdminMessagsAdapter.getSelectedMessage(position));
+                                    }
 
-                                @Override
-                                public void onRemoveMessageClick(View v, int position) {
-                                    deletingPosition = position;
-                                    customAlert = new CustomAlert(AdminMessageHistoryActivity.this,
-                                            "Delete Message",
-                                            "Are you sure you want to delete ?",
-                                            new CustomAlert.MyDialogListener() {
-                                                @Override
-                                                public void userSelectedAValue() {
-                                                    mAdminMessagsAdapter.deleteMessage(deletingPosition);
+                                    @Override
+                                    public void onRemoveMessageClick(View v, int position) {
+                                        deletingPosition = position;
+                                        customAlert = new CustomAlert(AdminMessageHistoryActivity.this,
+                                                "Delete Message",
+                                                "Are you sure you want to delete ?",
+                                                new CustomAlert.MyDialogListener() {
+                                                    @Override
+                                                    public void userSelectedAValue() {
+                                                        mAdminMessagsAdapter.deleteMessage(deletingPosition);
+                                                    }
                                                 }
-                                            }
-                                    );
-                                    customAlert.show();
+                                        );
+                                        customAlert.show();
+                                    }
                                 }
-                            }
-                    );
-                    mRecyclerView.setAdapter(mAdminMessagsAdapter);
+                        );
+                        mRecyclerView.setAdapter(mAdminMessagsAdapter);
+                    } else
+                        noMessages.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -239,8 +258,6 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
     public void onRemoveClick(Message message) {
 
     }
-
-
 
 
     //register your activity onResume()

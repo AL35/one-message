@@ -44,7 +44,8 @@ public class Splash extends AppCompatActivity {
 
     public void startApp()
     {
-        if (sharedData.getFirstActivation(getApplicationContext())) {
+//        if (sharedData.getFirstActivation(getApplicationContext())) {
+        if (true) {
             if (!sharedData.getAccessToken(getApplicationContext()).isEmpty() && sharedData.getAccessToken(getApplicationContext()) != " ") {
                 if (sharedData.getRole(MyApplication.getContext()).equals("Administrator")) {
                     Intent adminMainIntent = new Intent(getApplicationContext(), AdminMessageHistoryActivity.class);
@@ -84,6 +85,11 @@ public class Splash extends AppCompatActivity {
                         startActivity(publicMainIntetn);
                         finish();
                     }
+                }else
+                {
+                    Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                    startActivity(loginIntent);
+                    finish();
                 }
             }
 

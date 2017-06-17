@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:id="@+id/movies_layout"
-  android:layout_width="match_parent"
+  android:layout_width="wrap_content"
   android:layout_height="wrap_content"
   android:gravity="center_vertical"
   android:layout_marginTop="@dimen/pad_10dp"
@@ -11,14 +11,16 @@
   <LinearLayout
       android:layout_height="wrap_content"
       android:layout_width="wrap_content"
-      android:layout_marginLeft="@dimen/pad_30dp"
-      android:layout_marginRight="@dimen/pad_30dp"
+      android:layout_marginLeft="@dimen/pad_15dp"
+      android:layout_marginRight="@dimen/pad_15dp"
       android:orientation="horizontal"
       android:weightSum="1">
 
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="center|end"
         android:src="@drawable/om_message"
         />
     <LinearLayout
@@ -72,7 +74,8 @@
           android:id="@+id/remove_msg"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:layout_centerInParent="true"
+          android:layout_alignParentRight="true"
+          android:layout_gravity="center|end"
           android:scaleType="centerCrop"
           android:src="@drawable/om_delete"
           android:tint="@color/colorAccent"

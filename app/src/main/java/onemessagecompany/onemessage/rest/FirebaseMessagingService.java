@@ -26,16 +26,17 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
-
-        if (remoteMessage.getData() != null) {
-            Map<String, String> data = remoteMessage.getData();
-            String title = data.get("title");
-            String body = data.get("body");
-            String isDeleted = data.get("deleted");
-            if (isDeleted.equals("true") && sharedData.getRole(MyApplication.getContext()).equals("User"))
-                sendDeleteNotification();
-            else
-                sendNotification(title, body);
+        if (!sharedData.getAccessToken(getApplicationContext()).isEmpty() && sharedData.getAccessToken(getApplicationContext()) != " ") {
+            if (remoteMessage.getData() != null) {
+                Map<String, String> data = remoteMessage.getData();
+                String title = data.get("title");
+                String body = data.get("body");
+                String isDeleted = data.get("deleted");
+                if (isDeleted.equals("true") && sharedData.getRole(MyApplication.getContext()).equals("User"))
+                    sendDeleteNotification();
+                else
+                    sendNotification(title, body);
+            }
         }
     }
 
@@ -46,7 +47,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
     private void sendNotification(String title, String body) {
         Intent intent = new Intent(this, PublicMainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.mipmap.ic_launcher)
