@@ -89,7 +89,10 @@ public class UsersAdapter extends RecyclerView.Adapter<UsersAdapter.UserAdapterV
     }
 
   }
-
+  public void updateList(List<User> list){
+    users = list;
+    notifyDataSetChanged();
+  }
 
   @Override
   public int getItemCount() {

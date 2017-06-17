@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import onemessagecompany.onemessage.Adapters.UsersAdapter;
@@ -94,7 +95,7 @@ public class AdminMainActivity extends AppCompatActivity implements UsersAdapter
             @Override
             public void afterTextChanged(Editable editable) {
 
-//                mRecyclerView.setAdapter(mUsersAdapter.);
+                filter(editable.toString());
             }
         });
 
@@ -132,7 +133,8 @@ public class AdminMainActivity extends AppCompatActivity implements UsersAdapter
                     users = response.body().getResults();
                     if (users.size() > 0) {
                         noContacts.setVisibility(View.GONE);
-                        mRecyclerView.setAdapter(new UsersAdapter(users, R.layout.list_item_user, getApplicationContext(), AdminMainActivity.this));
+                        mUsersAdapter = new UsersAdapter(users, R.layout.list_item_user, getApplicationContext(), AdminMainActivity.this);
+                        mRecyclerView.setAdapter(mUsersAdapter);
 
                     } else
                         noContacts.setVisibility(View.VISIBLE);
@@ -148,6 +150,22 @@ public class AdminMainActivity extends AppCompatActivity implements UsersAdapter
         });
     }
 
+    void filter(String text) {
+        List<User> temp = new ArrayList();
+        for (User user : users) {
+            if (
+                    user.getFirstName().toString().toUpperCase().contains(text.toUpperCase())
+                            || user.getLastName().toString().toUpperCase().contains(text.toUpperCase())
+                            || user.getUserName().toString().toUpperCase().contains(text.toUpperCase())) {
+                temp.add(user);
+            }
+        }
+        if (temp.size() > 0) {
+            mUsersAdapter.updateList(temp);
+            noContacts.setVisibility(View.GONE);
+        }else
+            noContacts.setVisibility(View.VISIBLE);
+    }
 
     @Override
     public void onClick(User user) {
