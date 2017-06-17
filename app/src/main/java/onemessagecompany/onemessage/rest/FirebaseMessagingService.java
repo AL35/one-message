@@ -12,7 +12,6 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.Map;
 
-import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.Public.PublicMainActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.MyApplication;
@@ -49,7 +48,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
         Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
-                .setSmallIcon(R.mipmap.ic_launcher)
+                .setSmallIcon(R.mipmap.om_launcher)
                 .setContentTitle(title)
                 .setContentText(body)
                 .setAutoCancel(true)
