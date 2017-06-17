@@ -1,19 +1,16 @@
 package onemessagecompany.onemessage.Admin;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
-import onemessagecompany.onemessage.data.sharedData;
-import onemessagecompany.onemessage.model.GenerateKeyRequest;
 import onemessagecompany.onemessage.model.GenerateKeyResponse;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.GenerateActivationKeyApi;
@@ -24,7 +21,7 @@ import retrofit2.Response;
 public class GenerateKey extends BaseActivity {
 
   private GenerateActivationKeyApi generateActivationKeyApi;
-  private EditText mGeneratedActivationKey;
+  private TextView mGeneratedActivationKey;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +31,7 @@ public class GenerateKey extends BaseActivity {
 
     setContentView(R.layout.activity_generate_key);
 
-    mGeneratedActivationKey = (EditText) findViewById(R.id.generated_activation_key);
+    mGeneratedActivationKey = (TextView) findViewById(R.id.generated_activation_key);
     Button mRegisterButton = (Button) findViewById(R.id.generate_activation_button);
     mRegisterButton.setOnClickListener(new View.OnClickListener() {
       @Override

@@ -108,12 +108,6 @@
                 android:value=".Admin.AdminMessageHistoryActivity" />
         </activity>
         <activity
-            android:name=".Admin.NotificationActivity"
-            android:configChanges="orientation"
-            android:label="@string/title_activity_notification"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".Public.PublicMainActivity"
             android:configChanges="orientation"
             android:label="@string/title_activity_publick_main"
