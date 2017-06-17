@@ -6,8 +6,25 @@
   android:layout_height="match_parent"
 
   tools:context="onemessagecompany.onemessage.AdminMainActivity"
-  android:id="@+id/admin_main_activity_drawer_layout">
-<LinearLayout
+  android:id="@+id/admin_main_activity_drawer_layout"
+    android:orientation="vertical">
+  <LinearLayout
+      android:id="@+id/no_contact_list"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="gone"
+      android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="There is no users"
+        android:textSize="20dp"
+        android:visibility="visible" />
+  </LinearLayout>
+
+  <LinearLayout
     android:id="@+id/ac_admin_main"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
@@ -34,6 +51,16 @@
       android:layout_marginEnd="@dimen/pad_5dp"
       android:layout_marginRight="@dimen/pad_5dp"
       android:layout_marginLeft="@dimen/pad_10dp">
+
+    <ProgressBar
+        android:id="@+id/pb_loading_indicator"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_centerInParent="true"
+        android:visibility="invisible" />
+
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/users_recycler_view"
