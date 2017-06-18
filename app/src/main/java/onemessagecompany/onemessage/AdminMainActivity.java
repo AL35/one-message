@@ -52,9 +52,10 @@ public class AdminMainActivity extends AppCompatActivity implements UsersAdapter
                 return true;
             }
         });
-
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -132,7 +133,7 @@ public class AdminMainActivity extends AppCompatActivity implements UsersAdapter
         UsersApi apiService =
                 ApiClient.getAuthorizedClient().create(UsersApi.class);
 
-        Call<UsersResponse> call = apiService.GetUsersList();
+        Call<UsersResponse> call = apiService.GetUsersList(false);
         call.enqueue(new Callback<UsersResponse>() {
             @Override
             public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response) {

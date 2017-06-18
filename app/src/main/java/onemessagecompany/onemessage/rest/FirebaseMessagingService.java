@@ -14,7 +14,6 @@ import java.util.Map;
 
 import onemessagecompany.onemessage.Admin.AdminMessageHistoryActivity;
 import onemessagecompany.onemessage.Admin.ForgetPasswordListActivity;
-import onemessagecompany.onemessage.Admin.RepliesActivity;
 import onemessagecompany.onemessage.Public.PublicMainActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.MyApplication;
@@ -50,6 +49,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                     switch (type) {
                         case "delete":
                             sendDeleteNotification();
+
                             break;
                         case "send":
                             sendNotification(title, body);

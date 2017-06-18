@@ -1,6 +1,5 @@
 package onemessagecompany.onemessage.Public;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -20,6 +19,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 import onemessagecompany.onemessage.R;
+import onemessagecompany.onemessage.Utilities.NetworkChangeReceiver;
 import onemessagecompany.onemessage.model.Message;
 import onemessagecompany.onemessage.model.ReplyRequest;
 import onemessagecompany.onemessage.rest.ApiClient;
@@ -29,13 +29,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static onemessagecompany.onemessage.R.id.txt_current_Message;
 import static onemessagecompany.onemessage.R.id.v1_username;
+
 
 public class MessageDetailsActivity extends AppCompatActivity {
 
     private Message message;
     private EditText txtReply;
     private TextView username;
+    private NetworkChangeReceiver receiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,18 +57,9 @@ public class MessageDetailsActivity extends AppCompatActivity {
             }
         });
 
-//        findViewById(R.id.sv_panel).setOnTouchListener(new View.OnTouchListener() {
-//            @Override
-//            public boolean onTouch(View v, MotionEvent event) {
-//                InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
-//                imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-//                return true;
-//            }
-//        });
-
         message = (Message) getIntent().getSerializableExtra("message");
 
-        TextView txtMsg = (TextView) findViewById(R.id.txt_current_Message);
+        TextView txtMsg = (TextView) findViewById(txt_current_Message);
         txtReply = (EditText) findViewById(R.id.txt_sendMessage);
 
         txtMsg.setText(message.getBody());
@@ -114,7 +108,10 @@ public class MessageDetailsActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
+
 
     public void deleteMessage() {
         SendMessageApi apiService = ApiClient.getAuthorizedClient().create(SendMessageApi.class);
@@ -191,3 +188,5 @@ public class MessageDetailsActivity extends AppCompatActivity {
     }
 
 }
+
+

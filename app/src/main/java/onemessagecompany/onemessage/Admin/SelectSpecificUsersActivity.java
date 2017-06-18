@@ -1,15 +1,10 @@
 package onemessagecompany.onemessage.Admin;
 
-import android.app.Activity;
-import android.content.ClipData;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
@@ -17,8 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import onemessagecompany.onemessage.Adapters.SpecificUsersAdapter;
-import onemessagecompany.onemessage.Adapters.UsersAdapter;
-import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.Public.SendMessageActivity;
 import onemessagecompany.onemessage.R;
@@ -76,7 +69,7 @@ public class SelectSpecificUsersActivity extends AppCompatActivity {
         UsersApi apiService =
                 ApiClient.getAuthorizedClient().create(UsersApi.class);
 
-        Call<UsersResponse> call = apiService.GetUsersList();
+        Call<UsersResponse> call = apiService.GetUsersList(true);
         call.enqueue(new Callback<UsersResponse>() {
             @Override
             public void onResponse(Call<UsersResponse> call, Response<UsersResponse> response) {
