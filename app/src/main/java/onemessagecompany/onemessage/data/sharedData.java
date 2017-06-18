@@ -28,6 +28,12 @@ public final  class sharedData {
     return mySharedPreferences.getBoolean("activated", false);
   }
 
+  public static String getVersionNumber(Context context) {
+    final int mode = context.MODE_PRIVATE;
+    mySharedPreferences = context.getSharedPreferences("sharedState", mode);
+    return mySharedPreferences.getString("VersionNumber","1.0.0");
+  }
+
   public static void setAccessToken(Context context, String accessToken) {
 
     final int mode = context.MODE_PRIVATE;

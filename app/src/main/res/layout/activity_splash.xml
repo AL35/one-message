@@ -10,6 +10,35 @@
         android:layout_gravity="center"
         android:layout_weight="2"/>
 
+    <TextView
+        android:id="@+id/txt_version_conflict"
+        style="@style/TextAppearance.AppCompat.Large"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:text=""
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/btnExist"
+        style="@style/btn_white_large"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/pad_5dp"
+        android:background="@color/colorMain"
+        android:text="Exist"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btnOk"
+        style="@style/btn_white_large"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/pad_5dp"
+        android:background="@color/colorMain"
+        android:text="Ok"
+        android:visibility="gone"/>
 
 
 </LinearLayout>
