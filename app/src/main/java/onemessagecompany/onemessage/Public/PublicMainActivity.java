@@ -177,7 +177,7 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
     @Override
     public void onResume() {
         super.onResume();
-        context.registerReceiver(mMessageReceiver, new IntentFilter("unique_name"));
+        context.registerReceiver(mMessageReceiver, new IntentFilter("Send"));
     }
 
     @Override
@@ -199,11 +199,10 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            // Extract data included in the Intent
-            String message = intent.getStringExtra("message");
-            if (message.equals("User"))
+            String action = intent.getAction();
+            if (action.equals("Send")) {
                 getMessages();
-            //do other stuff here
+            }
         }
     };
 
