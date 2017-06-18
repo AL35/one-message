@@ -12,6 +12,9 @@ import com.google.firebase.messaging.RemoteMessage;
 
 import java.util.Map;
 
+import onemessagecompany.onemessage.Admin.AdminMessageHistoryActivity;
+import onemessagecompany.onemessage.Admin.ForgetPasswordListActivity;
+import onemessagecompany.onemessage.Admin.RepliesActivity;
 import onemessagecompany.onemessage.Public.PublicMainActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.MyApplication;
@@ -31,16 +34,88 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                 String title = data.get("title");
                 String body = data.get("body");
                 String isDeleted = data.get("deleted");
-                if (isDeleted.equals("true") && sharedData.getRole(MyApplication.getContext()).equals("User"))
-                    sendDeleteNotification();
-                else
-                    sendNotification(title, body);
+                String type = data.get("type");
+
+                if (sharedData.getRole(MyApplication.getContext()).equals("Administrator")) {
+                    switch (type) {
+                        case "forget":
+                            sendAdminForgetPasswordNotification(title, body);
+                            break;
+                        case "reply":
+                            sendAdminReplyNotification(title, body);
+                            break;
+                    }
+                }
+                if (sharedData.getRole(MyApplication.getContext()).equals("User")) {
+                    switch (type) {
+                        case "delete":
+                            sendDeleteNotification();
+                            break;
+                        case "send":
+                            sendNotification(title, body);
+                            break;
+                    }
+                }
             }
         }
     }
 
+
+    private void sendAdminForgetPasswordNotification(String title, String body) {
+        Intent intent = new Intent(this, ForgetPasswordListActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.om_launcher)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setAutoCancel(true)
+                .setSound(notificationSound)
+                .setContentIntent(pendingIntent);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(0, notificationBuilder.build());
+        updateForgetPasswordListActivity(MyApplication.getContext());
+
+
+    }
+    static void updateForgetPasswordListActivity(Context context) {
+
+        Intent intent = new Intent("ForgetPassword");
+        context.sendBroadcast(intent);
+    }
+
+
+    private void sendAdminReplyNotification(String title, String body) {
+        Intent intent = new Intent(this, AdminMessageHistoryActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        Uri notificationSound = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.mipmap.om_launcher)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setAutoCancel(true)
+                .setSound(notificationSound)
+                .setContentIntent(pendingIntent);
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        notificationManager.notify(0, notificationBuilder.build());
+        updateAdminReplyActivity(MyApplication.getContext());
+
+
+    }
+    static void updateAdminReplyActivity(Context context) {
+
+        Intent intent = new Intent("Reply");
+        context.sendBroadcast(intent);
+    }
+
+
+
+
+
     private void sendDeleteNotification() {
-        updateUserMainActivity(getApplicationContext(), "User");
+        updateUserMainActivity(getApplicationContext());
     }
 
     private void sendNotification(String title, String body) {
@@ -57,22 +132,13 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                 .setContentIntent(pendingIntent);
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.notify(0, notificationBuilder.build());
-
-        if (sharedData.getRole(MyApplication.getContext()).equals("Administrator"))
-            updateUserMainActivity(getApplicationContext(), "Administrator");
-        else
-            updateUserMainActivity(getApplicationContext(), "User");
+        updateUserMainActivity(MyApplication.getContext());
 
     }
 
-    static void updateUserMainActivity(Context context, String message) {
+    static void updateUserMainActivity(Context context) {
 
-        Intent intent = new Intent("unique_name");
-
-        //put whatever data you want to send, if any
-        intent.putExtra("message", message);
-
-        //send broadcast
+        Intent intent = new Intent("Send");
         context.sendBroadcast(intent);
     }
 }

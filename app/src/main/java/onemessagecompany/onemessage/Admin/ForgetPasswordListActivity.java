@@ -1,7 +1,9 @@
 package onemessagecompany.onemessage.Admin;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +12,7 @@ import android.view.View;
 import onemessagecompany.onemessage.Adapters.ForgetPasswordAdapter;
 import onemessagecompany.onemessage.BaseActivity;
 import onemessagecompany.onemessage.R;
+import onemessagecompany.onemessage.data.MyApplication;
 import onemessagecompany.onemessage.model.Notification;
 import onemessagecompany.onemessage.model.NotificationResponse;
 import onemessagecompany.onemessage.model.UsersResponse;
@@ -23,6 +26,7 @@ import retrofit2.Response;
 public class ForgetPasswordListActivity extends BaseActivity implements ForgetPasswordAdapter.ForgetPasswordAdapterOnClickHandler {
 
     private RecyclerView mRecyclerView;
+    private Context context = MyApplication.getContext();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +34,14 @@ public class ForgetPasswordListActivity extends BaseActivity implements ForgetPa
         setContentView(R.layout.activity_forget_password_list);
 
 
+        initializeRecycle();
+
+        context.registerReceiver(mMessageReceiver, new IntentFilter("ForgetPassword"));
+
+        getNotifications();
+    }
+    public void initializeRecycle()
+    {
         mRecyclerView = (RecyclerView) findViewById(R.id.forget_password_recycler_view);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
@@ -38,10 +50,7 @@ public class ForgetPasswordListActivity extends BaseActivity implements ForgetPa
 
         mRecyclerView.setHasFixedSize(true);
 
-
-        getNotifications();
     }
-
 
     public void getNotifications() {
         ForgetPasswordApi apiService =
@@ -106,4 +115,31 @@ public class ForgetPasswordListActivity extends BaseActivity implements ForgetPa
             }
         });
     }
+
+    //Must unregister onPause()
+    @Override
+    protected void onPause() {
+        super.onPause();
+        context.unregisterReceiver(mMessageReceiver);
+    }
+
+    //register your activity onResume()
+    @Override
+    public void onResume() {
+        super.onResume();
+        context.registerReceiver(mMessageReceiver, new IntentFilter("ForgetPassword"));
+    }
+
+    //This is the handler that will manager to process the broadcast intent
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            String action = intent.getAction();
+            if (action.equals("ForgetPassword")) {
+                getNotifications();
+            }
+        }
+    };
+
 }

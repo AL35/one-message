@@ -69,6 +69,8 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
 
         mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
 
+        context.registerReceiver(mMessageReceiver, new IntentFilter("Reply"));
+
         initializeNavigation();
         initializeRecycler();
         getMessages();
@@ -264,7 +266,7 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
     @Override
     public void onResume() {
         super.onResume();
-        context.registerReceiver(mMessageReceiver, new IntentFilter("unique_name"));
+        context.registerReceiver(mMessageReceiver, new IntentFilter("Reply"));
     }
 
 
@@ -281,11 +283,10 @@ public class AdminMessageHistoryActivity extends BaseActivity implements Navigat
         @Override
         public void onReceive(Context context, Intent intent) {
 
-            // Extract data included in the Intent
-            String message = intent.getStringExtra("message");
-            if (message.equals("Administrator"))
+            String action = intent.getAction();
+            if (action.equals("Reply")) {
                 getMessages();
-            //do other stuff here
+            }
         }
     };
 }
