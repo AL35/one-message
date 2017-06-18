@@ -1,6 +1,9 @@
 package onemessagecompany.onemessage.Admin;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -154,4 +157,11 @@ public class RepliesActivity extends BaseActivity implements AdminMessageReplies
     public void onClick(AdminReply adminReply) {
 
     }
+
+    //Must unregister onPause()
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
 }
