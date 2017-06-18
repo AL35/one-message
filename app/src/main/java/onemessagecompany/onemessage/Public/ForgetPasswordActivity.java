@@ -58,7 +58,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         int statusCode = response.code();
         if (statusCode == 200) {
           Toast.makeText(getApplicationContext(), response.body().getResponse(), Toast.LENGTH_LONG).show();
-
+          ((EditText) findViewById(R.id.txt_forget_password_username)).setText(null);
         }
 
       }

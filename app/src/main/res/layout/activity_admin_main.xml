@@ -8,15 +8,20 @@
   tools:context="onemessagecompany.onemessage.AdminMainActivity"
   android:id="@+id/admin_main_activity_drawer_layout"
     android:orientation="vertical">
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    android:id="@+id/ac_contacts">
   <EditText
       android:id="@+id/contact_search"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:hint="Search contacts..."
       android:textSize="@dimen/pad_20dp"
-      android:layout_marginLeft="@dimen/pad_10dp"
-      android:layout_marginRight="@dimen/pad_10dp"
+      android:layout_marginLeft="@dimen/pad_20dp"
+      android:layout_marginRight="@dimen/pad_20dp"
       android:singleLine="true"/>
   <LinearLayout
       android:id="@+id/no_contact_list"
@@ -39,7 +44,6 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_marginTop="@dimen/pad_10dp"
     android:layout_marginLeft="@dimen/pad_5dp"
     android:layout_marginEnd="@dimen/pad_5dp"
     android:layout_marginRight="@dimen/pad_5dp"
@@ -74,6 +78,6 @@
 </LinearLayout>
 
 
-
+</LinearLayout>
 
 </LinearLayout>
