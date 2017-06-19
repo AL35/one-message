@@ -88,10 +88,10 @@ public class Splash extends AppCompatActivity {
 
                     if (vNumber != currentVersionNumber || fNumber != currentFeatureNumber) {
                         btnExit.setVisibility(View.VISIBLE);
-                        txtConflict.setText("Please Update Your Version");
+                        txtConflict.setText("Current app version is no longer compatible with server version. please update your app");
                     }
                     else if(currentBugFixNumber !=bNumber){
-                        txtConflict.setText("Please Update Your App For Enhancement");
+                        txtConflict.setText("New version is available, please install it for new bug fixes");
                         btnOk.setVisibility(View.VISIBLE);
                     }
                     else

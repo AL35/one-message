@@ -2,8 +2,6 @@ package onemessagecompany.onemessage.data;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.graphics.Color;
-import android.preference.PreferenceManager;
 
 /**
  * Created by 52Solution on 28/05/2017.
