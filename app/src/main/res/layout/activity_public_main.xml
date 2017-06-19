@@ -24,7 +24,21 @@
         android:textSize="20dp"
         android:visibility="visible" />
   </LinearLayout>
+  <LinearLayout
+      android:id="@+id/public_messages_no_connection"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:visibility="gone"
+      android:orientation="vertical">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="There is no connection"
+        android:textSize="20dp"
+        android:visibility="visible" />
+  </LinearLayout>
 
   <RelativeLayout
     android:layout_width="match_parent"

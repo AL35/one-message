@@ -1,5 +1,6 @@
 package onemessagecompany.onemessage.Public;
 
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MotionEvent;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.TimeZone;
 
+import onemessagecompany.onemessage.NetworkStateReceiver;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.Utilities.NetworkChangeReceiver;
 import onemessagecompany.onemessage.model.Message;
@@ -33,12 +35,13 @@ import static onemessagecompany.onemessage.R.id.txt_current_Message;
 import static onemessagecompany.onemessage.R.id.v1_username;
 
 
-public class MessageDetailsActivity extends AppCompatActivity {
+public class MessageDetailsActivity extends AppCompatActivity implements NetworkStateReceiver.NetworkStateReceiverListener {
 
     private Message message;
     private EditText txtReply;
     private TextView username;
     private NetworkChangeReceiver receiver;
+    private NetworkStateReceiver networkStateReceiver;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,10 +110,18 @@ public class MessageDetailsActivity extends AppCompatActivity {
                 sendReply(reply);
             }
         });
-
+        registerInNetworkReciver();
 
 
     }
+
+
+    public void registerInNetworkReciver() {
+        networkStateReceiver = new NetworkStateReceiver();
+        networkStateReceiver.addListener(this);
+        this.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
 
 
     public void deleteMessage() {
@@ -185,6 +196,15 @@ public class MessageDetailsActivity extends AppCompatActivity {
 
             }
         });
+    }
+    @Override
+    public void networkAvailable() {
+
+    }
+
+    @Override
+    public void networkUnavailable() {
+        finish();
     }
 
 }

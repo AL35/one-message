@@ -36,6 +36,7 @@ import onemessagecompany.onemessage.Admin.ConfigActivity;
 import onemessagecompany.onemessage.Admin.GenerateKey;
 import onemessagecompany.onemessage.AdminMainActivity;
 import onemessagecompany.onemessage.LoginActivity;
+import onemessagecompany.onemessage.NetworkStateReceiver;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.MyApplication;
 import onemessagecompany.onemessage.data.sharedData;
@@ -47,15 +48,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PublicMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, UserMessageAdapter.UserMessageAdapterOnClickHandler {
+public class PublicMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, UserMessageAdapter.UserMessageAdapterOnClickHandler, NetworkStateReceiver.NetworkStateReceiverListener {
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
     private RecyclerView mRecyclerView;
-    private AdminMessagsAdapter mAdminMessagsAdapter;
     private Context context = MyApplication.getContext();
     public LinearLayout noMessages;
     private ProgressBar mLoadingIndicator;
+    private NetworkStateReceiver networkStateReceiver;
+    public LinearLayout noConnection;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +66,31 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
                 WindowManager.LayoutParams.FLAG_SECURE);
 
         setContentView(R.layout.activity_public_main);
+
+        initializeMenu();
+
         noMessages = (LinearLayout) findViewById(R.id.public_messages);
+        noConnection = (LinearLayout) findViewById(R.id.public_messages_no_connection);
+        mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
+
+
+        registerInNetworkReciver();
+
+        initializeRecycler();
+        getMessages();
+
+
+
+    }
+
+    public void registerInNetworkReciver() {
+        networkStateReceiver = new NetworkStateReceiver();
+        networkStateReceiver.addListener(this);
+        this.registerReceiver(networkStateReceiver, new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+    }
+
+
+    public void initializeMenu() {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.public_main_activity_drawer_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.open, R.string.close);
 
@@ -75,9 +101,9 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+    }
 
-
-        //Set Home Page User List Recycle View
+    public void initializeRecycler() {
 
         mRecyclerView = (RecyclerView) findViewById(R.id.public_messages_recycler_view);
 
@@ -86,15 +112,7 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
         mRecyclerView.setLayoutManager(layoutManager);
 
         mRecyclerView.setHasFixedSize(true);
-
-
-        mLoadingIndicator = (ProgressBar) findViewById(R.id.pb_loading_indicator);
-
-
-        getMessages();
-
     }
-
 
     @Override
     public void onDestroy() {
@@ -118,7 +136,7 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
                     Intent intentLogin = new Intent(PublicMainActivity.this, LoginActivity.class);
                     startActivity(intentLogin);
                     finish();
-                } else {
+                } else if (statusCode == 200) {
                     mLoadingIndicator.setVisibility(View.INVISIBLE);
 
                     List<Message> messages = response.body().getMessages();
@@ -128,6 +146,7 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
                     } else
                         noMessages.setVisibility(View.VISIBLE);
                 }
+                mLoadingIndicator.setVisibility(View.GONE);
             }
 
             @Override
@@ -206,5 +225,17 @@ public class PublicMainActivity extends AppCompatActivity implements NavigationV
         }
     };
 
+    @Override
+    public void networkAvailable() {
+        noConnection.setVisibility(View.GONE);
+        getMessages();
+    }
+
+    @Override
+    public void networkUnavailable() {
+        noConnection.setVisibility(View.VISIBLE);
+        noMessages.setVisibility(View.GONE);
+        mRecyclerView.setAdapter(null);
+    }
 
 }
