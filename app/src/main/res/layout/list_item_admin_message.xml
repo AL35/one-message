@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_gravity="center|end"
+        android:layout_marginLeft="@dimen/pad_10dp"
+
         android:src="@drawable/om_message"
         />
     <LinearLayout
@@ -33,7 +35,8 @@
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="Message"
-
+          android:layout_marginLeft="@dimen/pad_10dp"
+          android:layout_marginRight="@dimen/pad_10dp"
           android:textSize="@dimen/pad_18dp"
           android:paddingLeft="@dimen/pad_10dp"/>
 
@@ -41,6 +44,8 @@
           android:id="@+id/item_list_message_date"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
+          android:layout_marginLeft="@dimen/pad_10dp"
+          android:layout_marginRight="@dimen/pad_10dp"
           android:textSize="@dimen/pad_15dp"
           android:text="datetime"
           android:paddingLeft="@dimen/pad_10dp"
@@ -75,6 +80,8 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_alignParentRight="true"
+          android:layout_marginLeft="@dimen/pad_5dp"
+          android:layout_marginRight="@dimen/pad_5dp"
           android:layout_gravity="center|end"
           android:scaleType="centerCrop"
           android:src="@drawable/om_delete"
