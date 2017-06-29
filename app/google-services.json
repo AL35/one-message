@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "142795626990",
-    "firebase_url": "https://onemessage-5373a.firebaseio.com",
-    "project_id": "onemessage-5373a",
-    "storage_bucket": "onemessage-5373a.appspot.com"
+    "project_number": "954447892010",
+    "firebase_url": "https://onemessageapp.firebaseio.com",
+    "project_id": "onemessageapp",
+    "storage_bucket": "onemessageapp.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:142795626990:android:4131e2a8848c3f07",
+        "mobilesdk_app_id": "1:954447892010:android:4131e2a8848c3f07",
         "android_client_info": {
           "package_name": "onemessagecompany.onemessage"
         }
       },
       "oauth_client": [
         {
-          "client_id": "142795626990-egetr76ukva739gjj4auds0ku6psips7.apps.googleusercontent.com",
+          "client_id": "954447892010-jkm81po7129dmg7plac8vs25uibpnc6r.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCYRvFXCLTVWmc-z4Y1zMFSQ0ZPJr-1Czs"
+          "current_key": "AIzaSyANPOJQ_nlhmNDP5fM3TFXmr94CeHMEaxc"
         }
       ],
       "services": {

@@ -141,22 +141,23 @@
 
                 <Button
                     android:id="@+id/btnDismiss"
-                    style="@style/btn_white_large"
+                    android:textColor="@color/white"
                     android:layout_width="0dp"
-                    android:layout_height="42dp"
+                    android:textAllCaps="false"
+                    android:textSize="18dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="@dimen/pad_5dp"
                     android:layout_weight="1"
-                    android:background="@color/colorMain"
+                    android:backgroundTint="@color/colorMain"
                     android:text="Dismiss" />
 
                 <Button
                     android:id="@+id/btnDeleteMsg"
-                    style="@style/btn_white_large"
                     android:layout_width="0dp"
-                    android:layout_height="42dp"
+                    android:layout_height="wrap_content"
                     android:layout_margin="@dimen/pad_5dp"
                     android:layout_weight="1"
-                    android:background="@color/red"
+                    android:backgroundTint="@color/red"
                     android:text="Confirm "
                     android:textAllCaps="false"
                     android:textColor="@color/white"

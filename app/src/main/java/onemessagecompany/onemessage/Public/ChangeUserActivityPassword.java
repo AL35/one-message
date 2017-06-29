@@ -2,22 +2,17 @@ package onemessagecompany.onemessage.Public;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.Toast;
 
-import onemessagecompany.onemessage.LoginActivity;
 import onemessagecompany.onemessage.R;
 import onemessagecompany.onemessage.data.MyApplication;
 import onemessagecompany.onemessage.data.sharedData;
-import onemessagecompany.onemessage.model.BoolResponse;
 import onemessagecompany.onemessage.model.ChangeAdminPasswordRequest;
 import onemessagecompany.onemessage.rest.ApiClient;
 import onemessagecompany.onemessage.rest.CheckFirstTimeLoginApi;
@@ -91,6 +86,10 @@ public class ChangeUserActivityPassword extends AppCompatActivity {
                 if (statusCode == 200) {
                     Toast.makeText(getApplicationContext(), "Password Changed Successfully", Toast.LENGTH_LONG).show();
                     setFirstLogin();
+                    //sharedData.setFirstChangePassword(MyApplication.getContext(),true);
+                    //Intent intentPublicMain = new Intent(getApplicationContext(), PublicMainActivity.class);
+                    //startActivity(intentPublicMain);
+                    //finish();
 
                 }
                 else{
@@ -123,7 +122,6 @@ public class ChangeUserActivityPassword extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-
             }
         });
 
@@ -146,7 +144,12 @@ public class ChangeUserActivityPassword extends AppCompatActivity {
             valid = false;
         }
         else {
-            mPassword.setError(null);
+            if(password.equals(oldPassword)){
+                mPassword.setError("Old Password cannot be the same like New Password");
+                valid = false;
+            }
+            else
+                mPassword.setError(null);
         }
         if (confirmPassword.isEmpty() || confirmPassword.length() < 6) {
             mConfirmPassword.setError("Required & Should not be less than 6 characters");

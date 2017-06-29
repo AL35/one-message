@@ -72,15 +72,15 @@
         <Button
             android:id="@+id/config_button"
             android:layout_width="match_parent"
-            android:layout_height="49dp"
+            android:layout_height="wrap_content"
             android:layout_below="@+id/textView1"
             android:layout_marginTop="5dp"
-            android:background="@color/colorMain"
+            android:backgroundTint="@color/colorMain"
             android:text="Save"
             android:textAllCaps="false"
             android:textColor="@color/white"
 
-            android:textSize="@dimen/pad_18dp" />
+            android:textSize="@dimen/pad_20dp" />
     </LinearLayout>
 
 </RelativeLayout>

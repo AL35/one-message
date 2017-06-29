@@ -67,36 +67,37 @@
 
         <Button
           android:id="@+id/btnEditUser"
-          style="@style/btn_white_large"
           android:layout_width="match_parent"
           android:layout_gravity="center"
-          android:layout_height="42dp"
-          android:layout_weight="1"
+          android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:textSize="@dimen/pad_18dp"
           android:text="@string/EditUser"
-            android:background="@color/colorMain"/>
+            android:backgroundTint="@color/colorMain"/>
 
       <Button
         android:id="@+id/btnEditPassword"
-        style="@style/btn_white_large"
         android:layout_width="match_parent"
         android:layout_gravity="center"
-        android:layout_height="42dp"
-        android:layout_marginTop="@dimen/pad_15dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+          android:textColor="@color/white"
+          android:textAllCaps="false"
+          android:textSize="@dimen/pad_18dp"
+        android:layout_marginTop="@dimen/pad_10dp"
         android:text="@string/change_password"
-          android:background="@color/colorMain"/>
+          android:backgroundTint="@color/colorMain"/>
 
       <Button
         android:id="@+id/btnDeleteUser"
-        android:background="@color/red"
+        android:backgroundTint="@color/red"
         android:layout_width="match_parent"
         android:textColor="@color/white"
-        android:textAllCaps="false"
+          android:textAllCaps="false"
         android:textSize="@dimen/pad_18dp"
         android:layout_gravity="center"
-        android:layout_height="42dp"
-        android:layout_weight="1"
-        android:layout_marginTop="@dimen/pad_15dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pad_10dp"
         android:text="@string/DeleteUser" />
 
 

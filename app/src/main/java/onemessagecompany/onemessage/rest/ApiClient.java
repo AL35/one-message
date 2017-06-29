@@ -16,14 +16,14 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ApiClient {
 
-    public static final String BASE_URL = "http://ahmedlotfy-001-site1.itempurl.com/";
+    public static final String BASE_URL = "https://onemessageapp.com/";
     public static final String BASE_Firebase_URL = "http://fcm.googleapis.com/";
 
     private static Retrofit retrofit = null;
     private static Retrofit retrofitAuthorized = null;
     private static Retrofit retrofitFirebase = null;
 
-    private static final String fireBaseServerKey = "Key=AAAAIT9IWe4:APA91bHvb7evTtA6Vx16AD3gfLN_4kW9md8l77A1r0R3mBrDyhoVgRDYw_2l6GGWQe8butBV2_htDTssBoZsUiI3T_O0TNlRrzOOmIefUYtvFeGNp7mEexeJzaKXWeBrL1Mn7YrRhn3q";
+    private static final String fireBaseServerKey = "Key=AAAA3jmHDio:APA91bHCLKoBOqw8AP2z8zenoCuBUotZthjNAloa8SegrmnP9X25GCsoWB1vfaGQtWHG8adT-c_PkDtHK1SxXzgEhFIqYSQtFCsosTgIJ3mpVN9zvhKiPy2LpMKGJSHdMVJNMUehpt-L";
     private static String Token;
 
     public static Retrofit getClient() {

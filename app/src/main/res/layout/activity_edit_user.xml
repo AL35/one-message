@@ -54,6 +54,7 @@
           android:background="@color/gray_light"
           android:layout_gravity="left"
           android:textAlignment="gravity"
+          android:layout_margin="@dimen/pad_5dp"
           android:paddingLeft="@dimen/pad_10dp"
           android:textSize="@dimen/pad_15dp"
           android:layout_width="match_parent"
@@ -70,6 +71,7 @@
           android:background="@color/gray_light"
           android:layout_gravity="left"
           android:textAlignment="gravity"
+          android:layout_margin="@dimen/pad_5dp"
           android:paddingLeft="@dimen/pad_10dp"
           android:textSize="@dimen/pad_15dp"
           android:layout_width="match_parent"
@@ -84,6 +86,7 @@
       <EditText
           android:id="@+id/edit_LastName"
           android:background="@color/gray_light"
+          android:layout_margin="@dimen/pad_5dp"
           android:layout_gravity="left"
           android:textAlignment="gravity"
           android:paddingLeft="@dimen/pad_10dp"
@@ -114,11 +117,11 @@
           android:id="@+id/edit_button"
           android:textColor="@color/white"
           android:textAllCaps="false"
-          android:textSize="@dimen/pad_18dp"
+          android:textSize="@dimen/pad_20dp"
           android:layout_width="match_parent"
-          android:layout_height="49dp"
+          android:layout_height="wrap_content"
           android:layout_marginTop="16dp"
-          android:background="@color/colorMain"
+          android:backgroundTint="@color/colorMain"
           android:text="@string/edit_user_save" />
 
     </LinearLayout>

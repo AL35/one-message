@@ -61,26 +61,26 @@
         <EditText
             android:id="@+id/txt_activatiobn_key"
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/pad_5dp"
             android:background="@color/gray_light"
             android:hint="Key"
             android:textAlignment="center"
             android:inputType="textEmailAddress"
             android:maxLines="1"
-            android:layout_marginBottom="@dimen/pad_20dp"
             android:singleLine="true"
 
             android:focusableInTouchMode="true"/>
 
         <Button
             android:id="@+id/activate_app"
-            style="@style/btn_white_large"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="100dp"
-            android:background="@color/colorMain"
+            android:textColor="@color/white"
+            android:layout_marginTop="@dimen/pad_10dp"
+            android:textAllCaps="false"
+            android:textSize="17dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorMain"
             android:text="@string/btn_activation"
             />
 

@@ -81,60 +81,49 @@
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:layout_marginTop="@dimen/pad_30dp"
-          android:orientation="horizontal"
+          android:orientation="vertical"
           android:weightSum="3">
 
-        <ImageButton
+        <Button
             android:id="@+id/btnSendMessage"
             android:layout_width="match_parent"
-            android:src="@drawable/om_send_all"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-
-            android:text="@string/send_message"
-            android:background="@color/transparent"
+            android:textAllCaps="false"
+            android:text="Send to All Users"
+            android:textSize="18dp"
+            android:backgroundTint="@color/colorMain"
+            android:textColor="@color/white"
             android:layout_weight="1"/>
 
-         <LinearLayout
-             android:layout_width="wrap_content"
-             android:layout_height="wrap_content"
-             android:layout_gravity="center">
-             <View
-                 android:layout_width="1dp"
-                 android:layout_height="40dp"
-                 android:layout_gravity="center"
-                 android:background="@color/colorMain" >
-
-
-             </View>
-         </LinearLayout>
-
-
-        <ImageButton
-            android:id="@+id/btnSendSpecific"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/om_send_message"
-            android:layout_gravity="center"
-            android:text="Send Selected Users"
-            android:background="@color/transparent"
-            android:layout_weight="1"/>
-
-          <LinearLayout
-              android:layout_width="wrap_content"
-              android:layout_height="wrap_content"
-              android:layout_gravity="center">
-
-          </LinearLayout>
-        <ImageButton
+        <Button
             android:id="@+id/btnSelectSpecificUser"
             android:src="@drawable/om_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:textSize="18dp"
+            android:backgroundTint="@color/colorMain"
+            android:textColor="@color/white"
             android:layout_gravity="center"
             android:text="Select Users"
-            android:layout_weight="1"
-            android:background="@color/transparent"/>
+            android:layout_weight="1"/>
+
+
+        <Button
+            android:id="@+id/btnSendSpecific"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorMain"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:layout_gravity="center"
+            android:text="Send to Selected Users"
+            android:layout_weight="1"/>
+
+
+
 
 
       </LinearLayout>

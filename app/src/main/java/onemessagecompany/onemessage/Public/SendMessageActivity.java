@@ -9,8 +9,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.iid.FirebaseInstanceId;
@@ -60,8 +60,8 @@ public class SendMessageActivity extends AppCompatActivity {
             }
         });
 
-        ImageButton btnSnd = (ImageButton) findViewById(R.id.btnSendMessage);
-        ImageButton btnSndSelected = (ImageButton) findViewById(R.id.btnSendSpecific);
+        Button btnSnd = (Button) findViewById(R.id.btnSendMessage);
+        Button btnSndSelected = (Button) findViewById(R.id.btnSendSpecific);
 
 
         txtMsg = (EditText) findViewById(R.id.txt_sendMessage);
@@ -75,7 +75,7 @@ public class SendMessageActivity extends AppCompatActivity {
                 if (!msg.isEmpty())
                     sendMessage();
                 else
-                    Toast.makeText(getApplicationContext(), "Type a message first", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Please type a message first", Toast.LENGTH_LONG).show();
 
             }
         });
@@ -91,13 +91,13 @@ public class SendMessageActivity extends AppCompatActivity {
                     else
                         sendSelectedUsersMessage();
                 else
-                    Toast.makeText(getApplicationContext(), "Type a message first", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Please type a message first", Toast.LENGTH_LONG).show();
 
             }
         });
 
 
-        ImageButton btnSelectUsers = (ImageButton) findViewById(R.id.btnSelectSpecificUser);
+        Button btnSelectUsers = (Button) findViewById(R.id.btnSelectSpecificUser);
         btnSelectUsers.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -183,7 +183,7 @@ public class SendMessageActivity extends AppCompatActivity {
             public void onResponse(Call<Void> call, Response<Void> response) {
                 int statusCode = response.code();
                 if (statusCode == 200) {
-                    Toast.makeText(getApplicationContext(), "Send Success", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Message Sent", Toast.LENGTH_LONG).show();
                     finish();
                 }
             }
