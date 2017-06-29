@@ -20,14 +20,14 @@
         <Button
             android:id="@+id/btnSelectedDone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_gravity="center"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="@dimen/pad_18dp"
             android:text="Done"
             android:layout_margin="@dimen/pad_5dp"
-            android:backgroundTint="@color/colorMain"/>
+            android:background="@color/colorMain"/>
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"

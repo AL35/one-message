@@ -145,19 +145,19 @@
                     android:layout_width="0dp"
                     android:textAllCaps="false"
                     android:textSize="18dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="@dimen/pad_5dp"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/colorMain"
+                    android:background="@color/colorMain"
                     android:text="Dismiss" />
 
                 <Button
                     android:id="@+id/btnDeleteMsg"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="40dp"
                     android:layout_margin="@dimen/pad_5dp"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/red"
+                    android:background="@color/red"
                     android:text="Confirm "
                     android:textAllCaps="false"
                     android:textColor="@color/white"

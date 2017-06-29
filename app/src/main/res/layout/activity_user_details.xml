@@ -69,34 +69,34 @@
           android:id="@+id/btnEditUser"
           android:layout_width="match_parent"
           android:layout_gravity="center"
-          android:layout_height="wrap_content"
+          android:layout_height="40dp"
             android:textColor="@color/white"
             android:textAllCaps="false"
             android:textSize="@dimen/pad_18dp"
           android:text="@string/EditUser"
-            android:backgroundTint="@color/colorMain"/>
+            android:background="@color/colorMain"/>
 
       <Button
         android:id="@+id/btnEditPassword"
         android:layout_width="match_parent"
         android:layout_gravity="center"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
           android:textColor="@color/white"
           android:textAllCaps="false"
           android:textSize="@dimen/pad_18dp"
         android:layout_marginTop="@dimen/pad_10dp"
         android:text="@string/change_password"
-          android:backgroundTint="@color/colorMain"/>
+          android:background="@color/colorMain"/>
 
       <Button
         android:id="@+id/btnDeleteUser"
-        android:backgroundTint="@color/red"
+        android:background="@color/red"
         android:layout_width="match_parent"
         android:textColor="@color/white"
           android:textAllCaps="false"
         android:textSize="@dimen/pad_18dp"
         android:layout_gravity="center"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginTop="@dimen/pad_10dp"
         android:text="@string/DeleteUser" />
 
