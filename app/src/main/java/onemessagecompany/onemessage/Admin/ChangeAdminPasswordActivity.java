@@ -115,7 +115,12 @@ public class ChangeAdminPasswordActivity extends AppCompatActivity {
             valid = false;
         }
         else {
-            mPassword.setError(null);
+            if(password.equals(oldPassword)){
+                mPassword.setError("New Password cannot be the same as Old Password");
+                valid = false;
+            }
+            else
+                mPassword.setError(null);
         }
         if (confirmPassword.isEmpty() || confirmPassword.length() < 6) {
             mConfirmPassword.setError("Required & Should not be less than 6 characters");
