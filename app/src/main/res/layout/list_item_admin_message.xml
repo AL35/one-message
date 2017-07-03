@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
   android:id="@+id/movies_layout"
-  android:layout_width="wrap_content"
+  android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:gravity="center_vertical"
   android:layout_marginTop="@dimen/pad_10dp"
@@ -10,11 +10,10 @@
 
   <LinearLayout
       android:layout_height="wrap_content"
-      android:layout_width="wrap_content"
-      android:layout_marginLeft="@dimen/pad_15dp"
-      android:layout_marginRight="@dimen/pad_15dp"
+      android:layout_width="match_parent"
       android:orientation="horizontal"
-      android:weightSum="5">
+      android:weightSum="5"
+      android:layout_marginLeft="@dimen/pad_15dp">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -25,7 +24,7 @@
         android:src="@drawable/om_message"
         />
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
       <TextView
@@ -46,43 +45,39 @@
           android:paddingLeft="@dimen/pad_10dp"
           android:textColor="@color/colorGreyLight" />
     </LinearLayout>
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:gravity="end"
+      android:layout_marginEnd="20dp"
+      android:layout_marginRight="@dimen/pad_20dp"
+      >
 
-    <LinearLayout
-        android:layout_marginRight="@dimen/pad_15dp"
+    <ImageView
+        android:id="@+id/img_new_message"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:weightSum="3"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/pad_5dp"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/om_new_message"
 
-      <View
-          android:layout_width="0dp"
-          android:layout_height="0dp"
-          android:layout_weight="2"/>
+        />
 
-      <ImageView
-          android:id="@+id/img_new_message"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_centerInParent="true"
-          android:scaleType="centerCrop"
-          android:layout_marginRight="@dimen/pad_10dp"
-          android:src="@drawable/om_new_message"
+    <ImageView
+        android:id="@+id/remove_msg"
+        android:layout_width="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_margin="@dimen/pad_5dp"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        android:src="@drawable/om_delete"
+        android:tint="@color/colorAccent"
+        />
 
-          />
+</LinearLayout>
 
-      <ImageView
-          android:id="@+id/remove_msg"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
-          android:layout_gravity="center|end"
-          android:scaleType="centerCrop"
-          android:src="@drawable/om_delete"
-          android:tint="@color/colorAccent"
-          />
-
-
-    </LinearLayout>
   </LinearLayout>
 
   <View
