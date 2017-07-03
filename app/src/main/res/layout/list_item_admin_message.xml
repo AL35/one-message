@@ -47,34 +47,43 @@
     </LinearLayout>
   <LinearLayout
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="end"
       android:layout_marginEnd="20dp"
       android:layout_marginRight="@dimen/pad_20dp"
       >
 
-    <ImageView
-        android:id="@+id/img_new_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/pad_5dp"
-        android:layout_alignParentRight="true"
-        android:scaleType="centerCrop"
-        android:src="@drawable/om_new_message"
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+  <ImageView
+      android:id="@+id/img_new_message"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_margin="@dimen/pad_5dp"
+      android:scaleType="centerCrop"
+      android:src="@drawable/om_new_message"
 
-        />
+      />
+</RelativeLayout>
 
-    <ImageView
-        android:id="@+id/remove_msg"
-        android:layout_width="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_margin="@dimen/pad_5dp"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/om_delete"
-        android:tint="@color/colorAccent"
-        />
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+  <ImageView
+      android:id="@+id/remove_msg"
+      android:layout_width="wrap_content"
+      android:layout_margin="@dimen/pad_5dp"
+      android:layout_height="wrap_content"
+      android:scaleType="centerCrop"
+      android:src="@drawable/om_delete"
+      android:tint="@color/colorAccent"
+      />
+
+</RelativeLayout>
+
 
 </LinearLayout>
 
